@@ -1,53 +1,60 @@
-// step 1: exec git status to get the files that have been modified
-// step 2: parse the output to get the file names
-// step 3: print the file names
-
-import { multiselect } from '@clack/prompts'
+import { cancel, isCancel, multiselect } from '@clack/prompts'
 import { $ } from 'bun'
 
-const GitAllStatus = ['modified', 'new file', 'deleted', 'renamed']
-
 export async function main() {
-	const output = await $`git status`.quiet().text()
+	// Use --porcelain for reliable machine-readable parsing
+	const output = await $`git status --porcelain`.quiet().text()
 
-	const files = new Set(
-		output
-			.split('\n')
-			.filter((line) => GitAllStatus.some((status) => line.includes(status)))
-			.map((line) => line.replace(/\t/g, '')),
-	)
+	if (!output.trim()) {
+		console.log('\x1b[32m✔\x1b[0m No changes detected.')
+		return
+	}
 
-	const directories = new Set(
-		output
-			.split('Untracked files')[1]
-			?.split('\n')
-			.filter((line) => line.trim() !== '')
-			.filter((line) => line.endsWith('/'))
-			.map((line) => line.replace(/\t/g, '')),
-	)
+	const lines = output.trim().split('\n')
+	const changes = lines.map((line) => {
+		const status = line.slice(0, 2)
+		const file = line.slice(2)
 
-	const changes = ['all', ...files, ...(directories ?? [])]
+		let label = ''
+		// Map status codes to colored labels (Yellow for M, Green for A/??, Red for D)
+		if (status.includes('M')) {
+			label = `\x1b[33mmodified:\x1b[0m ${file}`
+		} else if (status.includes('A') || status.includes('?')) {
+			label = `\x1b[32mnew file:\x1b[0m ${file}`
+		} else if (status.includes('D')) {
+			label = `\x1b[31mdeleted:\x1b[0m ${file}`
+		} else if (status.includes('R')) {
+			label = `\x1b[35mrenamed:\x1b[0m ${file}`
+		} else {
+			label = `${status}: ${file}`
+		}
 
-	// once we have the changes, we need to ask the user to select the changes they want to commit
+		return { value: file, label }
+	})
+
+	// Add 'all' option at the top
+	const options = [
+		{ value: 'all', label: '\x1b[1mall changes\x1b[0m' },
+		...changes,
+	]
 
 	const selectedChanges = await multiselect({
-		message: 'Select the changes you want to commit.',
-		options: changes.map((change) => ({ value: change, label: change })),
+		message: 'Select the changes you want to commit. (select with space and confirm with enter)',
+		options,
 		required: true,
 	})
 
-	if ((selectedChanges as string[]).includes('all')) {
+	if (isCancel(selectedChanges)) {
+		cancel('Operation cancelled.')
+		process.exit(0)
+	}
+
+	const selected = (selectedChanges as string[]).map((file) => file.trim())
+
+	if (selected.includes('all')) {
 		await $`git add .`
 	} else {
-		const filenames = (selectedChanges as string[]).map((change) =>
-			change
-				.replace('new file: ', '')
-				.replace('modified: ', '')
-				.replace('deleted: ', '')
-				.replace('renamed: ', '')
-				.trim(),
-		)
-
-		await $`git add ${filenames.join(' ')}`
+		// Bun shell correctly escapes array elements
+		await $`git add ${selected}`
 	}
 }
