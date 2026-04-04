@@ -2,11 +2,11 @@
 
 Glinter is a high-performance, transparent Git wrapper built with **Bun**. It enhances the standard `git add` workflow with a beautiful, interactive CLI interface while acting as a seamless pass-through for all other Git commands.
 
-## 🚀 What it does
+## What it does
 
 Glinter's primary goal is to make staging changes more intuitive and safe:
 
-- **Interactive `add`**: When you run `glinter add`, it presents a beautiful, color-coded list of your modified, new, and deleted files. You can multi-select exactly what you want to stage using a GUI-like interface in your terminal.
+- **Interactive `add`**: When you run `glinter add`, it presents a color-coded list of your modified, new, and deleted files. You can multi-select exactly what you want to stage using a GUI-like interface in your terminal.
 - **Transparent Wrapper**: For every other command (like `commit`, `push`, `log`, or `status`), Glinter acts as a direct tunnel to Git. It preserves all original colors, formatting, and interactive features of the native Git CLI.
 - **Visual Clarity**: Highly readable, color-coded status indicators (Yellow for modified, Green for new, Red for deleted).
 - **Safe by Default**: Automatically filters and prevents accidental staging of sensitive files like `.env` (coming soon/optional).
