@@ -1,3 +1,4 @@
+#!/usr/bin/env bun
 // step 1: exec git status to get the files that have been modified
 // step 2: parse the output to get the file names
 // step 3: print the file names
