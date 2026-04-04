@@ -1,13 +1,20 @@
 {
   "name": "glinter",
-  "module": "index.ts",
+  "module": "src/index.ts",
   "type": "module",
   "private": true,
+  "scripts": {
+    "dev": "bun run src/index.ts",
+    "build": "bun build src/ --compile --minify --target bun"
+  },
   "devDependencies": {
     "@biomejs/biome": "2.4.10",
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "dependencies": {
+    "@clack/prompts": "^1.2.0"
   }
 }
