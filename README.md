@@ -2,7 +2,10 @@
 
 Glinter is a high-performance, transparent Git wrapper built with **Bun**. It enhances the standard `git add` workflow with a beautiful, interactive CLI interface while acting as a seamless pass-through for all other Git commands.
 
-https://github.com/user-attachments/assets/f488ac07-f36a-4a56-a533-9598c46596ed
+<video src="https://github.com/user-attachments/assets/f488ac07-f36a-4a56-a533-9598c46596ed" controls="false" autoplay="true" loop="true" muted="true" style="max-width: 100%;">
+Your browser does not support the video tag.
+</video>
+
 
 ## 🚀 What it does
 
