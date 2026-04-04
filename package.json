@@ -1,24 +1,23 @@
 {
 	"name": "glinter",
-	"module": "src/bin/index.ts",
+	"module": "src/index.ts",
 	"type": "module",
 	"private": true,
 	"scripts": {
-		"dev": "bun run src/bin/index.ts",
-		"build": "bun build ./src/index.ts --compile --outfile glinter",
-		"link:glinter": "bun link glinter"
+		"dev": "bun run src/index.ts",
+		"build": "bun build ./src/index.ts --outfile=./dist/index.js --target=bun"
 	},
 	"bin": {
-		"glinter": "./src/index.ts"
+		"g": "./src/index.ts"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.4.10",
 		"@types/bun": "latest"
 	},
 	"peerDependencies": {
-		"typescript": "^5"
+		"typescript": "5"
 	},
 	"dependencies": {
-		"@clack/prompts": "^1.2.0"
+		"@clack/prompts": "1.2.0"
 	}
 }
