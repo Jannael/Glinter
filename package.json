@@ -1,21 +1,56 @@
 {
-	"name": "glinter",
-	"module": "src/index.ts",
+	"name": "@jannael/glinter",
+	"version": "1.0.0",
+	"description": "A high-performance, transparent Git wrapper with interactive staging",
 	"type": "module",
-	"private": true,
+	"private": false,
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jannael/glinter"
+	},
+	"author": {
+		"name": "Jannael",
+		"url": "https://github.com/jannael"
+	},
+	"homepage": "https://github.com/jannael/glinter#readme",
+	"bugs": {
+		"url": "https://github.com/jannael/glinter/issues"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"keywords": [
+		"git",
+		"cli",
+		"wrapper",
+		"interactive",
+		"staging"
+	],
+	"files": [
+		"dist"
+	],
+	"exports": {
+		".": "./dist/index.js"
+	},
 	"scripts": {
 		"dev": "bun run src/index.ts",
-		"build": "bun build ./src/index.ts --outfile=./dist/index.js --target=bun"
+		"build": "bun build ./src/index.ts --outfile=./dist/index.js --target=bun",
+		"prepublishOnly": "bun run build"
 	},
 	"bin": {
-		"g": "./src/index.ts"
+		"g": "./dist/index.js"
+	},
+	"engines": {
+		"bun": ">=1.0.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.4.10",
 		"@types/bun": "latest"
 	},
 	"peerDependencies": {
-		"typescript": "5"
+		"typescript": "5",
+		"bun": ">=1.0.0"
 	},
 	"dependencies": {
 		"@clack/prompts": "1.2.0"
