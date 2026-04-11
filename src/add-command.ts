@@ -1,20 +1,11 @@
-import { cancel, isCancel, multiselect } from '@clack/prompts'
 import { $ } from 'bun'
+import { MultiSelect } from './infra/multiselect'
 
 export async function main() {
-	// Use --porcelain -z for reliable machine-readable parsing (handles spaces/quotes)
-	const output = await $`git status --porcelain -z`.quiet().text()
-
-	if (!output.trim()) {
-		console.log('\x1b[32m✔\x1b[0m  No changes detected.')
-		return
-	}
+	const entries = await GetEntries()
 
 	// Aggregator for unique warnings
 	const warnings = new Set<string>()
-
-	// Split by NUL character
-	const entries = output.split('\0').filter(Boolean)
 	const changes = []
 
 	for (let i = 0; i < entries.length; i++) {
@@ -82,17 +73,11 @@ export async function main() {
 		...changes,
 	]
 
-	const selectedChanges = await multiselect({
+	const selectedChanges = await MultiSelect({
 		message:
 			'Select the changes you want to commit. (select with space and confirm with enter)',
 		options,
-		required: true,
 	})
-
-	if (isCancel(selectedChanges)) {
-		cancel('Operation cancelled.')
-		process.exit(0)
-	}
 
 	let selected = (selectedChanges as string[]).map((file) => file.trim())
 
@@ -118,4 +103,19 @@ export async function main() {
 
 		process.exit(exitCode)
 	}
+}
+
+async function GetEntries() {
+	// Use --porcelain -z for reliable machine-readable parsing (handles spaces/quotes)
+	const output = await $`git status --porcelain -z`.quiet().text()
+
+	if (!output.trim()) {
+		console.log('\x1b[32m✔\x1b[0m  No changes detected.')
+		return []
+	}
+
+	// Split by NUL character
+	const entries = output.split('\0').filter(Boolean)
+
+	return entries
 }
