@@ -6,7 +6,7 @@ export async function main() {
 	const output = await $`git status --porcelain -z`.quiet().text()
 
 	if (!output.trim()) {
-		console.log('\x1b[32m✔\x1b[0m No changes detected.')
+		console.log('\x1b[32m✔\x1b[0m  No changes detected.')
 		return
 	}
 
@@ -71,7 +71,7 @@ export async function main() {
 
 	if (changes.length === 0) {
 		console.log(
-			'\x1b[32m✔\x1b[0m All changes are either staged or sensitive (like .env).',
+			'\x1b[32m✔\x1b[0m  All changes are either staged or sensitive (like .env).',
 		)
 		return
 	}
