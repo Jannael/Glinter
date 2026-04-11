@@ -27,19 +27,7 @@ export async function GetChanges() {
 			// For renames, 'file' is the new path which is what we want to add
 		}
 
-		let label = ''
-		// Map status codes to colored labels (Yellow for M, Green for A/??, Red for D)
-		if (status.includes('M')) {
-			label = `\x1b[33mmodified:\x1b[0m ${displayPath}`
-		} else if (status.includes('A') || status.includes('?')) {
-			label = `\x1b[32mnew file:\x1b[0m ${displayPath}`
-		} else if (status.includes('D')) {
-			label = `\x1b[31mdeleted:\x1b[0m ${displayPath}`
-		} else if (status.includes('R')) {
-			label = `\x1b[35mrenamed:\x1b[0m ${displayPath}`
-		} else {
-			label = `${status}: ${displayPath}`
-		}
+		const label = GetLabel({ status, displayPath })
 
 		const isSensitive = value.includes('.env') || value.includes('node_modules')
 
@@ -67,4 +55,26 @@ export async function GetChanges() {
 	}
 
 	return { changes, warnings }
+}
+
+function GetLabel({
+	status,
+	displayPath,
+}: {
+	status: string
+	displayPath: string
+}) {
+	let label = ''
+	if (status.includes('M')) {
+		label = `\x1b[33mmodified:\x1b[0m ${displayPath}`
+	} else if (status.includes('A') || status.includes('?')) {
+		label = `\x1b[32mnew file:\x1b[0m ${displayPath}`
+	} else if (status.includes('D')) {
+		label = `\x1b[31mdeleted:\x1b[0m ${displayPath}`
+	} else if (status.includes('R')) {
+		label = `\x1b[35mrenamed:\x1b[0m ${displayPath}`
+	} else {
+		label = `${status}: ${displayPath}`
+	}
+	return label
 }
