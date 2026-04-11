@@ -1,5 +1,5 @@
 #!/usr/bin/env bun
-import { main } from './main'
+import { main } from './add-command'
 
 const args = Bun.argv.slice(2)
 
