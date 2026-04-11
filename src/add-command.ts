@@ -14,7 +14,7 @@ export async function main() {
 	const warnings = new Set<string>()
 
 	// Split by NUL character
-	const entries = output.split('\0')
+	const entries = output.split('\0').filter(Boolean)
 	const changes = []
 
 	for (let i = 0; i < entries.length; i++) {
@@ -23,6 +23,10 @@ export async function main() {
 
 		const status = entry.slice(0, 2)
 		const file = entry.slice(3) // XY <path>
+
+		// Skip if the file is already staged (index status is not empty or untracked)
+		const isStaged = status[0] !== ' ' && status[0] !== '?'
+		if (isStaged) continue
 
 		let displayPath = file
 		const value = file
@@ -47,14 +51,17 @@ export async function main() {
 			label = `${status}: ${displayPath}`
 		}
 
-		const isSensitive =
-			value.includes('.env') || value.includes('node_modules')
+		const isSensitive = value.includes('.env') || value.includes('node_modules')
 
 		if (value.includes('.env')) {
-			warnings.add('\x1b[33m .env file hidden\x1b[0m (Add to .gitignore to avoid leaks)')
+			warnings.add(
+				'\x1b[33m .env file hidden\x1b[0m (Add to .gitignore to avoid leaks)',
+			)
 		}
 		if (value.includes('node_modules')) {
-			warnings.add('\x1b[33m node_modules hidden\x1b[0m (Add to .gitignore to save space)')
+			warnings.add(
+				'\x1b[33m node_modules hidden\x1b[0m (Add to .gitignore to save space)',
+			)
 		}
 
 		if (!isSensitive) {
