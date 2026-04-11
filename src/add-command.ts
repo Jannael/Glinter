@@ -1,4 +1,4 @@
-import { $ } from 'bun'
+import { GetEntries } from './infra/get-entries'
 import { MultiSelect } from './infra/multiselect'
 
 export async function main() {
@@ -103,19 +103,4 @@ export async function main() {
 
 		process.exit(exitCode)
 	}
-}
-
-async function GetEntries() {
-	// Use --porcelain -z for reliable machine-readable parsing (handles spaces/quotes)
-	const output = await $`git status --porcelain -z`.quiet().text()
-
-	if (!output.trim()) {
-		console.log('\x1b[32m✔\x1b[0m  No changes detected.')
-		return []
-	}
-
-	// Split by NUL character
-	const entries = output.split('\0').filter(Boolean)
-
-	return entries
 }
