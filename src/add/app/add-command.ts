@@ -1,5 +1,5 @@
-import { GetChanges } from './domain/get-changes'
-import { MultiSelect } from './infra/multiselect'
+import { GetChanges } from '../domain/get-changes'
+import { MultiSelect } from '../utils/multiselect'
 
 export async function main() {
 	const { changes, warnings } = await GetChanges()

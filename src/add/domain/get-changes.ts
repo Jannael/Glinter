@@ -1,4 +1,5 @@
 import { GetEntries } from '../infra/get-entries'
+import { GetLabel } from '../utils/add-get-label'
 
 export async function GetChanges() {
 	const entries = await GetEntries()
@@ -55,26 +56,4 @@ export async function GetChanges() {
 	}
 
 	return { changes, warnings }
-}
-
-function GetLabel({
-	status,
-	displayPath,
-}: {
-	status: string
-	displayPath: string
-}) {
-	let label = ''
-	if (status.includes('M')) {
-		label = `\x1b[33mmodified:\x1b[0m ${displayPath}`
-	} else if (status.includes('A') || status.includes('?')) {
-		label = `\x1b[32mnew file:\x1b[0m ${displayPath}`
-	} else if (status.includes('D')) {
-		label = `\x1b[31mdeleted:\x1b[0m ${displayPath}`
-	} else if (status.includes('R')) {
-		label = `\x1b[35mrenamed:\x1b[0m ${displayPath}`
-	} else {
-		label = `${status}: ${displayPath}`
-	}
-	return label
 }
