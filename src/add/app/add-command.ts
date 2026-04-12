@@ -1,4 +1,4 @@
-import { MultiSelect } from '../utils/multiselect'
+import { MultiSelect } from '../../packages/multiselect'
 import type { GetChangesUseCase } from './get-changes.use-case'
 import type { StageChangesUseCase } from './stage-changes.use-case'
 
