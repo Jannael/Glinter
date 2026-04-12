@@ -3,7 +3,7 @@ import { GetChangesUseCase } from './app/get-changes.use-case'
 import { StageChangesUseCase } from './app/stage-changes.use-case'
 import { BunGitRepository } from './infra/bun-git.repository'
 
-export async function main() {
+export async function addCommand() {
 	// Instantiate Adapters
 	const gitRepository = new BunGitRepository()
 
