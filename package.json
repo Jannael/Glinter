@@ -36,7 +36,10 @@
 	"scripts": {
 		"dev": "bun run src/index.ts",
 		"build": "bun build ./src/index.ts --outfile=./dist/index.js --target=bun",
-		"prepublishOnly": "bun run build"
+		"prepublishOnly": "bun run build",
+		"test": "vitest",
+		"lint": "biome check",
+		"lint:fix": "biome format --write"
 	},
 	"bin": {
 		"g": "./src/index.ts"
@@ -46,7 +49,8 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.4.10",
-		"@types/bun": "latest"
+		"@types/bun": "latest",
+		"vitest": "4.1.4"
 	},
 	"peerDependencies": {
 		"bun": ">=1.0.0",
