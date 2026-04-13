@@ -1,3 +1,5 @@
+import { CHECK } from '../../packages/check'
+import { BG_YELLOW, BLACK, BOLD, RESET } from '../../packages/colors'
 import { MultiSelect } from '../../packages/multiselect'
 import type { GetChangesUseCase } from './get-changes.use-case'
 import type { StageChangesUseCase } from './stage-changes.use-case'
@@ -13,14 +15,14 @@ export class AddCommand {
 
 		if (changes.length === 0) {
 			console.log(
-				'\x1b[32m✔\x1b[0m  All changes are either staged or sensitive (like .env).',
+				`${CHECK}  All changes are either staged or sensitive (like .env).`,
 			)
 			return
 		}
 
 		// Add 'all' option at the top
 		const options = [
-			{ value: 'all', label: '\x1b[1mall changes\x1b[0m' },
+			{ value: 'all', label: `${BOLD}all changes${RESET}` },
 			...changes.map((c) => ({ value: c.value, label: c.label })),
 		]
 
@@ -40,7 +42,7 @@ export class AddCommand {
 			await this.stageChangesUseCase.execute(selected)
 
 			if (warnings.size > 0) {
-				console.log('\n\x1b[43m\x1b[30m WARNING \x1b[0m')
+				console.log(`\n${BG_YELLOW}${BLACK} WARNING ${RESET}`)
 				for (const warning of warnings) {
 					console.log(warning)
 				}
