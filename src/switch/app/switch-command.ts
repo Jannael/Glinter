@@ -1,3 +1,5 @@
+import { CHECK } from '../../packages/check'
+import { GREEN, RESET } from '../../packages/colors'
 import { Select } from '../../packages/select'
 import type { GetBranchesUseCase } from './get-branches.use-case'
 import type { SwitchBranch } from './switch-branch.use-case'
@@ -12,7 +14,7 @@ export class SwitchCommand {
 		const branches = await this.getBranchesUseCase.execute()
 
 		if (branches.length === 0) {
-			console.log('\x1b[32m✔\x1b[0m  No branches found.')
+			console.log(`${CHECK}  No branches found.`)
 			return
 		}
 
@@ -24,12 +26,15 @@ export class SwitchCommand {
 			if (branch.isHeadBranch) continue
 
 			if (branch.isCurrentBranch) {
-				console.log(`\x1b[32m✔\x1b[0m  Current branch: ${branch.name}`)
+				console.log(`${CHECK}  Current branch: ${branch.name}`)
 				continue
 			}
 
 			if (branch.isRemoteBranch) {
-				label = branch.name.replace('remotes/origin/', '\x1b[34mremote branch:\x1b[0m ')
+				label = branch.name.replace(
+					'remotes/origin/',
+					`${GREEN}remote branch:${RESET} `,
+				)
 				value = branch.name.replace('remotes/origin/', '')
 			}
 
