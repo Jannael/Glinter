@@ -1,3 +1,5 @@
+import { GREEN, MAGENTA, RED, RESET, YELLOW } from '../../packages/colors'
+
 export interface ChangeProps {
 	value: string
 	status: string
@@ -24,16 +26,16 @@ export class Change {
 		let label = `${status}: ${displayPath}`
 
 		if (status.includes('M')) {
-			label = `\x1b[33mmodified:\x1b[0m ${displayPath}`
+			label = `${YELLOW}modified:${RESET} ${displayPath}`
 		}
 		if (status.includes('A') || status.includes('?')) {
-			label = `\x1b[32mnew file:\x1b[0m ${displayPath}`
+			label = `${GREEN}new file:${RESET} ${displayPath}`
 		}
 		if (status.includes('D')) {
-			label = `\x1b[31mdeleted:\x1b[0m ${displayPath}`
+			label = `${RED}deleted:${RESET} ${displayPath}`
 		}
 		if (status.includes('R')) {
-			label = `\x1b[35mrenamed:\x1b[0m ${displayPath}`
+			label = `${MAGENTA}renamed:${RESET} ${displayPath}`
 		}
 
 		return label
@@ -45,10 +47,10 @@ export class Change {
 
 	getWarning(): string | null {
 		if (this.value.includes('.env')) {
-			return '\x1b[33m .env file hidden\x1b[0m (Add to .gitignore to avoid leaks)'
+			return `${YELLOW} .env file hidden${RESET} (Add to .gitignore to avoid leaks)`
 		}
 		if (this.value.includes('node_modules')) {
-			return '\x1b[33m node_modules hidden\x1b[0m (Add to .gitignore to save space)'
+			return `${YELLOW} node_modules hidden${RESET} (Add to .gitignore to save space)`
 		}
 		return null
 	}
