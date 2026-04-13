@@ -29,7 +29,7 @@ export class SwitchCommand {
 			}
 
 			if (branch.isRemoteBranch) {
-				label = branch.name.replace('remotes/origin/', 'remote branch: ')
+				label = branch.name.replace('remotes/origin/', '\x1b[34mremote branch:\x1b[0m ')
 				value = branch.name.replace('remotes/origin/', '')
 			}
 
