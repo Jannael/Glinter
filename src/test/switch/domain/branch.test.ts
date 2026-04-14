@@ -10,8 +10,8 @@ describe('Branch', () => {
 		expect(branch.isRemoteBranch).toBe(false)
 	})
 
-	it('create a branch from porcelain', () => {
-		const branches = Branch.fromPorcelain(['main', 'master'])
+	it('create a branch from git branch', () => {
+		const branches = Branch.fromGitBranch(['main', 'master'])
 		expect(branches).toHaveLength(2)
 		expect(branches[0]).toBeInstanceOf(Branch)
 		expect(branches[1]).toBeInstanceOf(Branch)
