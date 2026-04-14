@@ -1,5 +1,13 @@
 import { CHECK } from '../../packages/check'
-import { BG_YELLOW, BLACK, BOLD, RESET } from '../../packages/colors'
+import {
+	BG_YELLOW,
+	BLACK,
+	BLUE,
+	GREEN,
+	MAGENTA,
+	RED,
+	RESET,
+} from '../../packages/colors'
 import { MultiSelect } from '../../packages/multiselect'
 import type { GetChangesUseCase } from './get-changes.use-case'
 import type { StageChangesUseCase } from './stage-changes.use-case'
@@ -22,13 +30,11 @@ export class AddCommand {
 
 		// Add 'all' option at the top
 		const options = [
-			{ value: 'all', label: `${BOLD}all changes${RESET}` },
 			...changes.map((c) => ({ value: c.value, label: c.label })),
 		]
 
 		const selectedChanges = await MultiSelect({
-			message:
-				'Select the changes you want to commit. (select with space and confirm with enter)',
+			message: `Select the changes you want to commit. ${BLUE}[space] to select and${RESET} ${GREEN}[enter] to confirm${RESET} ${MAGENTA}[a] to select all${RESET} ${RED}[esc] to cancel${RESET}`,
 			options,
 		})
 
