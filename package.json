@@ -1,6 +1,6 @@
 {
 	"name": "@jannael/glinter",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "A high-performance, transparent Git wrapper with interactive staging",
 	"type": "module",
 	"private": false,
@@ -31,7 +31,7 @@
 		"dist"
 	],
 	"exports": {
-		".": "./src/index.ts"
+		".": "./dist/index.js"
 	},
 	"scripts": {
 		"dev": "bun run src/index.ts",
