@@ -1,4 +1,4 @@
-import { CHECK } from '../../packages/check'
+import { CHECK } from '../../../utils/check'
 import {
 	BG_YELLOW,
 	BLACK,
@@ -7,8 +7,8 @@ import {
 	MAGENTA,
 	RED,
 	RESET,
-} from '../../packages/colors'
-import { MultiSelect } from '../../packages/multiselect'
+} from '../../../utils/colors'
+import { MultiSelect } from '../../../utils/multiselect'
 import type { GetChangesUseCase } from './get-changes.use-case'
 import type { StageChangesUseCase } from './stage-changes.use-case'
 

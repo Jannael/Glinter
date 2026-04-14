@@ -1,4 +1,4 @@
-import { GREEN, MAGENTA, RED, RESET, YELLOW } from '../../packages/colors'
+import { GREEN, MAGENTA, RED, RESET, YELLOW } from '../../../utils/colors'
 
 export interface ChangeProps {
 	value: string

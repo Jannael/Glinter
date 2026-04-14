@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { Change } from '../../../add/domain/change'
+import { Change } from '../../../modules/add/domain/change'
 
 describe('Change', () => {
 	it('Create a change instance', () => {

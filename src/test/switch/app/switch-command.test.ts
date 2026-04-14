@@ -1,9 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { GREEN, RESET } from '../../../packages/colors'
-import * as selectModule from '../../../packages/select'
-import { GetBranchesUseCase } from '../../../switch/app/get-branches.use-case'
-import { SwitchBranch } from '../../../switch/app/switch-branch.use-case'
-import { SwitchCommand } from '../../../switch/app/switch-command'
+import { GetBranchesUseCase } from '../../../modules/switch/app/get-branches.use-case'
+import { SwitchBranch } from '../../../modules/switch/app/switch-branch.use-case'
+import { SwitchCommand } from '../../../modules/switch/app/switch-command'
+import { GREEN, RESET } from '../../../utils/colors'
+import * as selectModule from '../../../utils/select'
 
 const mockBranches = ['* main', 'feature/new-feature', 'remotes/origin/main']
 
@@ -12,7 +12,7 @@ const BranchMockRepo = {
 	switchBranch: vi.fn(),
 }
 
-vi.mock('../../../packages/select', () => ({
+vi.mock('../../../utils/select', () => ({
 	Select: vi.fn(),
 }))
 

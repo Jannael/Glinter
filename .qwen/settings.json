@@ -1,8 +1,6 @@
 {
-  "permissions": {
-    "allow": [
-      "Bash(bun *)"
-    ]
-  },
-  "$version": 3
+	"permissions": {
+		"allow": ["Bash(bun *)"]
+	},
+	"$version": 3
 }

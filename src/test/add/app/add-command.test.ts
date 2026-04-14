@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { AddCommand } from '../../../add/app/add-command'
-import { GetChangesUseCase } from '../../../add/app/get-changes.use-case'
-import { StageChangesUseCase } from '../../../add/app/stage-changes.use-case'
-import * as multiselectModule from '../../../packages/multiselect'
+import { AddCommand } from '../../../modules/add/app/add-command'
+import { GetChangesUseCase } from '../../../modules/add/app/get-changes.use-case'
+import { StageChangesUseCase } from '../../../modules/add/app/stage-changes.use-case'
+import * as multiselectModule from '../../../utils/multiselect'
 
 const mockFiles = [' M bun.lock', ' A a.lock']
 
@@ -11,7 +11,7 @@ const mockGitRepo = {
 	stageFiles: vi.fn(),
 }
 
-vi.mock('../../../packages/multiselect', () => ({
+vi.mock('../../../utils/multiselect', () => ({
 	MultiSelect: vi.fn(),
 }))
 
