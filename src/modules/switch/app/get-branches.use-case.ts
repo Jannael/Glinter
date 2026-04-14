@@ -6,7 +6,7 @@ export class GetBranchesUseCase {
 
 	async execute() {
 		const branches = await this.branchRepository.getBranches()
-		const allBranches = Branch.fromPorcelain(branches)
+		const allBranches = Branch.fromGitBranch(branches)
 
 		return allBranches
 	}

@@ -14,7 +14,7 @@ export class BunGitRepository implements GitRepository {
 		return output.split('\0').filter(Boolean)
 	}
 
-	async stageFiles(files: string[]){
+	async stageFiles(files: string[]) {
 		if (files.length === 0) return
 
 		// Bun shell correctly escapes array elements

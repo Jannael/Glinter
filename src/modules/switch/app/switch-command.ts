@@ -1,6 +1,6 @@
-import { CHECK } from '../../packages/check'
-import { GREEN, RESET } from '../../packages/colors'
-import { Select } from '../../packages/select'
+import { CHECK } from '../../../utils/check'
+import { GREEN, RESET } from '../../../utils/colors'
+import { Select } from '../../../utils/select'
 import type { GetBranchesUseCase } from './get-branches.use-case'
 import type { SwitchBranch } from './switch-branch.use-case'
 

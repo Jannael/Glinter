@@ -13,14 +13,14 @@ export class BunSwitchRepository implements SwitchRepository {
 	}
 
 	async switchBranch({ branch }: { branch: string }) {
-    const proc = Bun.spawn(['git', 'checkout', branch], {
-      stdio: ['inherit', 'inherit', 'inherit'],
-    })
+		const proc = Bun.spawn(['git', 'checkout', branch], {
+			stdio: ['inherit', 'inherit', 'inherit'],
+		})
 
-    const exitCode = await proc.exited
+		const exitCode = await proc.exited
 
-    if (exitCode !== 0) {
-      throw new Error(`Git checkout failed with exit code ${exitCode}`)
-    }
-  }
+		if (exitCode !== 0) {
+			throw new Error(`Git checkout failed with exit code ${exitCode}`)
+		}
+	}
 }

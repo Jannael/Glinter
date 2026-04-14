@@ -1,6 +1,6 @@
 #!/usr/bin/env bun
-import { addCommand } from './add/main'
-import { switchCommand } from './switch/main'
+import { addCommand } from './modules/add/main'
+import { switchCommand } from './modules/switch/main'
 
 const args = Bun.argv.slice(2)
 
