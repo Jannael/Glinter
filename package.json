@@ -1,6 +1,6 @@
 {
 	"name": "@jannael/glinter",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "A high-performance, transparent Git wrapper with interactive staging",
 	"type": "module",
 	"private": false,
