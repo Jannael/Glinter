@@ -1,5 +1,5 @@
-import { CHECK } from '../../../utils/check'
-import { GREEN, RESET } from '../../../utils/colors'
+import { GREEN } from '../../../utils/colors'
+import { CHECK } from '../../../utils/icons-terminal'
 import { Select } from '../../../utils/select'
 import type { GetBranchesUseCase } from './get-branches.use-case'
 import type { SwitchBranch } from './switch-branch.use-case'
@@ -14,7 +14,7 @@ export class SwitchCommand {
 		const branches = await this.getBranchesUseCase.execute()
 
 		if (branches.length === 0) {
-			console.log(`${CHECK}  No branches found.`)
+			console.log(`${CHECK({ text: 'No branches found.' })}`)
 			return
 		}
 
@@ -26,14 +26,14 @@ export class SwitchCommand {
 			if (branch.isHeadBranch) continue
 
 			if (branch.isCurrentBranch) {
-				console.log(`${CHECK}  Current branch: ${branch.name}`)
+				console.log(`${CHECK({ text: `Current branch: ${branch.name}` })}`)
 				continue
 			}
 
 			if (branch.isRemoteBranch) {
 				label = branch.name.replace(
 					'remotes/origin/',
-					`${GREEN}remote branch:${RESET} `,
+					GREEN({ text: 'remote branch: ' }),
 				)
 				value = branch.name.replace('remotes/origin/', '')
 			}

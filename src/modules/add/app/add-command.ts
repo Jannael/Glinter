@@ -1,13 +1,5 @@
-import { CHECK } from '../../../utils/check'
-import {
-	BG_YELLOW,
-	BLACK,
-	BLUE,
-	GREEN,
-	MAGENTA,
-	RED,
-	RESET,
-} from '../../../utils/colors'
+import { BLUE, GREEN, MAGENTA, RED } from '../../../utils/colors'
+import { CHECK, WARNING } from '../../../utils/icons-terminal'
 import { MultiSelect } from '../../../utils/multiselect'
 import type { GetChangesUseCase } from './get-changes.use-case'
 import type { StageChangesUseCase } from './stage-changes.use-case'
@@ -23,7 +15,7 @@ export class AddCommand {
 
 		if (changes.length === 0) {
 			console.log(
-				`${CHECK}  All changes are either staged or sensitive (like .env).`,
+				`${CHECK({ text: 'All changes are either staged or sensitive (like .env).' })}`,
 			)
 			return
 		}
@@ -34,7 +26,16 @@ export class AddCommand {
 		]
 
 		const selectedChanges = await MultiSelect({
-			message: `Select the changes you want to commit. ${BLUE}[space] to select and${RESET} ${GREEN}[enter] to confirm${RESET} ${MAGENTA}[a] to select all${RESET} ${RED}[esc] to cancel${RESET}`,
+			message:
+				'Select the changes you want to commit. \n' +
+				BLUE({ text: '[space] to select and' }) +
+				'\n' +
+				GREEN({ text: '[enter] to confirm' }) +
+				'\n' +
+				MAGENTA({ text: '[a] to select all' }) +
+				'\n' +
+				RED({ text: '[esc] to cancel' }) +
+				'\n',
 			options,
 		})
 
@@ -48,7 +49,7 @@ export class AddCommand {
 			await this.stageChangesUseCase.execute(selected)
 
 			if (warnings.size > 0) {
-				console.log(`\n${BG_YELLOW}${BLACK} WARNING ${RESET}`)
+				console.log(`\n${WARNING({ text: ' WARNING ' })}`)
 				for (const warning of warnings) {
 					console.log(warning)
 				}
