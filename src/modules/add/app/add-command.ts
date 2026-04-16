@@ -1,6 +1,6 @@
-import { NotFound, ServerError } from '../../../error/error-instance'
+import { errorHandler } from '../../../error/error-handler'
 import { BLUE, GREEN, MAGENTA, RED } from '../../../utils/colors'
-import { CHECK, WARNING, X } from '../../../utils/icons-terminal'
+import { CHECK, WARNING } from '../../../utils/icons-terminal'
 import { MultiSelect } from '../../../utils/multiselect'
 import type { GetChangesUseCase } from './get-changes.use-case'
 import type { StageChangesUseCase } from './stage-changes.use-case'
@@ -59,26 +59,7 @@ export class AddCommand {
 				}
 			}
 		} catch (error) {
-			this.errorHandler(error)
-		}
-	}
-
-	private errorHandler(error: unknown) {
-		if (error instanceof ServerError) {
-			console.error(X({ text: error.message }))
-			if (error.description) {
-				console.error(`  ${error.description}`)
-			}
-			return
-		}
-		if (error instanceof NotFound) {
-			console.error(WARNING({ text: error.message }))
-			return
-		}
-		// Unknown error — something truly unexpected
-		console.error(X({ text: 'An unexpected error occurred' }))
-		if (error instanceof Error) {
-			console.error(`  ${error.message}`)
+			errorHandler(error)
 		}
 	}
 }
