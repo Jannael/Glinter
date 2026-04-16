@@ -1,17 +1,25 @@
 import { $ } from 'bun'
+import { ServerError } from '../../../error/error-instance'
 import type { GitRepository } from '../domain/git.repository'
 
 export class BunGitRepository implements GitRepository {
 	async getEntries() {
-		// Use --porcelain -z for reliable machine-readable parsing (handles spaces/quotes)
-		const output = await $`git status --porcelain -z`.quiet().text()
+		try {
+			// Use --porcelain -z for reliable machine-readable parsing (handles spaces/quotes)
+			const output = await $`git status --porcelain -z`.quiet().text()
 
-		if (!output.trim()) {
-			return []
+			if (!output.trim()) {
+				return []
+			}
+
+			// Split by NUL character
+			return output.split('\0').filter(Boolean)
+		} catch {
+			throw new ServerError(
+				'Git status failed',
+				'Could not retrieve repository status',
+			)
 		}
-
-		// Split by NUL character
-		return output.split('\0').filter(Boolean)
 	}
 
 	async stageFiles(files: string[]) {
@@ -25,7 +33,10 @@ export class BunGitRepository implements GitRepository {
 		const exitCode = await proc.exited
 
 		if (exitCode !== 0) {
-			throw new Error(`Git add failed with exit code ${exitCode}`)
+			throw new ServerError(
+				'Git add failed',
+				`Failed to stage ${files.length} file(s)`,
+			)
 		}
 	}
 }

@@ -1,15 +1,20 @@
 import { $ } from 'bun'
+import { ServerError } from '../../../error/error-instance'
 import type { SwitchRepository } from '../domain/switch.repository'
 
 export class BunSwitchRepository implements SwitchRepository {
 	async getBranches() {
-		const output = await $`git branch -a`.quiet().text()
+		try {
+			const output = await $`git branch -a`.quiet().text()
 
-		if (!output.trim()) {
-			return []
+			if (!output.trim()) {
+				return []
+			}
+
+			return output.split('\n').map((branch) => branch.trim())
+		} catch {
+			throw new ServerError('Git branch failed', 'Could not retrieve branches')
 		}
-
-		return output.split('\n').map((branch) => branch.trim())
 	}
 
 	async switchBranch({ branch }: { branch: string }) {
@@ -20,7 +25,10 @@ export class BunSwitchRepository implements SwitchRepository {
 		const exitCode = await proc.exited
 
 		if (exitCode !== 0) {
-			throw new Error(`Git checkout failed with exit code ${exitCode}`)
+			throw new ServerError(
+				'Git checkout failed',
+				`Failed to switch to branch ${branch}`,
+			)
 		}
 	}
 }

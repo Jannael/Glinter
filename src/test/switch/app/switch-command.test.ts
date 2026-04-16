@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { GetBranchesUseCase } from '../../../modules/switch/app/get-branches.use-case'
 import { SwitchBranch } from '../../../modules/switch/app/switch-branch.use-case'
 import { SwitchCommand } from '../../../modules/switch/app/switch-command'
-import { GREEN, RESET } from '../../../utils/colors'
+import { GREEN } from '../../../utils/colors'
 import * as selectModule from '../../../utils/select'
 
 const mockBranches = ['* main', 'feature/new-feature', 'remotes/origin/main']
@@ -58,7 +58,7 @@ describe('SwitchCommand', () => {
 			message: 'Select the branch you want to switch to.',
 			options: [
 				{ value: 'feature/new-feature', label: 'feature/new-feature' },
-				{ value: 'main', label: `${GREEN}remote branch:${RESET} main` },
+				{ value: 'main', label: `${GREEN({ text: 'remote branch: ' })}main` },
 			],
 		})
 	})

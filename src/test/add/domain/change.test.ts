@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { Change } from '../../../modules/add/domain/change'
+import { GREEN, YELLOW } from '../../../utils/colors'
 
 describe('Change', () => {
 	it('Create a change instance', () => {
@@ -20,7 +21,7 @@ describe('Change', () => {
 			displayPath: 'test',
 		})
 
-		expect(change.label).toBe('\x1b[32mnew file:\x1b[0m test')
+		expect(change.label).toBe(GREEN({ text: 'new file: test' }))
 	})
 
 	it('Is sensitive', () => {
@@ -41,7 +42,8 @@ describe('Change', () => {
 		})
 
 		expect(change.getWarning()).toBe(
-			'\x1b[33m .env file hidden\x1b[0m (Add to .gitignore to avoid leaks)',
+			YELLOW({ text: ' .env file hidden' }) +
+				' (Add to .gitignore to avoid leaks)',
 		)
 	})
 
