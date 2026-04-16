@@ -4,7 +4,7 @@ Glinter is a high-performance, transparent Git wrapper built with **Bun**. It en
 
 ## Preview
 
-<video src="https://github.com/user-attachments/assets/f488ac07-f36a-4a56-a533-9598c46596ed" controls="false" autoplay="true" loop="true" muted="true" style="max-width: 100%;">
+<video src="https://github.com/user-attachments/assets/7c7cddef-d656-45e7-82e3-452cf669bbfc" controls="false" autoplay="true" loop="true" muted="true" style="max-width: 100%;">
 Your browser does not support the video tag.
 </video>
 
