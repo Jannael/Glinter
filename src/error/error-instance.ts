@@ -25,6 +25,7 @@ export const Conflict = CreateError<IConflict>('Conflict')
 type IServerError =
 	| 'Git status failed'
 	| 'Git add failed'
+	| 'Git commit failed'
 	| 'Git checkout failed'
 	| 'Git branch failed'
 	| 'Unexpected execution error'
