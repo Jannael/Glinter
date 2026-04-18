@@ -11,7 +11,7 @@ export async function Input({
 		message,
 		placeholder,
 		validate(input) {
-			if (!input.trim()) {
+			if (!input?.trim()) {
 				return 'Commit message is required.'
 			}
 		},

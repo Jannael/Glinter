@@ -39,7 +39,8 @@
 		"prepublishOnly": "bun run build",
 		"test": "vitest",
 		"lint": "biome check",
-		"lint:fix": "biome format --write"
+		"lint:fix": "biome format --write",
+		"type-check": "bunx tsc --noEmit"
 	},
 	"bin": {
 		"g": "./src/index.ts"
