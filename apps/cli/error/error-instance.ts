@@ -1,4 +1,4 @@
-import { CreateError } from './error-constructor'
+import { CreateError } from '@/error/error-constructor'
 
 type INotFound =
 	| 'Repository not found'

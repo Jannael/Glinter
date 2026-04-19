@@ -1,4 +1,4 @@
-import { BG_YELLOW, BLACK, GREEN, RED } from './colors'
+import { BG_YELLOW, BLACK, GREEN, RED } from '@/utils/colors'
 
 export const X = ({ text }: { text: string }) => RED({ text: `✖ ${text}` })
 export const CHECK = ({ text }: { text: string }) =>

@@ -1,5 +1,5 @@
-import { WARNING, X } from '../utils/icons-terminal'
-import { NotFound, ServerError } from './error-instance'
+import { NotFound, ServerError } from '@/error/error-instance'
+import { WARNING, X } from '@/utils/icons-terminal'
 
 export function errorHandler(error: unknown) {
 	if (error instanceof ServerError) {

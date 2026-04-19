@@ -28,10 +28,7 @@
 		"noUnusedParameters": false,
 		"noPropertyAccessFromIndexSignature": false,
 		"paths": {
-			"@/*": ["./apps/cli/*"],
-			"@/error/*": ["./apps/cli/error/*"],
-			"@/utils/*": ["./apps/cli/utils/*"],
-			"@/modules/*": ["./apps/cli/modules/*"]
+			"@/*": ["./apps/cli/*"]
 		}
 	}
 }
