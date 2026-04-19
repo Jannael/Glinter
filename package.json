@@ -31,19 +31,19 @@
 		"dist"
 	],
 	"exports": {
-		".": "./src/index.ts"
+		".": "./apps/cli/index.ts"
 	},
 	"scripts": {
-		"dev": "bun run src/index.ts",
-		"build": "bun build ./src/index.ts --outfile=./dist/index.js --target=bun",
-		"prepublishOnly": "bun run build",
+		"build:cli": "bun build ./apps/cli/index.ts --outfile=./dist/index.js --target=bun",
+		"prepublishOnly": "bun run build:cli",
+
 		"test": "vitest",
 		"lint": "biome check",
 		"lint:fix": "biome format --write",
 		"type-check": "bunx tsc --noEmit"
 	},
 	"bin": {
-		"g": "./src/index.ts"
+		"g": "./apps/cli/index.ts"
 	},
 	"engines": {
 		"bun": ">=1.0.0"
