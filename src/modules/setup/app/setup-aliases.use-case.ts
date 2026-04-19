@@ -1,4 +1,4 @@
-import { ALIASES } from '@/modules/setup/domain/alias'
+import { ALIASES } from '@/alias'
 import type { AliasRepository } from '@/modules/setup/domain/alias.repository'
 
 export class SetupAliasesUseCase {

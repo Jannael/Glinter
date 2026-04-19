@@ -1,6 +1,6 @@
+import { ALIASES } from '@/alias'
 import { errorHandler } from '@/error/error-handler'
 import type { SetupAliasesUseCase } from '@/modules/setup/app/setup-aliases.use-case'
-import { ALIASES } from '@/modules/setup/domain/alias'
 import { BLUE, GREEN, MAGENTA, YELLOW } from '@/utils/colors'
 import { Confirm } from '@/utils/confirm'
 import { CHECK } from '@/utils/icons-terminal'
