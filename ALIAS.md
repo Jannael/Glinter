@@ -1,0 +1,26 @@
+[alias]
+  s  = status -sb
+  l  = log --oneline --decorate --graph --all -n 20
+  ll = log --stat
+  d  = diff
+  ds = diff --staged
+  a = add
+  aa = add -A
+  c = commit
+  cm = commit -m
+  ca  = commit --amend
+  can = commit --amend --no-edit
+  b   = branch
+  ba  = branch -a
+  co  = checkout
+  cb  = checkout -b
+  pl  = pull
+  plr = pull --rebase
+  p   = push
+  ggpush = push origin HEAD
+  pf  = push --force-with-lease
+  st  = stash
+  stp = stash pop
+  stl = stash list
+  cl  = clean -fd
+  rh  = reset --hard
