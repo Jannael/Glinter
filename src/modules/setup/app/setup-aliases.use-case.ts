@@ -5,27 +5,22 @@ export class SetupAliasesUseCase {
 	constructor(private readonly aliasRepository: AliasRepository) {}
 
 	async execute() {
-		const os = this.aliasRepository.getOS()
-
 		for (const alias of ALIASES) {
-			const value = this.resolveAlias(alias.command, alias.kind, os)
-			await this.aliasRepository.setAlias(alias.name, value)
+			const { name, value } = this.resolveAlias(
+				alias.name,
+				alias.command,
+				alias.kind,
+			)
+			await this.aliasRepository.setAlias(name, value)
 		}
 
 		return { total: ALIASES.length }
 	}
 
-	private resolveAlias(
-		command: string,
-		kind: 'git' | 'glinter',
-		os: 'windows' | 'unix',
-	): string {
-		if (kind === 'git') return command
-
-		// Glinter-handled: invoke the `g` binary via shell alias
-		if (os === 'windows') return `!g ${command}`
-
-		// Unix: forward all trailing arguments
-		return `!g ${command} '$@'`
+	// cspell:disable-next-line
+	private resolveAlias(name: string, command: string, kind: 'git' | 'glinter') {
+		const aliasName = `g${name}`
+		const aliasCommand = kind === 'git' ? `git ${command}` : `g ${command}`
+		return { name: aliasName, value: aliasCommand }
 	}
 }
