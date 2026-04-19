@@ -1,8 +1,8 @@
 import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
-import { GREEN } from '../../../utils/colors'
-import type { AliasRepository } from '../domain/alias.repository'
+import type { AliasRepository } from '@/modules/setup/domain/alias.repository'
+import { GREEN } from '@/utils/colors'
 
 export class BunAliasWindows implements AliasRepository {
 	async setAlias(name: string, value: string): Promise<void> {

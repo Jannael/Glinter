@@ -25,6 +25,12 @@
 		// Some stricter flags (disabled by default)
 		"noUnusedLocals": false,
 		"noUnusedParameters": false,
-		"noPropertyAccessFromIndexSignature": false
+		"noPropertyAccessFromIndexSignature": false,
+		"paths": {
+			"@/*": ["./src/*"],
+			"@/error/*": ["./src/error/*"],
+			"@/utils/*": ["./src/utils/*"],
+			"@/modules/*": ["./src/modules/*"]
+		}
 	}
 }

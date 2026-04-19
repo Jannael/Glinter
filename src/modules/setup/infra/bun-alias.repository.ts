@@ -1,7 +1,7 @@
 // cspell:disable
-import { ServerError } from '../../../error/error-instance'
-import type { AliasRepository } from '../domain/alias.repository'
-import { BunAliasWindows } from './bun-alias-windows'
+import { ServerError } from '@/error/error-instance'
+import type { AliasRepository } from '@/modules/setup/domain/alias.repository'
+import { BunAliasWindows } from '@/modules/setup/infra/bun-alias-windows'
 
 export class BunAliasRepository implements AliasRepository {
 	private getOS(): 'windows' | 'unix' {

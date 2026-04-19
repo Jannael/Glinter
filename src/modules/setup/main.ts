@@ -1,6 +1,6 @@
-import { SetupAliasesUseCase } from './app/setup-aliases.use-case'
-import { SetupCommand } from './app/setup-command'
-import { BunAliasRepository } from './infra/bun-alias.repository'
+import { SetupAliasesUseCase } from '@/modules/setup/app/setup-aliases.use-case'
+import { SetupCommand } from '@/modules/setup/app/setup-command'
+import { BunAliasRepository } from '@/modules/setup/infra/bun-alias.repository'
 
 export async function setupCommand() {
 	// Instantiate Adapters

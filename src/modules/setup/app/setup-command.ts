@@ -1,12 +1,12 @@
-import { errorHandler } from '../../../error/error-handler'
-import { BLUE, GREEN, MAGENTA, YELLOW } from '../../../utils/colors'
-import { Confirm } from '../../../utils/confirm'
-import { CHECK } from '../../../utils/icons-terminal'
-import { Intro } from '../../../utils/intro'
-import { Outro } from '../../../utils/outro'
-import { Spinner } from '../../../utils/spinner'
-import { ALIASES } from '../domain/alias'
-import type { SetupAliasesUseCase } from './setup-aliases.use-case'
+import { errorHandler } from '@/error/error-handler'
+import type { SetupAliasesUseCase } from '@/modules/setup/app/setup-aliases.use-case'
+import { ALIASES } from '@/modules/setup/domain/alias'
+import { BLUE, GREEN, MAGENTA, YELLOW } from '@/utils/colors'
+import { Confirm } from '@/utils/confirm'
+import { CHECK } from '@/utils/icons-terminal'
+import { Intro } from '@/utils/intro'
+import { Outro } from '@/utils/outro'
+import { Spinner } from '@/utils/spinner'
 
 export class SetupCommand {
 	constructor(private readonly setupAliasesUseCase: SetupAliasesUseCase) {}

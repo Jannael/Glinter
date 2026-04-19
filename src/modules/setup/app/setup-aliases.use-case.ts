@@ -1,5 +1,5 @@
-import { ALIASES } from '../domain/alias'
-import type { AliasRepository } from '../domain/alias.repository'
+import { ALIASES } from '@/modules/setup/domain/alias'
+import type { AliasRepository } from '@/modules/setup/domain/alias.repository'
 
 export class SetupAliasesUseCase {
 	constructor(private readonly aliasRepository: AliasRepository) {}
