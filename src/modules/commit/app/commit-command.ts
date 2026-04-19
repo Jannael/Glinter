@@ -1,21 +1,8 @@
+import { commitTypeOptions } from '@/commit-options'
 import { errorHandler } from '@/error/error-handler'
 import type { CommitUseCase } from '@/modules/commit/app/commit.use-case'
 import { Input } from '@/utils/input'
 import { Select } from '@/utils/select'
-
-const commitTypeOptions = [
-	{ value: 'feat', label: 'feat: A new feature' },
-	{ value: 'fix', label: 'fix: A bug fix' },
-	{ value: 'chore', label: 'chore: Routine maintenance' },
-	{ value: 'docs', label: 'docs: Documentation updates' },
-	{
-		value: 'refactor',
-		label: 'refactor: Code changes without behavior change',
-	},
-	{ value: 'test', label: 'test: Add or update tests' },
-	{ value: 'perf', label: 'perf: Performance improvements' },
-	{ value: 'style', label: 'style: Formatting or style-only changes' },
-]
 
 export class CommitCommand {
 	constructor(private readonly commitUseCase: CommitUseCase) {}
