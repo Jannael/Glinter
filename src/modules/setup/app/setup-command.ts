@@ -46,11 +46,12 @@ export class SetupCommand {
 
 			const { total } = await this.setupAliasesUseCase.execute()
 
+			console.log('')
 			spinner.stop(
 				`${CHECK({ text: `${total} aliases configured successfully.` })}`,
 			)
 
-			Outro(GREEN({ text: 'Glinter is ready! ' }))
+			Outro(GREEN({ text: 'GLINTER ' }))
 		} catch (error) {
 			errorHandler(error)
 		}

@@ -3,6 +3,7 @@ import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 import { ServerError } from '../../../error/error-instance'
+import { GREEN } from '../../../utils/colors'
 import type { AliasRepository } from '../domain/alias.repository'
 
 export class BunAliasRepository implements AliasRepository {
@@ -24,7 +25,7 @@ export class BunAliasRepository implements AliasRepository {
 
 				const updated = this.upsertWindowsProfileFunction(current, name, value)
 				fs.writeFileSync(psProfilePath, updated)
-				console.log(`Alias ${name} set successfully`)
+				console.log(`Alias ${name} set ${GREEN({ text: 'successfully' })}`)
 			}
 		} catch {
 			throw new ServerError(
