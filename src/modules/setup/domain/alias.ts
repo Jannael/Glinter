@@ -40,7 +40,7 @@ export const ALIASES: Alias[] = [
 	{ name: 'pl', command: 'pull', kind: 'git' },
 	{ name: 'plr', command: 'pull --rebase', kind: 'git' },
 	{ name: 'p', command: 'push', kind: 'git' },
-	{ name: 'ggpush', command: 'push origin HEAD', kind: 'git' },
+	{ name: 'gpush', command: 'push origin HEAD', kind: 'git' },
 	{ name: 'pf', command: 'push --force-with-lease', kind: 'git' },
 
 	// Stash
