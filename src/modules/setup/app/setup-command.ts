@@ -1,7 +1,7 @@
-import { ALIASES } from '@/alias'
 import { errorHandler } from '@/error/error-handler'
+import { printAliases } from '@/modules/alias/main'
 import type { SetupAliasesUseCase } from '@/modules/setup/app/setup-aliases.use-case'
-import { BLUE, GREEN, MAGENTA, YELLOW } from '@/utils/colors'
+import { GREEN, MAGENTA } from '@/utils/colors'
 import { Confirm } from '@/utils/confirm'
 import { CHECK } from '@/utils/icons-terminal'
 import { Intro } from '@/utils/intro'
@@ -15,21 +15,7 @@ export class SetupCommand {
 		try {
 			Intro(MAGENTA({ text: ' Glinter Setup ' }))
 
-			console.log(
-				YELLOW({ text: '\nThe following aliases will be set globally:\n' }),
-			)
-
-			for (const alias of ALIASES) {
-				const tag =
-					alias.kind === 'glinter'
-						? MAGENTA({ text: '[glinter]' })
-						: BLUE({ text: '[git]    ' })
-				console.log(
-					`  ${tag}  ${GREEN({ text: alias.name.padEnd(8) })} → ${alias.command}`,
-				)
-			}
-
-			console.log('')
+			printAliases({ title: 'The following aliases will be set globally:' })
 
 			const confirmed = await Confirm({
 				message: 'Apply these aliases to your global git config?',

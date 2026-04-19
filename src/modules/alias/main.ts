@@ -7,10 +7,12 @@ function resolveAlias(name: string, command: string, kind: 'git' | 'glinter') {
 	return { aliasName, aliasCommand }
 }
 
-export async function aliasCommand() {
-	console.log(
-		YELLOW({ text: '\nThe following aliases are configured by setup:\n' }),
-	)
+export function printAliases({
+	title = 'The following aliases are configured by setup:',
+}: {
+	title?: string
+} = {}) {
+	console.log(YELLOW({ text: `\n${title}\n` }))
 
 	for (const alias of ALIASES) {
 		const tag =
@@ -29,4 +31,8 @@ export async function aliasCommand() {
 	}
 
 	console.log('')
+}
+
+export async function aliasCommand() {
+	printAliases()
 }
