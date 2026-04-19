@@ -1,6 +1,7 @@
 // cspell:disable
 import { ServerError } from '@/error/error-instance'
 import type { AliasRepository } from '@/modules/setup/domain/alias.repository'
+import { BunAliasUnix } from '@/modules/setup/infra/bun-alias-unix'
 import { BunAliasWindows } from '@/modules/setup/infra/bun-alias-windows'
 
 export class BunAliasRepository implements AliasRepository {
@@ -15,6 +16,11 @@ export class BunAliasRepository implements AliasRepository {
 			if (system === 'windows') {
 				const bunAliasWindows = new BunAliasWindows()
 				await bunAliasWindows.setAlias(name, value)
+			}
+
+			if (system === 'unix') {
+				const bunAliasUnix = new BunAliasUnix()
+				await bunAliasUnix.setAlias(name, value)
 			}
 		} catch {
 			throw new ServerError(
