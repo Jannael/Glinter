@@ -1,5 +1,5 @@
-import { ServerError } from '../../../error/error-instance'
-import type { CommitRepository } from '../domain/commit.repository'
+import { ServerError } from '@/error/error-instance'
+import type { CommitRepository } from '@/modules/commit/domain/commit.repository'
 
 export class BunCommitRepository implements CommitRepository {
 	async commit(message: string) {

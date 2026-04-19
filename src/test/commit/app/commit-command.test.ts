@@ -1,18 +1,18 @@
 import { beforeEach, describe, expect, it, type Mock, vi } from 'vitest'
-import { CommitUseCase } from '../../../modules/commit/app/commit.use-case'
-import { CommitCommand } from '../../../modules/commit/app/commit-command'
-import * as inputModule from '../../../utils/input'
-import * as selectModule from '../../../utils/select'
+import { CommitUseCase } from '@/modules/commit/app/commit.use-case'
+import { CommitCommand } from '@/modules/commit/app/commit-command'
+import * as inputModule from '@/utils/input'
+import * as selectModule from '@/utils/select'
 
 const commitMockRepo = {
 	commit: vi.fn(),
 }
 
-vi.mock('../../../utils/select', () => ({
+vi.mock('@/utils/select', () => ({
 	Select: vi.fn(),
 }))
 
-vi.mock('../../../utils/input', () => ({
+vi.mock('@/utils/input', () => ({
 	Input: vi.fn(),
 }))
 

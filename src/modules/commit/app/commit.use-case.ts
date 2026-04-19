@@ -1,4 +1,4 @@
-import type { CommitRepository } from '../domain/commit.repository'
+import type { CommitRepository } from '@/modules/commit/domain/commit.repository'
 
 export class CommitUseCase {
 	constructor(private readonly commitRepository: CommitRepository) {}

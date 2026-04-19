@@ -1,7 +1,7 @@
-import { errorHandler } from '../../../error/error-handler'
-import { Input } from '../../../utils/input'
-import { Select } from '../../../utils/select'
-import type { CommitUseCase } from './commit.use-case'
+import { errorHandler } from '@/error/error-handler'
+import type { CommitUseCase } from '@/modules/commit/app/commit.use-case'
+import { Input } from '@/utils/input'
+import { Select } from '@/utils/select'
 
 const commitTypeOptions = [
 	{ value: 'feat', label: 'feat: A new feature' },

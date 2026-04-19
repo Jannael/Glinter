@@ -1,6 +1,6 @@
-import { CommitUseCase } from './app/commit.use-case'
-import { CommitCommand } from './app/commit-command'
-import { BunCommitRepository } from './infra/bun-commit.repository'
+import { CommitUseCase } from '@/modules/commit/app/commit.use-case'
+import { CommitCommand } from '@/modules/commit/app/commit-command'
+import { BunCommitRepository } from '@/modules/commit/infra/bun-commit.repository'
 
 export async function commitCommand() {
 	const commitRepository = new BunCommitRepository()
