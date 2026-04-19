@@ -1,7 +1,10 @@
-import * as p from '@clack/prompts'
 import { errorHandler } from '../../../error/error-handler'
 import { BLUE, GREEN, MAGENTA, YELLOW } from '../../../utils/colors'
+import { Confirm } from '../../../utils/confirm'
 import { CHECK } from '../../../utils/icons-terminal'
+import { Intro } from '../../../utils/intro'
+import { Outro } from '../../../utils/outro'
+import { Spinner } from '../../../utils/spinner'
 import { ALIASES } from '../domain/alias'
 import type { SetupAliasesUseCase } from './setup-aliases.use-case'
 
@@ -10,7 +13,7 @@ export class SetupCommand {
 
 	async execute() {
 		try {
-			p.intro(MAGENTA({ text: ' Glinter Setup ' }))
+			Intro(MAGENTA({ text: ' Glinter Setup ' }))
 
 			console.log(
 				YELLOW({ text: '\nThe following aliases will be set globally:\n' }),
@@ -28,16 +31,17 @@ export class SetupCommand {
 
 			console.log('')
 
-			const confirmed = await p.confirm({
+			const confirmed = await Confirm({
 				message: 'Apply these aliases to your global git config?',
+				exitOnCancel: false,
 			})
 
-			if (p.isCancel(confirmed) || !confirmed) {
-				p.outro('Setup cancelled.')
+			if (!confirmed) {
+				Outro('Setup cancelled.')
 				return
 			}
 
-			const spinner = p.spinner()
+			const spinner = Spinner()
 			spinner.start('Writing aliases...')
 
 			const { total } = await this.setupAliasesUseCase.execute()
@@ -45,7 +49,8 @@ export class SetupCommand {
 			spinner.stop(
 				`${CHECK({ text: `${total} aliases configured successfully.` })}`,
 			)
-			p.outro(GREEN({ text: 'Glinter is ready! 🚀' }))
+
+			Outro(GREEN({ text: 'Glinter is ready! ' }))
 		} catch (error) {
 			errorHandler(error)
 		}
