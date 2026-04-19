@@ -17,8 +17,8 @@ export const ALIASES: Alias[] = [
 	{ name: 'll', command: 'log --stat', kind: 'git' },
 
 	// Diff
-	{ name: 'd', command: 'diff', kind: 'git' },
-	{ name: 'ds', command: 'diff --staged', kind: 'git' },
+	{ name: 'd', command: 'diff --word-diff=color', kind: 'git' },
+	{ name: 'ds', command: 'diff --staged --word-diff=color', kind: 'git' },
 
 	// Add (Glinter interactive)
 	{ name: 'a', command: 'add', kind: 'glinter' },

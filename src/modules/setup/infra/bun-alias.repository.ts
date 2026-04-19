@@ -14,7 +14,7 @@ export class BunAliasRepository implements AliasRepository {
 
 			if (system === 'windows') {
 				const bunAliasWindows = new BunAliasWindows()
-				bunAliasWindows.setAlias(name, value)
+				await bunAliasWindows.setAlias(name, value)
 			}
 		} catch {
 			throw new ServerError(
