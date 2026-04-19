@@ -1,7 +1,7 @@
-import { AddCommand } from './app/add-command'
-import { GetChangesUseCase } from './app/get-changes.use-case'
-import { StageChangesUseCase } from './app/stage-changes.use-case'
-import { BunGitRepository } from './infra/bun-git.repository'
+import { AddCommand } from '@/modules/add/app/add-command'
+import { GetChangesUseCase } from '@/modules/add/app/get-changes.use-case'
+import { StageChangesUseCase } from '@/modules/add/app/stage-changes.use-case'
+import { BunGitRepository } from '@/modules/add/infra/bun-git.repository'
 
 export async function addCommand() {
 	// Instantiate Adapters

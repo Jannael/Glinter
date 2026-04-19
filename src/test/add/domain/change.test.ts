@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { Change } from '../../../modules/add/domain/change'
-import { GREEN, YELLOW } from '../../../utils/colors'
+import { Change } from '@/modules/add/domain/change'
+import { GREEN, YELLOW } from '@/utils/colors'
 
 describe('Change', () => {
 	it('Create a change instance', () => {

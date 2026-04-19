@@ -1,4 +1,4 @@
-import type { GitRepository } from '../domain/git.repository'
+import type { GitRepository } from '@/modules/add/domain/git.repository'
 
 export class StageChangesUseCase {
 	constructor(private readonly gitRepository: GitRepository) {}

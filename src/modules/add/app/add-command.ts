@@ -1,9 +1,9 @@
-import { errorHandler } from '../../../error/error-handler'
-import { BLUE, GREEN, MAGENTA, RED } from '../../../utils/colors'
-import { CHECK, WARNING } from '../../../utils/icons-terminal'
-import { MultiSelect } from '../../../utils/multiselect'
-import type { GetChangesUseCase } from './get-changes.use-case'
-import type { StageChangesUseCase } from './stage-changes.use-case'
+import { errorHandler } from '@/error/error-handler'
+import type { GetChangesUseCase } from '@/modules/add/app/get-changes.use-case'
+import type { StageChangesUseCase } from '@/modules/add/app/stage-changes.use-case'
+import { BLUE, GREEN, MAGENTA, RED } from '@/utils/colors'
+import { CHECK, WARNING } from '@/utils/icons-terminal'
+import { MultiSelect } from '@/utils/multiselect'
 
 export class AddCommand {
 	constructor(

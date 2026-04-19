@@ -1,6 +1,6 @@
 import { $ } from 'bun'
-import { ServerError } from '../../../error/error-instance'
-import type { GitRepository } from '../domain/git.repository'
+import { ServerError } from '@/error/error-instance'
+import type { GitRepository } from '@/modules/add/domain/git.repository'
 
 export class BunGitRepository implements GitRepository {
 	async getEntries() {

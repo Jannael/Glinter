@@ -1,5 +1,5 @@
-import { Change } from '../domain/change'
-import type { GitRepository } from '../domain/git.repository'
+import { Change } from '@/modules/add/domain/change'
+import type { GitRepository } from '@/modules/add/domain/git.repository'
 
 export class GetChangesUseCase {
 	constructor(private readonly gitRepository: GitRepository) {}
