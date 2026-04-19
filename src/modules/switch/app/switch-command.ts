@@ -1,9 +1,9 @@
-import { errorHandler } from '../../../error/error-handler'
-import { GREEN } from '../../../utils/colors'
-import { CHECK } from '../../../utils/icons-terminal'
-import { Select } from '../../../utils/select'
-import type { GetBranchesUseCase } from './get-branches.use-case'
-import type { SwitchBranch } from './switch-branch.use-case'
+import { errorHandler } from '@/error/error-handler'
+import type { GetBranchesUseCase } from '@/modules/switch/app/get-branches.use-case'
+import type { SwitchBranch } from '@/modules/switch/app/switch-branch.use-case'
+import { GREEN } from '@/utils/colors'
+import { CHECK } from '@/utils/icons-terminal'
+import { Select } from '@/utils/select'
 
 export class SwitchCommand {
 	constructor(

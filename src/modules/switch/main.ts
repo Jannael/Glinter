@@ -1,7 +1,7 @@
-import { GetBranchesUseCase } from './app/get-branches.use-case'
-import { SwitchBranch } from './app/switch-branch.use-case'
-import { SwitchCommand } from './app/switch-command'
-import { BunSwitchRepository } from './infra/bun-switch-repository'
+import { GetBranchesUseCase } from '@/modules/switch/app/get-branches.use-case'
+import { SwitchBranch } from '@/modules/switch/app/switch-branch.use-case'
+import { SwitchCommand } from '@/modules/switch/app/switch-command'
+import { BunSwitchRepository } from '@/modules/switch/infra/bun-switch-repository'
 
 export async function switchCommand() {
 	const switchRepo = new BunSwitchRepository()

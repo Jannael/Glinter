@@ -11,6 +11,7 @@
 
 		// Bundler mode
 		"moduleResolution": "bundler",
+		"baseUrl": ".",
 		"allowImportingTsExtensions": true,
 		"verbatimModuleSyntax": true,
 		"noEmit": true,

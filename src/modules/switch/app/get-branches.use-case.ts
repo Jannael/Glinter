@@ -1,5 +1,5 @@
-import { Branch } from '../domain/branch'
-import type { SwitchRepository } from '../domain/switch.repository'
+import { Branch } from '@/modules/switch/domain/branch'
+import type { SwitchRepository } from '@/modules/switch/domain/switch.repository'
 
 export class GetBranchesUseCase {
 	constructor(private readonly branchRepository: SwitchRepository) {}

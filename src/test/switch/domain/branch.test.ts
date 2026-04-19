@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { Branch } from '../../../modules/switch/domain/branch'
+import { Branch } from '@/modules/switch/domain/branch'
 
 describe('Branch', () => {
 	it('create a branch', () => {

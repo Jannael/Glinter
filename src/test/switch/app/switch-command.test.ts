@@ -1,9 +1,9 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { GetBranchesUseCase } from '../../../modules/switch/app/get-branches.use-case'
-import { SwitchBranch } from '../../../modules/switch/app/switch-branch.use-case'
-import { SwitchCommand } from '../../../modules/switch/app/switch-command'
-import { GREEN } from '../../../utils/colors'
-import * as selectModule from '../../../utils/select'
+import { beforeEach, describe, expect, it, type Mock, vi } from 'vitest'
+import { GetBranchesUseCase } from '@/modules/switch/app/get-branches.use-case'
+import { SwitchBranch } from '@/modules/switch/app/switch-branch.use-case'
+import { SwitchCommand } from '@/modules/switch/app/switch-command'
+import { GREEN } from '@/utils/colors'
+import * as selectModule from '@/utils/select'
 
 const mockBranches = ['* main', 'feature/new-feature', 'remotes/origin/main']
 
@@ -12,14 +12,14 @@ const BranchMockRepo = {
 	switchBranch: vi.fn(),
 }
 
-vi.mock('../../../utils/select', () => ({
+vi.mock('@/utils/select', () => ({
 	Select: vi.fn(),
 }))
 
 describe('SwitchCommand', () => {
 	const switchBranchUseCase = new SwitchBranch(BranchMockRepo)
 	const getBranchesUseCase = new GetBranchesUseCase(BranchMockRepo)
-	const mockSelect = vi.mocked(selectModule.Select)
+	const mockSelect = selectModule.Select as unknown as Mock
 
 	beforeEach(() => {
 		vi.clearAllMocks()

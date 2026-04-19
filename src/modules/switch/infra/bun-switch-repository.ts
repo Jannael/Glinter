@@ -1,6 +1,6 @@
 import { $ } from 'bun'
-import { ServerError } from '../../../error/error-instance'
-import type { SwitchRepository } from '../domain/switch.repository'
+import { ServerError } from '@/error/error-instance'
+import type { SwitchRepository } from '@/modules/switch/domain/switch.repository'
 
 export class BunSwitchRepository implements SwitchRepository {
 	async getBranches() {
