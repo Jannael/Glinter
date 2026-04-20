@@ -40,47 +40,47 @@
         steps.push({ html, delay, class: cls })
 
 
-      // steps.push({ type: 'char', text: pkgInstall, target: 'cmd-line', charDelay: 100, delay: 400 })
+      steps.push({ type: 'char', text: pkgInstall, target: 'cmd-line', charDelay: 100, delay: 400 })
 
-      // // glinter setup
-      // stepDelay(200, '')
-      // stepDelay(0, `${s(C.g, '|')}${space}${s(C.pk, 'Glinter Setup')}`)
+      // glinter setup
+      stepDelay(200, '')
+      stepDelay(0, `${s(C.g, '|')}${space}${s(C.pk, 'Glinter Setup')}`)
 
-      // stepDelay(0, '')
-      // stepDelay(0, s(C.yw, 'The following aliases will be set globally: '))
-      // stepDelay(0, '')
+      stepDelay(0, '')
+      stepDelay(0, s(C.yw, 'The following aliases will be set globally: '))
+      stepDelay(0, '')
 
-      // for (const alias of ALIASES) {
-      //   const tag =
-      //     alias.kind === 'glinter'
-      //       ? s(C.pk, '[glinter]')
-      //       : s(C.cy, '[git]    ')
-      //   const { name, command } = alias
+      for (const alias of ALIASES) {
+        const tag =
+          alias.kind === 'glinter'
+            ? s(C.pk, '[glinter]')
+            : s(C.cy, '[git]    ')
+        const { name, command } = alias
     
-      //   stepDelay(0, `  ${tag}    ${s(C.gn, name.padEnd(10))}` + '→' + s(C.w, `  ${command}`))
-      // }
+        stepDelay(0, `  ${tag}    ${s(C.gn, name.padEnd(10))}` + '→' + s(C.w, `  ${command}`))
+      }
 
-      // // apply aliases selector
-      // stepDelay(0, '')
-      // stepDelay(0, s(C.g, '|'))
-      // stepDelay(0, s(C.ct, '*') + space + s(C.w, 'Apply these aliases to your global git config?'))
-      // stepDelay(0, s(C.ct, '|') + space + s(C.gn, '> ') + s(C.w, 'Yes /   No'))
-      // stepDelay(1000, s(C.ct, '-'))
+      // apply aliases selector
+      stepDelay(0, '')
+      stepDelay(0, s(C.g, '|'))
+      stepDelay(0, s(C.ct, '*') + space + s(C.w, 'Apply these aliases to your global git config?'))
+      stepDelay(0, s(C.ct, '|') + space + s(C.gn, '> ') + s(C.w, 'Yes /   No'))
+      stepDelay(1000, s(C.ct, '-'))
 
 
-      // for (const alias of ALIASES) {
-      //   stepDelay(200, `  ${s(C.pk, alias.name.padEnd(8))} set ${s(C.gn, 'successfully'.padStart(10))}`)
-      // }
+      for (const alias of ALIASES) {
+        stepDelay(200, `  ${s(C.pk, alias.name.padEnd(8))} set ${s(C.gn, 'successfully'.padStart(10))}`)
+      }
 
-      // stepDelay(100, '')
-      // stepDelay(0, s(C.w, '○') + space + s(C.gn, '✔ ') + s(C.w, '25 aliases configured successfully'))
-      // stepDelay(0, s(C.g, '|'))
-      // stepDelay(0, s(C.g, '-') + s(C.gn, ' GLINTER') + s(C.w, ', if you like the project, give a star on github: https://github.com/jannael/glinter'))
+      stepDelay(100, '')
+      stepDelay(0, s(C.w, '○') + space + s(C.gn, '✔ ') + s(C.w, '25 aliases configured successfully'))
+      stepDelay(0, s(C.g, '|'))
+      stepDelay(0, s(C.g, '-') + s(C.gn, ' GLINTER') + s(C.w, ', if you like the project, give a star on github: https://github.com/jannael/glinter'))
 
-      // stepDelay(0, '')
-      // stepDelay(0, '')
-      // stepDelay(0, s(C.pk, 'To use the aliases, please restart your terminal.'))
-      // stepDelay(0, '')
+      stepDelay(0, '')
+      stepDelay(0, '')
+      stepDelay(0, s(C.pk, 'To use the aliases, please restart your terminal.'))
+      stepDelay(0, '')
 
       steps.push({ type: 'char', text: 'ga', target: 'cmd-line', charDelay: 300, delay: 400 })
 
@@ -93,11 +93,6 @@
       stepDelay(100, s(C.ct, '|'))
       stepDelay(100, s(C.ct, '|') + space + s(C.ct, '[•] ') + s(C.yw, 'modified: README.md')) 
       stepDelay(100, s(C.ct, '-'))
-      
-
-
-      
-
 
       return steps
     }
