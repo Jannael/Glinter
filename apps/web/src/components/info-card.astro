@@ -1,0 +1,43 @@
+---
+export interface Props {
+	title: string
+	description: string
+	links: {
+		type: 'text' | 'svg'
+		content: string
+		href: string
+	}[]
+	className?: string
+}
+
+const { title, description, links, className } = Astro.props
+---
+
+<div class={`flex h-auto w-full max-w-2xl flex-col justify-center ${className} lg:h-60`}>
+  <h2 class="mb-4 text-xl text-secondary font-bold uppercase tracking-[0.15em] lg:mb-6 lg:h-8">
+    {title}
+  </h2>
+  
+  <p class="mb-6 text-secondary/60 text-base leading-relaxed font-light lg:mb-8 lg:h-20 lg:text-lg">
+    {description}
+  </p>
+  
+  <div class="flex h-auto flex-wrap items-center gap-3 lg:h-10">
+    {links.map((link, i) => (
+      <a 
+        href={link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class={`
+          flex items-center justify-center transition-all duration-300
+          ${link.type === 'text' 
+            ? 'text-secondary text-2xl font-medium hover:text-secondary/70' 
+            : 'w-8 h-8 shrink-0 text-secondary/60 border-secondary/20 hover:border-secondary/60 hover:text-secondary'
+          }
+        `}
+      >
+        {link.type === 'svg' ? <Fragment set:html={link.content} /> : link.content}
+      </a>
+    ))}
+  </div>
+</div>

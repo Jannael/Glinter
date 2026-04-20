@@ -1,0 +1,37 @@
+---
+import GithubSvg from '@/assets/github.svg?raw'
+import LinkedinSvg from '@/assets/linkedin.svg?raw'
+import InfoCard from '@/components/info-card.astro'
+---
+
+<footer class="w-full border-t border-secondary/10 px-6 py-16 lg:px-0 lg:py-20">
+  <div class="mx-auto flex w-full max-w-7xl flex-col items-stretch justify-center gap-14 lg:flex-row lg:items-center lg:gap-10">
+    <InfoCard
+      title="OPEN SOURCE"
+      description="Glinter is open source and community driven. Feel free to contribute."
+      links={[
+        { type: 'svg', content: GithubSvg, href: 'https://github.com/jannael/glinter' },
+        { type: 'text', content: 'GitHub', href: 'https://github.com/jannael/glinter' },
+      ]}
+      className="order-2 lg:order-1 lg:flex-2"
+    />
+    <InfoCard
+      title="CREATOR"
+      description="Built with the effort of JANNAEL. Focused on UX and terminal productivity."
+      links={[
+        { type: 'text', content: 'Jannael', href: 'https://github.com/jannael' },
+        { type: 'svg', content: LinkedinSvg, href: 'https://www.linkedin.com/in/jannael-orlando-44604a349' },
+        { type: 'svg', content: GithubSvg, href: 'https://github.com/jannael' },
+      ]}
+      className="order-1 lg:order-2 lg:flex-3"
+    />
+    <InfoCard
+      title="WEB STYLE"
+      description="Special thanks to Midudev and he's project autoskills.sh for the inspiration."
+      links={[
+        { type: 'text', content: 'autoskills.sh', href: 'https://github.com/midudev/autoskills.sh' },
+      ]}
+      className="order-3 lg:order-3 lg:flex-2"
+    />
+  </div>
+</footer>

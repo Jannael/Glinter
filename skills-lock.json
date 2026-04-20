@@ -1,15 +1,25 @@
 {
 	"version": 1,
 	"skills": {
+		"accessibility": {
+			"source": "addyosmani/web-quality-skills",
+			"sourceType": "github",
+			"computedHash": "494d59fffe67c87b485f4ee2fb1abd73fc9d0d508c4c8bd9c43a9edd3242f730"
+		},
 		"architecture-patterns": {
 			"source": "wshobson/agents",
 			"sourceType": "github",
 			"computedHash": "8cc99372e77a37fa40096bf8ae0895f2a8355916fad8b8cc34f74bb68c40b76b"
 		},
+		"astro": {
+			"source": "astrolicious/agent-skills",
+			"sourceType": "github",
+			"computedHash": "3a70f9666e7b6a03efb939b7e62938f4d3a6a5d956b2cc3c10011fda6ba27e9b"
+		},
 		"bun": {
 			"source": "bun.sh",
 			"sourceType": "well-known",
-			"computedHash": "c20fe20eb84bb56fd5a96eae6e36c5fd8d38f989818a4944f8a08140fe5e7a5b"
+			"computedHash": "16a0ce647f6f0efe6cff1d0112744d8d67afc494f9cb151d0f147a080ee0db47"
 		},
 		"caveman": {
 			"source": "JuliusBrussee/caveman",
@@ -36,10 +46,30 @@
 			"sourceType": "github",
 			"computedHash": "368a26f2b079ffe0d584f48006524f65cf997cb9369411aa8c6ead216dee22eb"
 		},
+		"frontend-design": {
+			"source": "anthropics/skills",
+			"sourceType": "github",
+			"computedHash": "516bd2154eb843a8240e43d5b285229129853114ad7075a5e141e1c08e408c84"
+		},
+		"seo": {
+			"source": "addyosmani/web-quality-skills",
+			"sourceType": "github",
+			"computedHash": "680cc12a17e9308b4592a2751db51615c618993f75362cb8e64207f6355a8c63"
+		},
+		"tailwind-css-patterns": {
+			"source": "giuseppe-trisciuoglio/developer-kit",
+			"sourceType": "github",
+			"computedHash": "2fa1b2d4e0bc020dcbaa1e65af6f7ba75715116686e0fd663a4b268c8ace22d4"
+		},
 		"typescript-advanced-types": {
 			"source": "wshobson/agents",
 			"sourceType": "github",
 			"computedHash": "ee8377c523a911be41c31037b477805773ca5ab5ade181e44ca7dd3cd8df6692"
+		},
+		"vitest": {
+			"source": "antfu/skills",
+			"sourceType": "github",
+			"computedHash": "0efd9cf8c56aada060d418d009cfe621a7915d0c73a958fe611985bc0c2fa4b8"
 		}
 	}
 }

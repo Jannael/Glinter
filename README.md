@@ -13,6 +13,8 @@ Your browser does not support the video tag.
 
 - **Interactive `add`**: When you run `g add`, it presents a color-coded list of your modified, new, and deleted files. You can multi-select exactly what you want to stage using a GUI-like interface in your terminal.
 
+- **Interactive `commit`**: Running `g commit` opens a guided flow to select a Conventional Commit type (`feat`, `fix`, `chore`, etc.) and enter the commit message.
+
 - **Transparent Wrapper**: For every other command (like `commit`, `push`, `log`, or `status`), Glinter acts as a direct tunnel to Git. It preserves all original colors, formatting, and interactive features of the native Git CLI.
 
 - **Safe by Default**: Automatically filters and prevents accidental staging of sensitive files: `.env` and `node_modules`.
@@ -52,7 +54,9 @@ npm install -g @jannael/glinter
 now you can simply run:
 ```bash
 g add           # Opens the interactive selector
+g commit        # Opens commit type + message prompt
 g add <file>    # Runs standard git add <file>
+g commit -m ""  # Runs standard git commit -m ""
 g status        # Runs standard git status
 g push          # Runs standard git push
 ```

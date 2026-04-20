@@ -1,6 +1,4 @@
 node_modules
 dist
-.vscode
-playgrounds
 *.log
 .env

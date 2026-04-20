@@ -1,0 +1,123 @@
+---
+import '@/styles/global.css'
+import '@fontsource-variable/jost'
+import Noise from '@/components/noise.astro'
+
+interface Props {
+	title?: string
+	description?: string
+}
+
+const {
+	title = 'Glinter — The best way to use Git!',
+	description = 'Glinter is a cli tool that improves your Git workflow.',
+} = Astro.props
+
+const site = Astro.site ?? new URL('https://glinter.jannael.com')
+const canonicalUrl = new URL(Astro.url.pathname, site).toString()
+const ogImageUrl = new URL('/og.png', site).toString()
+const ogImageAlt = 'Glinter CLI preview showing interactive git workflow commands'
+const homeUrl = new URL('/', site).toString()
+const logoUrl = new URL('/icon-192.webp', site).toString()
+const organizationId = `${homeUrl}#organization`
+const websiteId = `${homeUrl}#website`
+const softwareAppId = `${homeUrl}#software-application`
+
+const structuredData = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'Organization',
+			'@id': organizationId,
+			name: 'Glinter',
+			url: homeUrl,
+			logo: {
+				'@type': 'ImageObject',
+				url: logoUrl,
+			},
+			sameAs: [
+				'https://github.com/jannael/glinter',
+				'https://github.com/jannael',
+				'https://www.linkedin.com/in/jannael-orlando-44604a349',
+			],
+		},
+		{
+			'@type': 'WebSite',
+			'@id': websiteId,
+			url: homeUrl,
+			name: 'Glinter',
+			description,
+			inLanguage: 'en-US',
+			publisher: {
+				'@id': organizationId,
+			},
+		},
+		{
+			'@type': 'SoftwareApplication',
+			'@id': softwareAppId,
+			name: 'Glinter',
+			description,
+			url: canonicalUrl,
+			image: ogImageUrl,
+			applicationCategory: 'DeveloperApplication',
+			operatingSystem: 'Windows, macOS, Linux',
+			offers: {
+				'@type': 'Offer',
+				price: '0',
+				priceCurrency: 'USD',
+			},
+			publisher: {
+				'@id': organizationId,
+			},
+		},
+	],
+}
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="canonical" href={canonicalUrl} />
+		<link rel="icon" href="/favicon-32x32.svg" sizes="32x32" type="image/svg+xml" />
+		<link rel="icon" href="/favicon-16x16.svg" sizes="16x16" type="image/svg+xml" />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.webp" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<meta name="theme-color" content="#0a0a0a" />
+		<meta name="robots" content="index, follow" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:image" content={ogImageUrl} />
+		<meta property="og:image:alt" content={ogImageAlt} />
+		<meta property="og:site_name" content="glinter" />
+		<meta property="og:locale" content="en_US" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@JannaelCode" />
+		<meta name="twitter:creator" content="@JannaelCode" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImageUrl} />
+		<meta name="twitter:image:alt" content={ogImageAlt} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+	</head>
+	<body class="bg-[#0a0a0a] text-zinc-300 min-h-screen max-w-9xl m-auto">
+		<Noise/>
+		<main>
+			<slot />
+		</main>
+	</body>
+
+	<style is:global>
+		html {
+			font-family: 'Jost Variable', sans-serif;
+		}
+	</style>
+</html>

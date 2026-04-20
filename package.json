@@ -34,12 +34,13 @@
 		".": "./dist/index.js"
 	},
 	"scripts": {
-		"dev": "bun run src/index.ts",
-		"build": "bun build ./src/index.ts --outfile=./dist/index.js --target=bun",
-		"prepublishOnly": "bun run build",
+		"build:cli": "bun build ./apps/cli/index.ts --outfile=./dist/index.js --target=bun",
+		"prepublishOnly": "bun run build:cli",
+
 		"test": "vitest",
 		"lint": "biome check",
-		"lint:fix": "biome format --write"
+		"lint:fix": "biome format --write",
+		"type-check": "bunx tsc --noEmit"
 	},
 	"bin": {
 		"g": "./dist/index.js"
