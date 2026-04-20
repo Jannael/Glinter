@@ -21,6 +21,7 @@
       em: 'color:#34d399',  // emerald-400
       gn: 'color:#22c55e',  // green-500
       cy: 'color:#22d3ee',  // cyan-400
+      ct: 'color:#389983',  // cyan-100
       yw: 'color:#facc15',  // yellow-400
       pk: 'color:#f472b6',  // pink-400
     }
@@ -58,9 +59,26 @@
         stepDelay(0, `  ${tag}    ${s(C.gn, name.padEnd(10))}` + '→' + s(C.w, `  ${command}`))
       }
 
+      // apply aliases selector
       stepDelay(0, '')
+      stepDelay(0, s(C.g, '|'))
+      stepDelay(0, s(C.ct, '*') + space + s(C.w, 'Apply these aliases to your global git config?'))
+      stepDelay(0, s(C.ct, '|') + space + s(C.gn, '> ') + s(C.w, 'Yes /   No'))
+      stepDelay(1000, s(C.ct, '-'))
 
 
+      for (const alias of ALIASES) {
+        stepDelay(200, `  ${s(C.pk, alias.name.padEnd(8))} set ${s(C.gn, 'successfully'.padStart(10))}`)
+      }
+
+      stepDelay(100, '')
+      stepDelay(0, s(C.w, '○') + space + s(C.gn, '✔ ') + s(C.w, '25 aliases configured successfully'))
+      stepDelay(0, s(C.g, '|'))
+      stepDelay(0, s(C.g, '-') + s(C.gn, ' GLINTER') + s(C.w, ', if you like the project, give a star on github: https://github.com/jannael/glinter'))
+
+      stepDelay(0, '')
+      stepDelay(0, '')
+      stepDelay(0, s(C.pk, 'To use the aliases, please restart your terminal.'))
 
 
 
