@@ -4,6 +4,6 @@
 	"editor.codeActionsOnSave": {
 		"source.fixAll.biome": "always"
 	},
-	"cSpell.words": ["glinter", "jannael"],
+	"cSpell.words": ["glinter", "jannael", "fontsource", "jost", "astro"],
 	"css.lint.unknownAtRules": "ignore"
 }

@@ -24,7 +24,9 @@ export class BunAliasRepository implements AliasRepository {
 				await bunAliasUnix.setAlias(name, value)
 			}
 
-			console.log(`  ${MAGENTA({ text: name.padEnd(8) })} set ${GREEN({ text: 'successfully'.padStart(10) })}`)
+			console.log(
+				`  ${MAGENTA({ text: name.padEnd(8) })} set ${GREEN({ text: 'successfully'.padStart(10) })}`,
+			)
 		} catch {
 			throw new ServerError(
 				'Unexpected execution error',
