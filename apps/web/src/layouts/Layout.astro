@@ -1,6 +1,7 @@
 ---
 import '@/styles/global.css'
 import '@fontsource-variable/jost'
+import Noise from '@/components/noise.astro'
 
 interface Props {
 	title?: string
@@ -60,6 +61,7 @@ const {
 		})} />
 	</head>
 	<body class="bg-[#0a0a0a] text-zinc-300 min-h-screen max-w-9xl m-auto">
+		<Noise/>
 		<slot />
 	</body>
 
