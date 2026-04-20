@@ -83,8 +83,6 @@
       return steps
     }
 
-
-
     async function runAnimation() {
       const body = document.getElementById('term-body')!
       body.innerHTML = ''
@@ -154,8 +152,6 @@
       }
     }
 
-
-
     // -------- execute animation --------
     // Desktop: start immediately. Mobile: start when terminal scrolls into view.
     const terminal = document.getElementById('terminal')
@@ -166,10 +162,10 @@
     }
 
     async function loop() {
-      await runAnimation()
-      // while (true) {
-      //   await sleep(4000)
-      // }
+      while (true) {
+        await runAnimation()
+        await sleep(4000)
+      }
     }
 
     if (isDesktop) {
