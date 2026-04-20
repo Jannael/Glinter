@@ -1,6 +1,6 @@
 {
 	"name": "@jannael/glinter",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"description": "A high-performance, transparent Git wrapper with interactive staging",
 	"type": "module",
 	"private": false,
@@ -13,7 +13,7 @@
 		"name": "Jannael",
 		"url": "https://github.com/jannael"
 	},
-	"homepage": "https://github.com/jannael/glinter#readme",
+	"homepage": "https://glinter.jannael.com",
 	"bugs": {
 		"url": "https://github.com/jannael/glinter/issues"
 	},
