@@ -19,9 +19,7 @@ export function printAliases({
 				: BLUE({ text: '[git]    ' })
 		const { name, value } = resolveAlias(alias.name, alias.command)
 
-		console.log(
-			`  ${tag}  ${GREEN({ text: name.padEnd(8) })} → ${value}`,
-		)
+		console.log(`  ${tag}  ${GREEN({ text: name.padEnd(8) })} → ${value}`)
 	}
 
 	console.log('')
