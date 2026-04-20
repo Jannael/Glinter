@@ -3,6 +3,7 @@ import { ServerError } from '@/error/error-instance'
 import type { AliasRepository } from '@/modules/setup/domain/alias.repository'
 import { BunAliasUnix } from '@/modules/setup/infra/bun-alias-unix'
 import { BunAliasWindows } from '@/modules/setup/infra/bun-alias-windows'
+import { GREEN, MAGENTA } from '@/utils/colors'
 
 export class BunAliasRepository implements AliasRepository {
 	private getOS(): 'windows' | 'unix' {
@@ -22,6 +23,8 @@ export class BunAliasRepository implements AliasRepository {
 				const bunAliasUnix = new BunAliasUnix()
 				await bunAliasUnix.setAlias(name, value)
 			}
+
+			console.log(`  ${MAGENTA({ text: name.padEnd(8) })} set ${GREEN({ text: 'successfully'.padStart(10) })}`)
 		} catch {
 			throw new ServerError(
 				'Unexpected execution error',

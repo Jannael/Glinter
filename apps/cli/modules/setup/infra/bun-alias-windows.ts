@@ -2,7 +2,6 @@ import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 import type { AliasRepository } from '@/modules/setup/domain/alias.repository'
-import { GREEN } from '@/utils/colors'
 
 export class BunAliasWindows implements AliasRepository {
 	async setAlias(name: string, value: string): Promise<void> {
@@ -15,7 +14,6 @@ export class BunAliasWindows implements AliasRepository {
 
 		const updated = this.upsertWindowsProfileFunction(current, name, value)
 		fs.writeFileSync(psProfilePath, updated)
-		console.log(`Alias ${name} set ${GREEN({ text: 'successfully' })}`)
 	}
 
 	private upsertWindowsProfileFunction(
