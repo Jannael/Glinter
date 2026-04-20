@@ -1,26 +1,26 @@
 ---
+import AliasTable from '@/components/alias-table.astro'
 import FeatureList from '@/components/feature-list.astro'
 ---
 
-<section class="min-h-screen flex items-center justify-center py-24 px-6 lg:px-0">
-  <div class="max-w-4xl w-full mx-auto flex flex-col md:flex-row gap-16 item-center">
-    
+<section class="flex flex-col lg:flex-row items-center justify-center min-h-screen lg:h-screen gap-10 lg:gap-20 px-6 lg:px-0 py-16 lg:py-0">
+  <div class="max-w-7xl w-full mx-auto flex flex-col md:flex-row gap-30 items-end">
     <div class="w-full md:w-1/2 flex flex-col justify-center">
-      <h2 class="text-4xl lg:text-5xl font-bold text-zinc-100 mb-6">
+      <h2 class="text-3xl lg:text-4xl font-bold text-secondary mb-6">
         Streamline your workflow
       </h2>
-      <p class="text-zinc-400 text-lg mb-10 leading-relaxed">
-        Glinter enhances Git with intuitive prompts, fuzzy searching, and safer defaults while keeping the underlying power of Git intact.
+      <p class="text-secondary/60 text-lg mb-10 leading-relaxed">
+        Glinter enhancements make git workflows intuitive and simple. The interactive commands prevent mistakes.
       </p>
       
-      <div class="bg-[#0a0a0a] p-8 rounded-xl border border-zinc-800/50 shadow-2xl">
+      <div class="p-8 rounded-xl shadow-2xl">
         <FeatureList />
       </div>
     </div>
 
-    <!-- Right side can be used for an illustration, terminal output, or more details, leaving empty for now based on user request focus -->
-    <div class="w-full md:w-1/2 flex items-center justify-center">
-        <!-- Placeholder for future animated interactive element or terminal -->
+    <!-- Right side: Alias Table -->
+    <div class="w-full md:w-1/2 flex items-center justify-center h-full">
+        <AliasTable />
     </div>
   </div>
 </section>

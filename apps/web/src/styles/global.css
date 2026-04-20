@@ -4,6 +4,7 @@
 @theme {
 	--color-primary: #000000;
 	--color-secondary: #ffffff;
+	--color-accent: #059669;
 }
 
 :root {

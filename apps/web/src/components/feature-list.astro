@@ -23,23 +23,23 @@ const features = [
 ];
 ---
 
-<ul class="flex flex-col gap-0 font-sans">
+<ul class="flex flex-col gap-0 font-sans w-full h-full">
   {features.map((feature, index) => (
     <li class="relative flex items-start gap-5 pb-9 group last:pb-0">
       {/* Decorative line connecting items */}
       {index !== features.length - 1 && (
-        <div class="absolute left-[11px] top-6 bottom-0 w-[2px] bg-[#222]" />
+        <div class="absolute left-[11px] top-6 bottom-0 w-[2px] bg-secondary/10" />
       )}
       
       {/* Circle Icon */}
-      <div class="relative z-10 flex-shrink-0 mt-0.5">
-        <div class="w-6 h-6 rounded-full border-2 border-zinc-600 bg-transparent group-hover:border-zinc-400 transition-colors"></div>
+      <div class="relative z-10 shrink-0 mt-0.5">
+        <div class="w-6 h-6 rounded-full border-2 border-secondary/10 bg-transparent group-hover:border-secondary/80 transition-colors"></div>
       </div>
       
       {/* Text Content */}
       <div class="flex flex-col">
-        <h3 class="text-blue-100 font-semibold text-lg hover:text-blue-200 transition-colors">{feature.title}</h3>
-        <p class="text-zinc-500 text-[15px] mt-0.5">{feature.description}</p>
+        <h3 class="text-secondary font-semibold text-lg hover:text-secondary/80 transition-colors">{feature.title}</h3>
+        <p class="text-secondary/60 text-[15px] mt-0.5">{feature.description}</p>
       </div>
     </li>
   ))}
