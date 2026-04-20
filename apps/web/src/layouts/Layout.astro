@@ -1,5 +1,6 @@
 ---
 import '@/styles/global.css'
+import '@fontsource-variable/jost'
 
 interface Props {
 	title?: string
@@ -58,7 +59,13 @@ const {
 			}
 		})} />
 	</head>
-	<body class="bg-[#0a0a0a] text-zinc-300 min-h-screen font-mono">
+	<body class="bg-[#0a0a0a] text-zinc-300 min-h-screen">
 		<slot />
 	</body>
+
+	<style is:global>
+		html: {
+			font-family: 'Jost Variable', sans-serif;
+		}
+	</style>
 </html>
