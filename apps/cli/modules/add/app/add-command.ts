@@ -30,7 +30,7 @@ export class AddCommand {
 			const selectedChanges = await MultiSelect({
 				message:
 					'Select the changes you want to commit. \n' +
-					BLUE({ text: '[space] to select and' }) +
+					BLUE({ text: '[space] to select' }) +
 					'\n' +
 					GREEN({ text: '[enter] to confirm' }) +
 					'\n' +

@@ -21,9 +21,10 @@
       em: 'color:#34d399',  // emerald-400
       gn: 'color:#22c55e',  // green-500
       cy: 'color:#22d3ee',  // cyan-400
-      ct: 'color:#389983',  // cyan-100
+      ct: 'color:#aaffff',  // cyan-100
       yw: 'color:#facc15',  // yellow-400
-      pk: 'color:#f472b6',  // pink-400
+      pk: 'color:#f472b6',  // pink-400,
+      r: 'color:#ef4444',   // red-500
     }
 
     function s(style: string, text: string) {
@@ -39,46 +40,64 @@
         steps.push({ html, delay, class: cls })
 
 
-      steps.push({ type: 'char', text: pkgInstall, target: 'cmd-line', charDelay: 60, delay: 400 })
+      // steps.push({ type: 'char', text: pkgInstall, target: 'cmd-line', charDelay: 100, delay: 400 })
 
-      // glinter setup
-      stepDelay(200, '')
-      stepDelay(0, `${s(C.g, '|')}${space}${s(C.pk, 'Glinter Setup')}`)
+      // // glinter setup
+      // stepDelay(200, '')
+      // stepDelay(0, `${s(C.g, '|')}${space}${s(C.pk, 'Glinter Setup')}`)
 
-      stepDelay(0, '')
-      stepDelay(0, s(C.yw, 'The following aliases will be set globally: '))
-      stepDelay(0, '')
+      // stepDelay(0, '')
+      // stepDelay(0, s(C.yw, 'The following aliases will be set globally: '))
+      // stepDelay(0, '')
 
-      for (const alias of ALIASES) {
-        const tag =
-          alias.kind === 'glinter'
-            ? s(C.pk, '[glinter]')
-            : s(C.cy, '[git]    ')
-        const { name, command } = alias
+      // for (const alias of ALIASES) {
+      //   const tag =
+      //     alias.kind === 'glinter'
+      //       ? s(C.pk, '[glinter]')
+      //       : s(C.cy, '[git]    ')
+      //   const { name, command } = alias
     
-        stepDelay(0, `  ${tag}    ${s(C.gn, name.padEnd(10))}` + '→' + s(C.w, `  ${command}`))
-      }
+      //   stepDelay(0, `  ${tag}    ${s(C.gn, name.padEnd(10))}` + '→' + s(C.w, `  ${command}`))
+      // }
 
-      // apply aliases selector
-      stepDelay(0, '')
-      stepDelay(0, s(C.g, '|'))
-      stepDelay(0, s(C.ct, '*') + space + s(C.w, 'Apply these aliases to your global git config?'))
-      stepDelay(0, s(C.ct, '|') + space + s(C.gn, '> ') + s(C.w, 'Yes /   No'))
-      stepDelay(1000, s(C.ct, '-'))
+      // // apply aliases selector
+      // stepDelay(0, '')
+      // stepDelay(0, s(C.g, '|'))
+      // stepDelay(0, s(C.ct, '*') + space + s(C.w, 'Apply these aliases to your global git config?'))
+      // stepDelay(0, s(C.ct, '|') + space + s(C.gn, '> ') + s(C.w, 'Yes /   No'))
+      // stepDelay(1000, s(C.ct, '-'))
 
 
-      for (const alias of ALIASES) {
-        stepDelay(200, `  ${s(C.pk, alias.name.padEnd(8))} set ${s(C.gn, 'successfully'.padStart(10))}`)
-      }
+      // for (const alias of ALIASES) {
+      //   stepDelay(200, `  ${s(C.pk, alias.name.padEnd(8))} set ${s(C.gn, 'successfully'.padStart(10))}`)
+      // }
 
-      stepDelay(100, '')
-      stepDelay(0, s(C.w, '○') + space + s(C.gn, '✔ ') + s(C.w, '25 aliases configured successfully'))
-      stepDelay(0, s(C.g, '|'))
-      stepDelay(0, s(C.g, '-') + s(C.gn, ' GLINTER') + s(C.w, ', if you like the project, give a star on github: https://github.com/jannael/glinter'))
+      // stepDelay(100, '')
+      // stepDelay(0, s(C.w, '○') + space + s(C.gn, '✔ ') + s(C.w, '25 aliases configured successfully'))
+      // stepDelay(0, s(C.g, '|'))
+      // stepDelay(0, s(C.g, '-') + s(C.gn, ' GLINTER') + s(C.w, ', if you like the project, give a star on github: https://github.com/jannael/glinter'))
 
-      stepDelay(0, '')
-      stepDelay(0, '')
-      stepDelay(0, s(C.pk, 'To use the aliases, please restart your terminal.'))
+      // stepDelay(0, '')
+      // stepDelay(0, '')
+      // stepDelay(0, s(C.pk, 'To use the aliases, please restart your terminal.'))
+      // stepDelay(0, '')
+
+      steps.push({ type: 'char', text: 'ga', target: 'cmd-line', charDelay: 300, delay: 400 })
+
+      stepDelay(100, s(C.g, '|'))
+      stepDelay(0, s(C.ct, '*') + space + s(C.w, 'Select the changes you want to commit.'))
+      stepDelay(0, s(C.ct, '|') + space + s(C.cy, '[space] to select'))
+      stepDelay(0, s(C.ct, '|') + space + s(C.gn, '[enter] to confirm'))
+      stepDelay(0, s(C.ct, '|') + space + s(C.pk, '[a] to select all'))
+      stepDelay(0, s(C.ct, '|') + space + s(C.r, '[esc] to cancel'))
+      stepDelay(100, s(C.ct, '|'))
+      stepDelay(100, s(C.ct, '|') + space + s(C.ct, '[•] ') + s(C.yw, 'modified: README.md')) 
+      stepDelay(100, s(C.ct, '-'))
+      
+
+
+      
+
 
       return steps
     }
@@ -94,6 +113,7 @@
           line.id = step.target
           body.appendChild(line)
           const cursor = '<span class="animate-pulse" style="' + C.w + '">▋</span>'
+
           for (let i = 0; i < step.text.length; i++) {
             const ch = step.text[i]
             const sofar = step.text.slice(0, i + 1)
@@ -102,7 +122,8 @@
             line.innerHTML = colored + cursor
             await sleep(step.charDelay)
           }
-          line.innerHTML = '<span style="' + C.w + '"></span><span style="' + C.w + '">' + pkgInstall + '</span>'
+
+          line.innerHTML = '<span style="' + C.w + '"></span><span style="' + C.w + '">' + step.text + '</span>'
           await sleep(step.delay)
           continue
         }
