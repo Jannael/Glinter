@@ -1,7 +1,12 @@
 {
 	"editor.defaultFormatter": "biomejs.biome",
+	"editor.formatOnSave": true,
+	"[astro]": {
+		"editor.defaultFormatter": "biomejs.biome",
+		"editor.formatOnSave": true
+	},
 	"editor.codeActionsOnSave": {
-		"source.fixAll.biome": "explicit"
+		"source.fixAll.biome": "always"
 	},
 	"cSpell.words": ["glinter", "jannael"],
 	"css.lint.unknownAtRules": "ignore"
