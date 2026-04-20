@@ -8,47 +8,47 @@ export interface Alias {
 
 export const ALIASES: Alias[] = [
 	// Status & logs
-	{ name: 's', command: 'status -sb', kind: 'git' },
+	{ name: 'gs', command: 'status -sb', kind: 'git' },
 	{
-		name: 'l',
+		name: 'gl',
 		command: 'log --oneline --decorate --graph --all -n 20',
 		kind: 'git',
 	},
-	{ name: 'll', command: 'log --stat', kind: 'git' },
+	{ name: 'gll', command: 'log --stat', kind: 'git' },
 
 	// Diff
-	{ name: 'd', command: 'diff --word-diff=color', kind: 'git' },
-	{ name: 'ds', command: 'diff --staged --word-diff=color', kind: 'git' },
+	{ name: 'gd', command: 'diff --word-diff=color', kind: 'git' },
+	{ name: 'gds', command: 'diff --staged --word-diff=color', kind: 'git' },
 
 	// Add (Glinter interactive)
-	{ name: 'a', command: 'add', kind: 'glinter' },
-	{ name: 'aa', command: 'add -A', kind: 'git' },
+	{ name: 'ga', command: 'add', kind: 'glinter' },
+	{ name: 'gaa', command: 'add -A', kind: 'git' },
 
 	// Commit (Glinter interactive)
-	{ name: 'c', command: 'commit', kind: 'glinter' },
-	{ name: 'cm', command: 'commit -m', kind: 'git' },
-	{ name: 'ca', command: 'commit --amend', kind: 'git' },
-	{ name: 'can', command: 'commit --amend --no-edit', kind: 'git' },
+	{ name: 'gc', command: 'commit', kind: 'glinter' },
+	{ name: 'gcm', command: 'commit -m', kind: 'git' },
+	{ name: 'gca', command: 'commit --amend', kind: 'git' },
+	{ name: 'gcan', command: 'commit --amend --no-edit', kind: 'git' },
 
 	// Branch & switch
-	{ name: 'b', command: 'branch', kind: 'git' },
-	{ name: 'ba', command: 'branch -a', kind: 'git' },
-	{ name: 'co', command: 'switch', kind: 'glinter' },
-	{ name: 'cb', command: 'checkout -b', kind: 'git' },
+	{ name: 'gb', command: 'branch', kind: 'git' },
+	{ name: 'gba', command: 'branch -a', kind: 'git' },
+	{ name: 'gco', command: 'switch', kind: 'glinter' },
+	{ name: 'gcb', command: 'checkout -b', kind: 'git' },
 
 	// Pull & push
-	{ name: 'pl', command: 'pull', kind: 'git' },
-	{ name: 'plr', command: 'pull --rebase', kind: 'git' },
-	{ name: 'p', command: 'push', kind: 'git' },
-	{ name: 'gpush', command: 'push origin HEAD', kind: 'git' },
-	{ name: 'pf', command: 'push --force-with-lease', kind: 'git' },
+	{ name: 'gpl', command: 'pull', kind: 'git' },
+	{ name: 'gplr', command: 'pull --rebase', kind: 'git' },
+	{ name: 'gp', command: 'push', kind: 'git' },
+	{ name: 'ggpush', command: 'push origin HEAD', kind: 'git' },
+	{ name: 'gpf', command: 'push --force-with-lease', kind: 'git' },
 
 	// Stash
-	{ name: 'st', command: 'stash', kind: 'git' },
-	{ name: 'stp', command: 'stash pop', kind: 'git' },
-	{ name: 'stl', command: 'stash list', kind: 'git' },
+	{ name: 'gst', command: 'stash', kind: 'git' },
+	{ name: 'gstp', command: 'stash pop', kind: 'git' },
+	{ name: 'gstl', command: 'stash list', kind: 'git' },
 
 	// Cleanup
-	{ name: 'cl', command: 'clean -fd', kind: 'git' },
-	{ name: 'rh', command: 'reset --hard', kind: 'git' },
+	{ name: 'gcl', command: 'clean -fd', kind: 'git' },
+	{ name: 'grh', command: 'reset --hard', kind: 'git' },
 ]

@@ -11,7 +11,7 @@ describe('aliasCommand', () => {
 		expect(logSpy).toHaveBeenCalled()
 		for (const alias of ALIASES) {
 			expect(logSpy).toHaveBeenCalledWith(
-				expect.stringContaining(`g${alias.name}`),
+				expect.stringContaining(`${alias.name}`),
 			)
 		}
 	})

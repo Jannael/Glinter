@@ -19,8 +19,7 @@ export class SetupAliasesUseCase {
 
 	// cspell:disable-next-line
 	private resolveAlias(name: string, command: string, kind: 'git' | 'glinter') {
-		const aliasName = `g${name}`
 		const aliasCommand = kind === 'git' ? `git ${command}` : `g ${command}`
-		return { name: aliasName, value: aliasCommand }
+		return { name, value: aliasCommand }
 	}
 }

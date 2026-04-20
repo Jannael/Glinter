@@ -1,10 +1,8 @@
 import { ALIASES } from '@/alias'
 import { BLUE, GREEN, MAGENTA, YELLOW } from '@/utils/colors'
 
-function resolveAlias(name: string, command: string, kind: 'git' | 'glinter') {
-	const aliasName = `g${name}`
-	const aliasCommand = kind === 'git' ? `git ${command}` : `g ${command}`
-	return { aliasName, aliasCommand }
+function resolveAlias(name: string, command: string) {
+	return { name, value: command }
 }
 
 export function printAliases({
@@ -19,14 +17,10 @@ export function printAliases({
 			alias.kind === 'glinter'
 				? MAGENTA({ text: '[glinter]' })
 				: BLUE({ text: '[git]    ' })
-		const { aliasName, aliasCommand } = resolveAlias(
-			alias.name,
-			alias.command,
-			alias.kind,
-		)
+		const { name, value } = resolveAlias(alias.name, alias.command)
 
 		console.log(
-			`  ${tag}  ${GREEN({ text: aliasName.padEnd(8) })} → ${aliasCommand}`,
+			`  ${tag}  ${GREEN({ text: name.padEnd(8) })} → ${value}`,
 		)
 	}
 
