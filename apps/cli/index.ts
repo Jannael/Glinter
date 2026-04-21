@@ -1,18 +1,21 @@
 #!/usr/bin/env bun
-import { addCommand } from '@/modules/add/main'
-import { aliasCommand } from '@/modules/alias/main'
-import { commitCommand } from '@/modules/commit/main'
-import { setupCommand } from '@/modules/setup/main'
-import { switchCommand } from '@/modules/switch/main'
+import { AVAILABLE_COMMANDS } from './commands'
 
 const args = Bun.argv.slice(2)
 
-if (args[0] === 'add' && !args[1]) await addCommand()
-else if (args[0] === 'commit' && !args[1]) await commitCommand()
-else if (args[0] === 'switch' && !args[1]) await switchCommand()
-else if (args[0] === 'alias' && !args[1]) await aliasCommand()
-else if (args[0] === 'setup') await setupCommand()
-else {
+const command = AVAILABLE_COMMANDS.find((command) => command.name === args[0])
+
+if (command) {
+	if (command.allowGitArgs) {
+		await command.fn()
+	} else {
+		if (args.length > 1) {
+			console.error('This command does not accept any arguments')
+			process.exit(1)
+		}
+		await command.fn()
+	}
+} else {
 	const proc = Bun.spawn(['git', ...args], {
 		stdio: ['inherit', 'inherit', 'inherit'],
 	})
