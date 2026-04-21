@@ -1,12 +1,24 @@
 {
-	"extends": "astro/tsconfigs/strict",
-	"include": [".astro/types.d.ts", "**/*"],
-	"exclude": ["dist"],
-	"compilerOptions": {
-		"paths": {
-			"@/*": ["./src/*"],
-			"alias": ["./../cli/alias.ts"],
-			"commands": ["./../cli/commands.ts"]
-		}
-	}
+  "extends": "astro/tsconfigs/strict",
+  "include": [
+    ".astro/types.d.ts",
+    "**/*",
+    "./worker-configuration.d.ts"
+  ],
+  "exclude": [
+    "dist"
+  ],
+  "compilerOptions": {
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "alias": [
+        "./../cli/alias.ts"
+      ],
+      "commands": [
+        "./../cli/commands.ts"
+      ]
+    }
+  }
 }

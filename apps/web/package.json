@@ -1,23 +1,30 @@
 {
-	"name": "apps-web",
-	"type": "module",
-	"version": "0.0.1",
-	"engines": {
-		"node": ">=22.12.0"
-	},
-	"scripts": {
-		"dev": "astro dev",
-		"build": "astro build",
-		"preview": "astro preview",
-		"astro": "astro"
-	},
-	"dependencies": {
-		"@fontsource-variable/jost": "5.2.8",
-		"@tailwindcss/vite": "4.2.2",
-		"astro": "6.1.8",
-		"tailwindcss": "4.2.2"
-	},
-	"devDependencies": {
-		"@tailwindcss/typography": "^0.5.19"
-	}
+  "name": "apps-web",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "bun run build && wrangler dev",
+    "astro": "astro",
+    "deploy": "bun run build && wrangler deploy",
+    "generate-types": "wrangler types"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "13.1.10",
+    "@fontsource-variable/jost": "5.2.8",
+    "@tailwindcss/vite": "4.2.2",
+    "astro": "6.1.8",
+    "tailwindcss": "4.2.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "0.5.19",
+    "wrangler": "4.84.1"
+  },
+  "overrides": {
+    "vite": "7"
+  }
 }

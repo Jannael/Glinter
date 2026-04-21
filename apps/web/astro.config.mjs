@@ -1,5 +1,6 @@
 // @ts-check
 
+import cloudflare from '@astrojs/cloudflare'
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'astro/config'
 
@@ -7,7 +8,10 @@ import { defineConfig } from 'astro/config'
 export default defineConfig({
 	site: 'https://glinter.jannael.com',
 	devToolbar: { enabled: false },
+
 	vite: {
 		plugins: [tailwindcss()],
 	},
+
+	adapter: cloudflare(),
 })
