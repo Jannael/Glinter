@@ -1,0 +1,47 @@
+---
+import ChartSvg from '@/assets/chart.svg?raw'
+import StarSvg from '@/assets/star.svg?raw'
+import DownloadSvg from '@/assets/download.svg?raw'
+
+function formatStat(value: number | null) {
+	if (value === null || Number.isNaN(value)) {
+		return '--'
+	}
+
+	if (value >= 1_000_000) {
+		return `${(value / 1_000_000).toFixed(1).replace(/\.0$/, '')}M`
+	}
+
+	if (value >= 1_000) {
+		return `${(value / 1_000).toFixed(1).replace(/\.0$/, '')}k`
+	}
+
+	return String(value)
+}
+
+interface Props {
+	stats: {
+		stars: number
+		weeklyDownloads: number | null
+		totalDownloads: number | null
+	}
+}
+
+const { stats } = Astro.props
+
+---
+
+<ul class="flex items-center gap-3 w-fit h-16 mb-0 px-4">
+	<li class="flex min-w-0 items-end gap-2">
+		<span class="h-6 w-6 text-secondary/70 shrink-0" set:html={StarSvg} />
+		<span class="text-sm text-secondary/80">{formatStat(stats.stars)}</span>
+	</li>
+	<li class="flex min-w-0 items-end gap-2">
+		<span class="h-6 w-6 text-secondary/70 shrink-0" set:html={ChartSvg} />
+		<span class="text-sm text-secondary/80">{formatStat(stats.weeklyDownloads)}</span>
+	</li>
+	<li class="flex min-w-0 items-end gap-2">
+		<span class="h-6 w-6 text-secondary/70 shrink-0" set:html={DownloadSvg} />
+		<span class="text-sm text-secondary/80">{formatStat(stats.totalDownloads)}</span>
+	</li>
+</ul>

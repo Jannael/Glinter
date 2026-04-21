@@ -4,12 +4,22 @@ import Alias from '@/sections/alias.astro'
 import Footer from '@/sections/footer.astro'
 import Hero from '@/sections/hero.astro'
 import QuickStart from '@/sections/quick-start.astro'
+import HeroStatsServer from '@/components/hero-stats-server.astro'
+import HeroStats from '@/components/hero-stats.astro'
+
 ---
 
 <Layout
 	title="Glinter | Git Alias Tool & Interactive Git Workflow CLI"
 	description="Glinter is a git workflow CLI with interactive git add, smart aliases, and safer defaults for faster daily Git usage."
 >
+	<!-- <HeroStatsServer server:defer>
+		<HeroStats stats={{
+			stars: 100,
+			weeklyDownloads: 100,
+			totalDownloads: 100,
+		}}/>
+	</HeroStatsServer> -->
 	<Hero />
 	<Alias />
 	<QuickStart />
