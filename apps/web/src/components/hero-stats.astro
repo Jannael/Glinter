@@ -3,6 +3,10 @@ import ChartSvg from '@/assets/chart.svg?raw'
 import StarSvg from '@/assets/star.svg?raw'
 import DownloadSvg from '@/assets/download.svg?raw'
 
+const REPO_API = 'https://api.github.com/repos/jannael/glinter'
+const WEEKLY_DOWNLOADS_API = 'https://api.npmjs.org/downloads/point/last-week/@jannael/glinter'
+const TOTAL_DOWNLOADS_API = `https://api.npmjs.org/downloads/point/2015-01-01:${new Date().toISOString().slice(0, 10)}/@jannael/glinter`
+
 function formatStat(value: number | null) {
 	if (value === null || Number.isNaN(value)) {
 		return '--'
@@ -19,29 +23,50 @@ function formatStat(value: number | null) {
 	return String(value)
 }
 
-interface Props {
-	stats: {
-		stars: number
-		weeklyDownloads: number | null
-		totalDownloads: number | null
+async function readJson<T>(url: string) {
+	try {
+		const response = await fetch(url, {
+			headers: {
+				Accept: 'application/json',
+				'User-Agent': 'glinter-web',
+			},
+		})
+
+		if (!response.ok) {
+			return null
+		}
+
+		return (await response.json()) as T
+	} catch {
+		return null
 	}
 }
 
-const { stats } = Astro.props
+const [repo, weekly, total] = await Promise.all([
+	readJson<{ stargazers_count?: number }>(REPO_API),
+	readJson<{ downloads?: number }>(WEEKLY_DOWNLOADS_API),
+	readJson<{ downloads?: number }>(TOTAL_DOWNLOADS_API),
+])
 
+const stats = {
+	stars: formatStat(repo?.stargazers_count ?? 100),
+	weeklyDownloads: formatStat(weekly?.downloads ?? null),
+	totalDownloads: formatStat(total?.downloads ?? null),
+}
 ---
 
 <ul class="flex items-center gap-3 w-fit h-16 mb-0 px-4">
 	<li class="flex min-w-0 items-end gap-2">
 		<span class="h-6 w-6 text-secondary/70 shrink-0" set:html={StarSvg} />
-		<span class="text-sm text-secondary/80">{formatStat(stats.stars)}</span>
+		<span class="text-sm text-secondary/80">{stats.stars}</span>
 	</li>
 	<li class="flex min-w-0 items-end gap-2">
 		<span class="h-6 w-6 text-secondary/70 shrink-0" set:html={ChartSvg} />
-		<span class="text-sm text-secondary/80">{formatStat(stats.weeklyDownloads)}</span>
+		<span class="text-sm text-secondary/80">{stats.weeklyDownloads}</span>
 	</li>
 	<li class="flex min-w-0 items-end gap-2">
 		<span class="h-6 w-6 text-secondary/70 shrink-0" set:html={DownloadSvg} />
-		<span class="text-sm text-secondary/80">{formatStat(stats.totalDownloads)}</span>
+		<span class="text-sm text-secondary/80">{stats.totalDownloads}</span>
 	</li>
 </ul>
+

@@ -2,7 +2,9 @@
 import CopyButton from '@/components/copy-button.astro'
 import TerminalAnimation from '@/components/terminal-animation.astro'
 import HeroStats from '@/components/hero-stats.astro'
-import HeroStatsServer from '@/components/hero-stats-server.astro'
+import ChartSvg from '@/assets/chart.svg?raw'
+import StarSvg from '@/assets/star.svg?raw'
+import DownloadSvg from '@/assets/download.svg?raw'
 ---
 
 <section class="flex flex-col lg:flex-row items-center justify-center min-h-screen lg:h-screen gap-10 lg:gap-20 px-6 lg:px-0 py-16 lg:py-0 max-w-7xl mx-auto">
@@ -16,13 +18,22 @@ import HeroStatsServer from '@/components/hero-stats-server.astro'
     </p>
     <div class="flex items-center gap-6 flex-col lg:flex-row lg:items-end">
       <CopyButton />
-      <HeroStatsServer>
-        <HeroStats stats={{
-          stars: 100,
-          weeklyDownloads: 100,
-          totalDownloads: 100,
-        }}/>
-      </HeroStatsServer>
+      <HeroStats server:defer > 
+        <ul class="flex items-center gap-3 w-fit h-16 mb-0 px-4" slot="fallback">
+          <li class="flex min-w-0 items-end gap-2">
+            <span class="h-6 w-6 text-secondary/70 shrink-0" set:html={StarSvg} />
+            <span class="text-sm text-secondary/80">100</span>
+          </li>
+          <li class="flex min-w-0 items-end gap-2">
+            <span class="h-6 w-6 text-secondary/70 shrink-0" set:html={ChartSvg} />
+            <span class="text-sm text-secondary/80">100</span>
+          </li>
+          <li class="flex min-w-0 items-end gap-2">
+            <span class="h-6 w-6 text-secondary/70 shrink-0" set:html={DownloadSvg} />
+            <span class="text-sm text-secondary/80">100</span>
+          </li>
+        </ul>
+      </HeroStats>
     </div>
   </article>
 
