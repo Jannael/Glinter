@@ -1,39 +1,34 @@
-import { addCommand } from '@/modules/add/main'
-import { aliasCommand } from '@/modules/alias/main'
-import { commitCommand } from '@/modules/commit/main'
-import { setupCommand } from '@/modules/setup/main'
-import { switchCommand } from '@/modules/switch/main'
-
-interface Command {
-	name: string
-	fn: () => Promise<void>
-	allowGitArgs: boolean
-}
-
-export const AVAILABLE_COMMANDS: Command[] = [
+export const AVAILABLE_COMMANDS = [
 	{
 		name: 'add',
-		fn: addCommand,
+		command: 'g add',
+		description: 'Interactive add',
 		allowGitArgs: true,
 	},
 	{
 		name: 'commit',
-		fn: commitCommand,
+		command: 'g commit',
+		description: 'Interactive commit',
 		allowGitArgs: true,
 	},
 	{
 		name: 'switch',
-		fn: switchCommand,
+		command: 'g switch',
+		description: 'Interactive switch',
 		allowGitArgs: true,
 	},
 	{
 		name: 'alias',
-		fn: aliasCommand,
+		command: 'g alias',
+		description: 'Show all the aliases',
 		allowGitArgs: false,
 	},
 	{
 		name: 'setup',
-		fn: setupCommand,
+		command: 'g setup',
+		description: 'Setup alias for git and glinter',
 		allowGitArgs: true,
 	},
 ] as const
+
+export type CommandNames = (typeof AVAILABLE_COMMANDS)[number]['name']

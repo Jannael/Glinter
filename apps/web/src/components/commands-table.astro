@@ -1,23 +1,23 @@
 ---
-import { ALIASES } from 'alias'
+import { AVAILABLE_COMMANDS } from 'commands'
 ---
 
 <div class="rounded-2xl shadow-2xl w-full flex flex-col overflow-hidden max-h-160">
   <div class="flex items-start">
     <div class="flex flex-col">
-      <h3 class="text-3xl lg:text-4xl font-bold text-secondary mb-6">Aliases</h3>
-      <p class="text-secondary/60 text-lg mb-10 leading-relaxed">This alias are configured automatically when you run the setup command at system level.</p>
+      <h3 class="text-3xl lg:text-4xl font-bold text-secondary mb-6">Commands</h3>
+      <p class="text-secondary/60 text-lg mb-10 leading-relaxed">Available Glinter commands.</p>
     </div>
   </div>
   <div class="flex-1 overflow-y-auto font-mono text-[15px] custom-scrollbar">
     <ul class="flex flex-col divide-y divide-secondary/10">
-      {ALIASES.map((alias) => (
+      {AVAILABLE_COMMANDS.map((cmd) => (
         <li class="flex flex-row items-center justify-between px-6 py-5 hover:bg-secondary/30 transition-colors group">
           <span class="text-accent group-hover:text-accent/80 transition-colors font-medium tracking-wide">
-            {alias.name}
+            {cmd.command}
           </span>
           <span class="text-secondary/40 group-hover:text-secondary/80 transition-colors tracking-wide text-right">
-            {alias.kind === 'glinter' ? 'glinter ' : 'git '}{alias.command}
+            {cmd.description}
           </span>
         </li>
       ))}
@@ -26,7 +26,6 @@ import { ALIASES } from 'alias'
 </div>
 
 <style>
-  /* Optional specific scrollbar styling if the global one needs tweaking for this component */
   .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
   }
