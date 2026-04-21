@@ -68,6 +68,37 @@ Your browser does not support the video tag.
 | gcl | git clean -fd | Clean untracked files |
 | grh | git reset --hard | Hard reset |
 
+## Quick Start
+
+1. **Install Glinter**:
+
+   ```bash
+   npm install -g @jannael/glinter
+   ```
+
+2. **Set up aliases** (optional, recommended):
+
+   ```bash
+   g setup
+   ```
+
+3. **Start using Glinter**:
+
+   ```bash
+   g add        # Interactive file staging
+   g commit     # Interactive commit
+   g status     # Standard git status
+   g push       # Standard git push
+   ```
+
+   
+
+
+### Screenshots
+
+| `g add` | `g commit` |
+|---|---|
+| ![glinter add](./screenshots/ga.png) | ![glinter commit](./screenshots/gc.png) |
 
 ## How it works
 
