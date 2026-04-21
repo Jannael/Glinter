@@ -1,0 +1,61 @@
+---
+import { ALIASES } from 'alias'
+import Layout from '@/layouts/Layout.astro'
+---
+
+<Layout
+	title="Aliases | Glinter"
+	description="List of all aliases for glinter"
+>
+  <section class="flex flex-col lg:flex-row items-center justify-center px-6 lg:px-0 max-w-7xl mx-auto py-10 lg:py-20 w-full lg:w-8/10" id="commands">
+    <div class="shadow-2xl w-full flex flex-col">
+     
+      <div class="flex items-start w-full flex-col">
+        <div class="flex flex-col w-full">
+          <div class="flex items-center justify-between w-full mb-6">
+            <h3 class="text-3xl lg:text-4xl font-bold text-secondary">Aliases</h3>
+            <a
+              href="/"
+              class="inline-flex w-fit items-center rounded-lg border border-secondary/20 px-4 py-2 text-sm font-medium text-secondary/80 transition-colors hover:border-secondary/40 hover:text-secondary"
+            >
+              Back to home
+            </a>          
+          </div>
+          <p class="text-secondary/60 text-lg mb-10 leading-relaxed h-15">These aliases are configured automatically at the system level when you run the setup command.</p>
+        </div>
+
+        <div class="flex-1 font-mono text-[15px] custom-scrollbar border border-secondary/10 rounded-xl w-full">
+          <ul class="flex flex-col divide-y divide-secondary/10">
+            {ALIASES.map((alias) => (
+              <li class="flex flex-row items-center justify-between px-6 py-5 hover:bg-secondary/30 transition-colors group rounded-xl">
+                <span class="text-accent group-hover:text-accent/80 transition-colors font-medium tracking-wide">
+                  {alias.name}
+                </span>
+                <span class="text-secondary/40 group-hover:text-secondary/80 transition-colors tracking-wide text-right">
+                  {alias.kind === 'glinter' ? 'glinter ' : 'git '}{alias.command}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Optional specific scrollbar styling if the global one needs tweaking for this component */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #27272a;
+    /* border-radius: 10px; */
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #3f3f46;
+  }
+</style>
