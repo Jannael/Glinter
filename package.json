@@ -36,7 +36,6 @@
 	"scripts": {
 		"build:cli": "bun build ./apps/cli/index.ts --outfile=./dist/index.js --target=bun",
 		"prepublishOnly": "bun run build:cli",
-
 		"test": "vitest",
 		"lint": "biome check",
 		"lint:fix": "biome format --write",
@@ -51,7 +50,8 @@
 	"devDependencies": {
 		"@biomejs/biome": "2.4.10",
 		"@types/bun": "latest",
-		"vitest": "4.1.4"
+		"vitest": "4.1.4",
+		"wrangler": "4.84.1"
 	},
 	"peerDependencies": {
 		"bun": ">=1.0.0",
