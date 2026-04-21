@@ -1,6 +1,6 @@
 {
 	"name": "@jannael/glinter",
-	"version": "develop version",
+	"version": "2.0.1",
 	"description": "A high-performance, transparent Git wrapper with interactive staging",
 	"type": "module",
 	"private": false,
@@ -13,7 +13,7 @@
 		"name": "Jannael",
 		"url": "https://github.com/jannael"
 	},
-	"homepage": "https://github.com/jannael/glinter#readme",
+	"homepage": "https://glinter.jannael.com",
 	"bugs": {
 		"url": "https://github.com/jannael/glinter/issues"
 	},
@@ -31,7 +31,7 @@
 		"dist"
 	],
 	"exports": {
-		".": "./apps/cli/index.ts"
+		".": "./dist/index.js"
 	},
 	"scripts": {
 		"build:cli": "bun build ./apps/cli/index.ts --outfile=./dist/index.js --target=bun",
@@ -43,7 +43,7 @@
 		"type-check": "bunx tsc --noEmit"
 	},
 	"bin": {
-		"g": "./apps/cli/index.ts"
+		"g": "./dist/index.js"
 	},
 	"engines": {
 		"bun": ">=1.0.0"
