@@ -21,6 +21,8 @@ Your browser does not support the video tag.
 
 - **Abbreviation**: You can use `g` instead of `git`.
 
+
+
 ## How it works
 
 Glinter is designed to be as "natural" as possible, meaning it shouldn't feel like a wrapper at all.
