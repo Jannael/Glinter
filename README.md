@@ -3,7 +3,7 @@
   <br>
   <a href="https://glinter.jannael.com" target="_blank" rel="noopener noreferrer">
     <picture>
-      <img alt="Glinter" src="https://github.com/Jannael/glinter/raw/main/apps/web/public/og.png" height="200">
+      <img alt="Glinter" src="https://github.com/Jannael/glinter/raw/main/apps/web/public/og.png">
     </picture>
   </a>
   <br>
