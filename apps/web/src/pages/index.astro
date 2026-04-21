@@ -3,7 +3,7 @@ import Layout from '@/layouts/Layout.astro'
 import Footer from '@/sections/footer.astro'
 import Hero from '@/sections/hero.astro'
 import QuickStart from '@/sections/quick-start.astro'
-
+import Commands from '@/sections/commands.astro'
 export const prerender = true
 ---
 
@@ -12,6 +12,7 @@ export const prerender = true
 	description="Glinter is a git workflow CLI with interactive git add, smart aliases, and safer defaults for faster daily Git usage."
 >
 	<Hero />
+	<Commands />
 	<QuickStart />
 	<Footer />
 </Layout>

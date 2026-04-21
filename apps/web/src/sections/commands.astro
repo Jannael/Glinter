@@ -2,14 +2,14 @@
 import { AVAILABLE_COMMANDS } from 'commands'
 ---
 
-<div class="shadow-2xl w-full flex flex-col overflow-hidden max-h-160">
-  <div class="flex items-start">
+<section id="commands" class="flex flex-col items-center justify-center px-6 lg:px-0 max-w-7xl mx-auto w-full mb-20 lg:mb-0">
+  <div class="flex items-start w-full">
     <div class="flex flex-col">
       <h3 class="text-3xl lg:text-4xl font-bold text-secondary mb-6">Commands</h3>
-      <p class="text-secondary/60 text-lg mb-10 leading-relaxed h-15">Available Glinter commands.</p>
+      <p class="text-secondary/60 text-lg mb-10 leading-relaxed h-15">Available Glinter commands. <a href="/alias" class="text-accent hover:text-accent/80 transition-colors">To see aliases, click here.</a></p>
     </div>
   </div>
-  <div class="flex-1 overflow-y-auto font-mono text-[15px] custom-scrollbar border border-secondary/10 rounded-xl">
+  <div class="flex-1 overflow-y-auto font-mono text-[15px] custom-scrollbar border border-secondary/10 rounded-xl w-full">
     <ul class="flex flex-col divide-y divide-secondary/10">
       {AVAILABLE_COMMANDS.map((cmd) => (
         <li class="flex flex-row items-center justify-between px-6 py-5 hover:bg-secondary/30 transition-colors group rounded-xl">
@@ -23,7 +23,7 @@ import { AVAILABLE_COMMANDS } from 'commands'
       ))}
     </ul>
   </div>
-</div>
+</section>
 
 <style>
   .custom-scrollbar::-webkit-scrollbar {
