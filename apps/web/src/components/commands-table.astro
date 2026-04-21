@@ -2,17 +2,17 @@
 import { AVAILABLE_COMMANDS } from 'commands'
 ---
 
-<div class="rounded-2xl shadow-2xl w-full flex flex-col overflow-hidden max-h-160">
+<div class="shadow-2xl w-full flex flex-col overflow-hidden max-h-160">
   <div class="flex items-start">
     <div class="flex flex-col">
       <h3 class="text-3xl lg:text-4xl font-bold text-secondary mb-6">Commands</h3>
       <p class="text-secondary/60 text-lg mb-10 leading-relaxed h-15">Available Glinter commands.</p>
     </div>
   </div>
-  <div class="flex-1 overflow-y-auto font-mono text-[15px] custom-scrollbar">
+  <div class="flex-1 overflow-y-auto font-mono text-[15px] custom-scrollbar border border-secondary/10 rounded-xl">
     <ul class="flex flex-col divide-y divide-secondary/10">
       {AVAILABLE_COMMANDS.map((cmd) => (
-        <li class="flex flex-row items-center justify-between px-6 py-5 hover:bg-secondary/30 transition-colors group">
+        <li class="flex flex-row items-center justify-between px-6 py-5 hover:bg-secondary/30 transition-colors group rounded-xl">
           <span class="text-accent group-hover:text-accent/80 transition-colors font-medium tracking-wide">
             {cmd.command}
           </span>
