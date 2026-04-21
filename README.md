@@ -13,11 +13,21 @@
 
 Glinter is a high-performance, transparent Git wrapper built with **Bun**.
 
+[Aliases and commands](https://glinter.jannael.com/#commands)
+
+[Quick start](https://glinter.jannael.com/#quick-start)
+
 ## Preview
 
 <video src="https://github.com/user-attachments/assets/63b401a0-e1e1-453c-9e38-c36cd14e200f" controls="false" autoplay="true" loop="true" muted="true" style="max-width: 100%;">
 Your browser does not support the video tag.
 </video>
+
+### Screenshots
+
+| `g add` | `g commit` |
+|---|---|
+| ![glinter add](./screenshots/ga.png) | ![glinter commit](./screenshots/gc.png) |
 
 ## Features
 
@@ -26,38 +36,6 @@ Your browser does not support the video tag.
 - **Safe by Default**: Automatically filters and prevents accidental staging of sensitive files: `.env` and `node_modules`.
 
 - **Transparent Wrapper**: For every other command (like `commit`, `push`, `log`, or `status`), Glinter acts as a direct tunnel to Git. It preserves all original colors, formatting, and interactive features of the native Git CLI.
-
-
-## Quick Start
-
-1. **Install Glinter**:
-
-   ```bash
-   npm install -g @jannael/glinter
-   ```
-
-2. **Set up aliases** (optional, recommended):
-
-   ```bash
-   g setup
-   ```
-
-3. **Start using Glinter**:
-
-   ```bash
-   g add        # Interactive file staging
-   g commit     # Interactive commit
-   g status     # Standard git status
-   g push       # Standard git push
-   ```
-
-### Screenshots
-
-| `g add` | `g commit` |
-|---|---|
-| ![glinter add](./screenshots/ga.png) | ![glinter commit](./screenshots/gc.png) |
-
-
 
 ## How it works
 
