@@ -28,16 +28,6 @@ Your browser does not support the video tag.
 - **Transparent Wrapper**: For every other command (like `commit`, `push`, `log`, or `status`), Glinter acts as a direct tunnel to Git. It preserves all original colors, formatting, and interactive features of the native Git CLI.
 
 
-### Commands
-
-| Command | Description |
-|---|---|
-| `g add` | Opens an interactive file selector to stage changes, filtering out sensitive files like `.env` and `node_modules` |
-| `g commit` | Opens an interactive prompt to select a commit type and write a commit message |
-| `g switch` | Opens an interactive prompt to switch branches |
-| `g setup` | sets up alias for git and glinter |
-| `g alias` | shows all the aliases |
-
 ## Quick Start
 
 1. **Install Glinter**:
@@ -60,9 +50,6 @@ Your browser does not support the video tag.
    g status     # Standard git status
    g push       # Standard git push
    ```
-
-   
-
 
 ### Screenshots
 
