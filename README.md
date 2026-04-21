@@ -1,10 +1,17 @@
+<p align="center">
+  <br>
+  <br>
+  <a href="https://glinter.jannael.com" target="_blank" rel="noopener noreferrer">
+    <picture>
+      <img alt="Glinter" src="https://github.com/Jannael/glinter/raw/main/apps/web/public/og.png">
+    </picture>
+  </a>
+  <br>
+  <br>
+  <br>
+</p>
 
-
-
-
-# Glinter
-
-Glinter is a high-performance, transparent Git wrapper built with **Bun**. It enhances the standard `git add` workflow with a beautiful, interactive CLI interface while acting as a seamless pass-through for all other Git commands.
+Glinter is a high-performance, transparent Git wrapper built with **Bun**.
 
 ## Preview
 
@@ -12,18 +19,86 @@ Glinter is a high-performance, transparent Git wrapper built with **Bun**. It en
 Your browser does not support the video tag.
 </video>
 
-
 ## Features
 
-- **Interactive `add`**: When you run `g add`, it presents a color-coded list of your modified, new, and deleted files. You can multi-select exactly what you want to stage using a GUI-like interface in your terminal.
-
-- **Interactive `commit`**: Running `g commit` opens a guided flow to select a Conventional Commit type (`feat`, `fix`, `chore`, etc.) and enter the commit message.
-
-- **Transparent Wrapper**: For every other command (like `commit`, `push`, `log`, or `status`), Glinter acts as a direct tunnel to Git. It preserves all original colors, formatting, and interactive features of the native Git CLI.
+- **Abbreviation**: You can use `g` instead of `git`.
 
 - **Safe by Default**: Automatically filters and prevents accidental staging of sensitive files: `.env` and `node_modules`.
 
-- **Abbreviation**: You can use `g` instead of `git`.
+- **Transparent Wrapper**: For every other command (like `commit`, `push`, `log`, or `status`), Glinter acts as a direct tunnel to Git. It preserves all original colors, formatting, and interactive features of the native Git CLI.
+
+
+### Commands
+
+| Command | Description |
+|---|---|
+| `g add` | Opens an interactive file selector to stage changes, filtering out sensitive files like `.env` and `node_modules` |
+| `g commit` | Opens an interactive prompt to select a commit type and write a commit message |
+| `g switch` | Opens an interactive prompt to switch branches |
+| `g setup` | sets up alias for git and glinter |
+| `g alias` | shows all the aliases |
+
+### Aliases
+
+| Alias | Command | Description |
+|---|---|---|
+| gs | git status -sb | Status with short format and branch info |
+| gl | git log --oneline --decorate --graph --all -n 20 | Recent commits graph |
+| gll | git log --stat | Log with file change statistics |
+| gd | git diff --word-diff=color | Word-level diff with colors |
+| gds | git diff --staged --word-diff=color | Staged diff with colors |
+| ga | glinter add | Interactive staging |
+| gaa | git add -A | Add all changes |
+| gc | glinter commit | Interactive commit |
+| gcm | git commit -m | Direct commit message |
+| gca | git commit --amend | Amend last commit |
+| gcan | git commit --amend --no-edit | Amend without editing |
+| gb | git branch | List branches |
+| gba | git branch -a | List all branches |
+| gco | glinter switch | Interactive branch switch |
+| gcb | git checkout -b | Create and switch branch |
+| gpl | git pull | Pull from remote |
+| gplr | git pull --rebase | Pull with rebase |
+| gp | git push | Push to remote |
+| ggpush | git push origin HEAD | Push current branch |
+| gpf | git push --force-with-lease | Force push with lease |
+| gst | git stash | Stash changes |
+| gstp | git stash pop | Pop stash |
+| gstl | git stash list | List stashes |
+| gcl | git clean -fd | Clean untracked files |
+| grh | git reset --hard | Hard reset |
+
+## Quick Start
+
+1. **Install Glinter**:
+
+   ```bash
+   npm install -g @jannael/glinter
+   ```
+
+2. **Set up aliases** (optional, recommended):
+
+   ```bash
+   g setup
+   ```
+
+3. **Start using Glinter**:
+
+   ```bash
+   g add        # Interactive file staging
+   g commit     # Interactive commit
+   g status     # Standard git status
+   g push       # Standard git push
+   ```
+
+   
+
+
+### Screenshots
+
+| `g add` | `g commit` |
+|---|---|
+| ![glinter add](./screenshots/ga.png) | ![glinter commit](./screenshots/gc.png) |
 
 
 
