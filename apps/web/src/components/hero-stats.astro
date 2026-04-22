@@ -1,69 +1,17 @@
 ---
-Astro.response.headers.set(
-	'Cache-Control',
-	'public, s-maxage=3600, stale-while-revalidate=600',
-)
-
 import ChartSvg from '@/assets/chart.svg?raw'
 import DownloadSvg from '@/assets/download.svg?raw'
 import StarSvg from '@/assets/star.svg?raw'
+import {
+	REPO_API,
+	STARS_CACHE_TTL_SECONDS,
+	STATS_CACHE_TTL_SECONDS,
+	TOTAL_DOWNLOADS_API,
+	WEEKLY_DOWNLOADS_API,
+} from '@/constants'
+import { formatStat, readJson } from '@/utils/utils'
 
-const REPO_API = 'https://api.github.com/repos/jannael/glinter'
-const WEEKLY_DOWNLOADS_API =
-	'https://api.npmjs.org/downloads/point/last-week/@jannael/glinter'
-const TOTAL_DOWNLOADS_API = `https://api.npmjs.org/downloads/point/2015-01-01:${new Date().toISOString().slice(0, 10)}/@jannael/glinter`
-const STARS_CACHE_TTL_SECONDS = 60 * 5
-const STATS_CACHE_TTL_SECONDS = 60 * 60 * 24
-
-type CloudflareRequestInit = RequestInit & {
-	cf?: {
-		cacheTtl?: number
-		cacheEverything?: boolean
-	}
-}
-
-function formatStat(value: number | null) {
-	if (value === null || Number.isNaN(value)) {
-		return '--'
-	}
-
-	if (value >= 1_000_000) {
-		return `${(value / 1_000_000).toFixed(1).replace(/\.0$/, '')}M`
-	}
-
-	if (value >= 1_000) {
-		return `${(value / 1_000).toFixed(1).replace(/\.0$/, '')}k`
-	}
-
-	return String(value)
-}
-
-async function readJson<T>(url: string, cacheTtlSeconds: number) {
-	try {
-		const requestInit: CloudflareRequestInit = {
-			headers: {
-				Accept: 'application/json',
-				'User-Agent': 'glinter-web',
-			},
-			cf: {
-				cacheEverything: true,
-				cacheTtl: cacheTtlSeconds,
-			},
-		}
-
-		const response = await fetch(url, requestInit)
-
-		if (!response.ok) {
-			return null
-		}
-
-		return (await response.json()) as T
-	} catch {
-		return null
-	}
-}
-
-const [repo, weekly, total] = await Promise.all([
+const responses = await Promise.all([
 	readJson<{ stargazers_count?: number }>(REPO_API, STARS_CACHE_TTL_SECONDS),
 	readJson<{ downloads?: number }>(
 		WEEKLY_DOWNLOADS_API,
@@ -75,11 +23,23 @@ const [repo, weekly, total] = await Promise.all([
 	),
 ])
 
+const hasError = responses.some((response) => !response.success)
+Astro.response.headers.set(
+	'Cache-Control',
+	hasError ? 'no-store' : 'public, s-maxage=600, stale-while-revalidate=60',
+)
+
+const { data: repo } = responses[0]
+const { data: weekly } = responses[1]
+const { data: total } = responses[2]
+
 const stats = {
 	stars: formatStat(repo?.stargazers_count ?? 100),
 	weeklyDownloads: formatStat(weekly?.downloads ?? null),
 	totalDownloads: formatStat(total?.downloads ?? null),
 }
+
+export const prerender = false
 ---
 
 <ul class="flex items-center gap-3 w-fit h-16 px-4 mt-0 lg:mb-0">
