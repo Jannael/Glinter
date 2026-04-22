@@ -1,6 +1,6 @@
 {
 	"name": "@jannael/glinter",
-	"version": "1.2.1",
+	"version": "develop version",
 	"description": "A high-performance, transparent Git wrapper with interactive staging",
 	"type": "module",
 	"private": false,
@@ -31,19 +31,18 @@
 		"dist"
 	],
 	"exports": {
-		".": "./dist/index.js"
+		".": "./apps/cli/index.ts"
 	},
 	"scripts": {
 		"build:cli": "bun build ./apps/cli/index.ts --outfile=./dist/index.js --target=bun",
 		"prepublishOnly": "bun run build:cli",
-
 		"test": "vitest",
 		"lint": "biome check",
 		"lint:fix": "biome format --write",
 		"type-check": "bunx tsc --noEmit"
 	},
 	"bin": {
-		"g": "./dist/index.js"
+		"g": "./apps/cli/index.ts"
 	},
 	"engines": {
 		"bun": ">=1.0.0"
