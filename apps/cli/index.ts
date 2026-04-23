@@ -1,6 +1,6 @@
 #!/usr/bin/env bun
-import { AVAILABLE_COMMANDS } from './commands'
-import { COMMANDS_FN } from './commands-fn'
+import { AVAILABLE_COMMANDS } from '@/commands'
+import { COMMANDS_FN } from '@/commands-fn'
 
 const args = Bun.argv.slice(2)
 
