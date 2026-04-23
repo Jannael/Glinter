@@ -6,11 +6,7 @@ const args = Bun.argv.slice(2)
 
 const command = AVAILABLE_COMMANDS.find((command) => command.name === args[0])
 
-if (command) {
-	if (args.length > 1 && !command.allowGitArgs) {
-		console.error('This command does not accept any arguments')
-		process.exit(1)
-	}
+if (command && args.length === 1) {
 	await COMMANDS_FN[command.name]?.(args.slice(1))
 } else {
 	const proc = Bun.spawn(['git', ...args], {
