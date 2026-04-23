@@ -2,7 +2,6 @@
 import '@/styles/global.css'
 import '@fontsource-variable/jost'
 import jostLatinWoff2 from '@fontsource-variable/jost/files/jost-latin-wght-normal.woff2?url'
-import Noise from '@/components/noise.astro'
 
 interface Props {
 	title?: string
@@ -112,7 +111,6 @@ const structuredData = {
 		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 	</head>
 	<body class="bg-[#0a0a0a] text-zinc-300 min-h-screen max-w-9xl m-auto">
-		<Noise/>
 		<main>
 			<slot />
 		</main>
