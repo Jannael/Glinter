@@ -18,7 +18,7 @@ const canonicalUrl = new URL(Astro.url.pathname, site).toString()
 const ogImageUrl = new URL('/og.png', site).toString()
 const ogImageAlt = 'Glinter CLI preview showing interactive git workflow commands'
 const homeUrl = new URL('/', site).toString()
-const logoUrl = new URL('/icon-192.webp', site).toString()
+const logoUrl = new URL('/logo-512-white.webp', site).toString()
 const organizationId = `${homeUrl}#organization`
 const websiteId = `${homeUrl}#website`
 const softwareAppId = `${homeUrl}#software-application`
@@ -82,8 +82,11 @@ const structuredData = {
 		<link rel="canonical" href={canonicalUrl} />
 		<link rel="icon" href="/favicon-32x32.svg" sizes="32x32" type="image/svg+xml" />
 		<link rel="icon" href="/favicon-16x16.svg" sizes="16x16" type="image/svg+xml" />
-		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-		<link rel="apple-touch-icon" href="/apple-touch-icon.webp" />
+		<link rel="icon" href="/logo-192-black.webp" sizes="192x192" type="image/webp" media="(prefers-color-scheme: light)" />
+		<link rel="icon" href="/logo-192-white.webp" sizes="192x192" type="image/webp" media="(prefers-color-scheme: dark)" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon-black.webp" media="(prefers-color-scheme: light)" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon-white.webp" media="(prefers-color-scheme: dark)" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon-white.webp" />
 		<link rel="manifest" href="/site.webmanifest" />
 		<link rel="preload" href={jostLatinWoff2} as="font" type="font/woff2" crossorigin />
 		<meta name="theme-color" content="#0a0a0a" />
