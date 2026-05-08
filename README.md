@@ -39,6 +39,12 @@ Your browser does not support the video tag.
 
 - **Transparent Wrapper**: For every other command (like `commit`, `push`, `log`, or `status`), Glinter acts as a direct tunnel to Git. It preserves all original colors, formatting, and interactive features of the native Git CLI.
 
+## Test environment
+
+- for windows i used my own laptop (windows 11) so if you have a problem please create an issue
+
+- for linux i used WSL (windows subsystem linux) with a kali-linux vm so if you have a problem please create an issue
+
 ## How it works
 
 Glinter is designed to be as "natural" as possible, meaning it shouldn't feel like a wrapper at all.
