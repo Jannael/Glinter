@@ -73,8 +73,7 @@ export async function readJson<T>(url: string, cacheTtlSeconds: number) {
 	}
 
 	const loading = (async () => {
-		const sharedCache = (globalThis.caches as unknown as { default: Cache })
-			?.default
+		const sharedCache = (globalThis as any).caches?.default as any | undefined
 		const cacheRequest = getCloudflareCacheRequest(url)
 		if (sharedCache) {
 			const cachedResponse = await sharedCache.match(cacheRequest)
