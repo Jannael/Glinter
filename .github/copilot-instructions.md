@@ -1,6 +1,7 @@
 # Copilot Instructions for Glinter
 
 ## Build, test, and lint commands
+
 - Install deps: `bun install`
 - Build: `bun run build` (outputs `dist/index.js`)
 - Lint: `bun run lint`
@@ -10,6 +11,7 @@
 - Run tests by name: `bun test -t "SwitchCommand"`
 
 ## High-level architecture
+
 - `src/index.ts` is the CLI entrypoint:
   - `g add` (without extra args) runs the interactive add workflow
   - `g switch` (without extra args) runs the interactive branch switch workflow
@@ -28,6 +30,7 @@
   - `src/test/*`: test structure mirrors feature slices
 
 ## Key conventions in this repo
+
 - Use **Bun** tooling and runtime (no npm/yarn flows in this repo’s workflow).
 - Keep the “transparent wrapper” behavior for non-enhanced commands: forward to git with inherited stdio instead of rebuilding git UX.
 - For status parsing in add flow, use `git status --porcelain -z` and NUL-splitting (`'\0'`) for robust filename handling.

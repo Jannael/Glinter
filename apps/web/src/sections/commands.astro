@@ -2,41 +2,56 @@
 import { AVAILABLE_COMMANDS } from 'commands'
 ---
 
-<section id="commands" class="flex flex-col items-center justify-center px-6 lg:px-0 max-w-7xl mx-auto w-full mb-20 lg:mb-40">
-  <div class="flex items-start w-full">
-    <div class="flex flex-col">
-      <h3 class="text-3xl lg:text-4xl font-bold text-secondary mb-6">Commands</h3>
-      <p class="text-secondary/60 text-lg mb-10 leading-relaxed h-15">Available Glinter commands. <a href="/alias" class="text-accent hover:text-accent/80 transition-colors">To see aliases, click here.</a></p>
-    </div>
-  </div>
-  <div class="flex-1 overflow-y-auto font-mono text-[15px] custom-scrollbar border border-secondary/10 rounded-xl w-full">
-    <ul class="flex flex-col divide-y divide-secondary/10">
-      {AVAILABLE_COMMANDS.map((cmd) => (
-        <li class="flex flex-row items-center justify-between px-6 py-5 hover:bg-secondary/30 transition-colors group rounded-xl">
-          <span class="text-accent group-hover:text-accent/80 transition-colors font-medium tracking-wide">
-            {cmd.command}
-          </span>
-          <span class="text-secondary/40 group-hover:text-secondary/80 transition-colors tracking-wide text-right">
-            {cmd.description}
-          </span>
-        </li>
-      ))}
-    </ul>
-  </div>
+<section
+	id="commands"
+	class="mx-auto mb-20 flex w-full max-w-7xl flex-col items-center justify-center px-6 lg:mb-40 lg:px-0"
+>
+	<div class="flex w-full items-start">
+		<div class="flex flex-col">
+			<h3 class="text-secondary mb-6 text-3xl font-bold lg:text-4xl">
+				Commands
+			</h3>
+			<p class="text-secondary/60 mb-10 h-15 text-lg leading-relaxed">
+				Available Glinter commands. <a
+					href="/alias"
+					class="text-accent hover:text-accent/80 transition-colors"
+					>To see aliases, click here.</a
+				>
+			</p>
+		</div>
+	</div>
+	<div
+		class="custom-scrollbar border-secondary/10 w-full flex-1 overflow-y-auto rounded-xl border font-mono text-[15px]"
+	>
+		<ul class="divide-secondary/10 flex flex-col divide-y">
+			{
+				AVAILABLE_COMMANDS.map((cmd) => (
+					<li class="hover:bg-secondary/30 group flex flex-row items-center justify-between rounded-xl px-6 py-5 transition-colors">
+						<span class="text-accent group-hover:text-accent/80 font-medium tracking-wide transition-colors">
+							{cmd.command}
+						</span>
+						<span class="text-secondary/40 group-hover:text-secondary/80 text-right tracking-wide transition-colors">
+							{cmd.description}
+						</span>
+					</li>
+				))
+			}
+		</ul>
+	</div>
 </section>
 
 <style>
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
-  }
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #27272a;
-    border-radius: 10px;
-  }
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #3f3f46;
-  }
+	.custom-scrollbar::-webkit-scrollbar {
+		width: 6px;
+	}
+	.custom-scrollbar::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	.custom-scrollbar::-webkit-scrollbar-thumb {
+		background: #27272a;
+		border-radius: 10px;
+	}
+	.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+		background: #3f3f46;
+	}
 </style>

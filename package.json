@@ -37,8 +37,10 @@
 		"build:cli": "bun build ./apps/cli/index.ts --outfile=./dist/index.js --target=bun",
 		"prepublishOnly": "bun run build:cli",
 		"test": "vitest",
-		"lint": "biome check",
-		"lint:fix": "biome format --write",
+		"lint": "oxlint",
+		"lint:fix": "oxlint --fix",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
 		"type-check": "bunx tsc --noEmit"
 	},
 	"bin": {
@@ -48,8 +50,11 @@
 		"bun": ">=1.0.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.4.10",
 		"@types/bun": "latest",
+		"oxlint": "1.63.0",
+		"prettier": "3.8.3",
+		"prettier-plugin-astro": "0.14.1",
+		"prettier-plugin-tailwindcss": "0.8.0",
 		"vitest": "4.1.4",
 		"wrangler": "4.84.1"
 	},
