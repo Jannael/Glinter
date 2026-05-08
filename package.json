@@ -41,7 +41,8 @@
 		"lint:fix": "oxlint --fix",
 		"format": "prettier --write .",
 		"format:check": "prettier --check .",
-		"type-check": "bunx tsc --noEmit"
+		"type-check": "bunx tsc --noEmit",
+		"prepare": "husky"
 	},
 	"bin": {
 		"g": "./apps/cli/index.ts"
@@ -51,11 +52,13 @@
 	},
 	"devDependencies": {
 		"@types/bun": "latest",
+		"husky": "9.1.7",
 		"oxlint": "1.63.0",
 		"prettier": "3.8.3",
 		"prettier-plugin-astro": "0.14.1",
 		"prettier-plugin-tailwindcss": "0.8.0",
 		"vitest": "4.1.4",
+		"lint-staged": "16.4.0",
 		"wrangler": "4.84.1"
 	},
 	"peerDependencies": {
@@ -64,5 +67,11 @@
 	},
 	"dependencies": {
 		"@clack/prompts": "1.2.0"
+	},
+	"lint-staged": {
+		"*.{ts,tsx,js,jsx,astro}": [
+			"bun run lint:fix",
+			"bun run fmt"
+		]
 	}
 }
