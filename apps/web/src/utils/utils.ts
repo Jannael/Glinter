@@ -55,7 +55,9 @@ function setMemoryCached<T>(key: string, data: T, cacheTtlSeconds: number) {
 }
 
 function getCloudflareCacheRequest(url: string) {
-	return new Request(`https://glinter-cache.internal/?url=${encodeURIComponent(url)}`)
+	return new Request(
+		`https://glinter-cache.internal/?url=${encodeURIComponent(url)}`,
+	)
 }
 
 export async function readJson<T>(url: string, cacheTtlSeconds: number) {
@@ -71,7 +73,7 @@ export async function readJson<T>(url: string, cacheTtlSeconds: number) {
 	}
 
 	const loading = (async () => {
-		const sharedCache = (globalThis.caches as unknown as { default: Cache })?.default
+		const sharedCache = (globalThis as any).caches?.default as any | undefined
 		const cacheRequest = getCloudflareCacheRequest(url)
 		if (sharedCache) {
 			const cachedResponse = await sharedCache.match(cacheRequest)

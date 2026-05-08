@@ -24,24 +24,30 @@ const features = [
 ]
 ---
 
-<ul class="flex flex-col gap-0 font-sans w-full h-full">
-  {features.map((feature, index) => (
-    <li class="relative flex items-start gap-5 pb-9 group last:pb-0">
-      {/* Decorative line connecting items */}
-      {index !== features.length - 1 && (
-        <div class="absolute left-[11px] top-6 bottom-0 w-[2px] bg-secondary/10" />
-      )}
-      
-      {/* Circle Icon */}
-      <div class="relative z-10 shrink-0 mt-0.5">
-        <div class="w-6 h-6 rounded-full border-2 border-secondary/10 bg-transparent group-hover:border-secondary/80 transition-colors"></div>
-      </div>
-      
-      {/* Text Content */}
-      <div class="flex flex-col">
-        <h3 class="text-secondary font-semibold text-lg hover:text-secondary/80 transition-colors">{feature.title}</h3>
-        <p class="text-secondary/60 text-[15px] mt-0.5">{feature.description}</p>
-      </div>
-    </li>
-  ))}
+<ul class="flex h-full w-full flex-col gap-0 font-sans">
+	{
+		features.map((feature, index) => (
+			<li class="group relative flex items-start gap-5 pb-9 last:pb-0">
+				{/* Decorative line connecting items */}
+				{index !== features.length - 1 && (
+					<div class="bg-secondary/10 absolute top-6 bottom-0 left-[11px] w-[2px]" />
+				)}
+
+				{/* Circle Icon */}
+				<div class="relative z-10 mt-0.5 shrink-0">
+					<div class="border-secondary/10 group-hover:border-secondary/80 h-6 w-6 rounded-full border-2 bg-transparent transition-colors" />
+				</div>
+
+				{/* Text Content */}
+				<div class="flex flex-col">
+					<h3 class="text-secondary hover:text-secondary/80 text-lg font-semibold transition-colors">
+						{feature.title}
+					</h3>
+					<p class="text-secondary/60 mt-0.5 text-[15px]">
+						{feature.description}
+					</p>
+				</div>
+			</li>
+		))
+	}
 </ul>
