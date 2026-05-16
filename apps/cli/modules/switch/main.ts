@@ -9,10 +9,7 @@ export async function switchCommand() {
 	const switchBranchUseCase = new SwitchBranch(switchRepo)
 	const getBranchesUseCase = new GetBranchesUseCase(switchRepo)
 
-	const switchCommand = new SwitchCommand(
-		getBranchesUseCase,
-		switchBranchUseCase,
-	)
+	const switchCmd = new SwitchCommand(getBranchesUseCase, switchBranchUseCase)
 
-	await switchCommand.execute()
+	await switchCmd.execute()
 }

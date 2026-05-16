@@ -10,8 +10,8 @@ export async function setupCommand() {
 	const setupAliasesUseCase = new SetupAliasesUseCase(aliasRepository)
 
 	// Instantiate Command
-	const setupCommand = new SetupCommand(setupAliasesUseCase)
+	const setupCmd = new SetupCommand(setupAliasesUseCase)
 
 	// Execute
-	await setupCommand.execute()
+	await setupCmd.execute()
 }

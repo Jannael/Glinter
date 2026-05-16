@@ -7,7 +7,7 @@ export async function commitCommand() {
 
 	const commitUseCase = new CommitUseCase(commitRepository)
 
-	const commitCommand = new CommitCommand(commitUseCase)
+	const commitCmd = new CommitCommand(commitUseCase)
 
-	await commitCommand.execute()
+	await commitCmd.execute()
 }
