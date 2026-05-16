@@ -34,8 +34,8 @@
 		".": "./apps/cli/index.ts"
 	},
 	"scripts": {
-		"build:cli": "bun build ./apps/cli/index.ts --outfile=./dist/index.js --target=bun",
-		"prepublishOnly": "bun run build:cli",
+		"build": "bun build ./apps/cli/index.ts --outfile=./dist/index.js --target=bun",
+		"prepublishOnly": "bun run build",
 		"test": "vitest",
 		"lint": "oxlint",
 		"lint:fix": "oxlint --fix",
