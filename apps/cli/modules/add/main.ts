@@ -12,8 +12,8 @@ export async function addCommand() {
 	const stageChangesUseCase = new StageChangesUseCase(gitRepository)
 
 	// Instantiate Command
-	const addCommand = new AddCommand(getChangesUseCase, stageChangesUseCase)
+	const addCmd = new AddCommand(getChangesUseCase, stageChangesUseCase)
 
 	// Execute
-	await addCommand.execute()
+	await addCmd.execute()
 }

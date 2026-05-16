@@ -15,6 +15,7 @@
 	},
 	"dependencies": {
 		"@astrojs/cloudflare": "13.5.1",
+		"@astrojs/sitemap": "3.7.2",
 		"@fontsource-variable/jost": "5.2.8",
 		"@tailwindcss/vite": "4.3.0",
 		"astro": "6.3.3",
@@ -23,8 +24,5 @@
 	"devDependencies": {
 		"@tailwindcss/typography": "0.5.19",
 		"wrangler": "4.92.0"
-	},
-	"overrides": {
-		"vite": "8.0.13"
 	}
 }

@@ -23,9 +23,7 @@ export class AddCommand {
 			}
 
 			// Add 'all' option at the top
-			const options = [
-				...changes.map((c) => ({ value: c.value, label: c.label })),
-			]
+			const options = changes.map((c) => ({ value: c.value, label: c.label }))
 
 			const selectedChanges = await MultiSelect({
 				message:
