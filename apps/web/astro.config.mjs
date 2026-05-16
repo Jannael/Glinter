@@ -15,5 +15,11 @@ export default defineConfig({
 	},
 
 	adapter: cloudflare(),
-	integrations: [sitemap()],
+	integrations: [
+		sitemap({
+			lastmod: new Date(),
+			priority: 0.7,
+			changefreq: 'weekly',
+		}),
+	],
 })

@@ -1,9 +1,29 @@
 ---
 import { ALIASES } from 'alias'
 import Layout from '@/layouts/Layout.astro'
+
+const site = Astro.site ?? new URL('https://glinter.jannael.com')
+const breadcrumbData = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{
+			'@type': 'ListItem',
+			position: 1,
+			name: 'Home',
+			item: new URL('/', site).toString(),
+		},
+		{
+			'@type': 'ListItem',
+			position: 2,
+			name: 'Aliases',
+			item: new URL('/alias/', site).toString(),
+		},
+	],
+}
 ---
 
-<Layout title="Glinter | Aliases" description="List of all aliases for glinter">
+<Layout title="Glinter | Git Aliases Reference - All Commands & Shortcuts" description="Complete list of Glinter Git aliases and shortcuts configured automatically on setup. Speed up your Git workflow with these commands.">
 	<section
 		class="mx-auto flex w-full max-w-7xl flex-col items-center justify-center px-6 py-10 lg:w-8/10 lg:flex-row lg:py-20"
 		id="commands"
@@ -51,6 +71,8 @@ import Layout from '@/layouts/Layout.astro'
 		</div>
 	</section>
 </Layout>
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbData)} />
 
 <style>
 	/* Optional specific scrollbar styling if the global one needs tweaking for this component */
