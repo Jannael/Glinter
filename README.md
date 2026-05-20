@@ -6,9 +6,6 @@
       <img alt="Glinter" src="https://github.com/Jannael/glinter/raw/main/apps/web/public/og.png">
     </picture>
   </a>
-  <br>
-  <br>
-  <br>
 </p>
 
 Glinter is a high-performance, transparent Git wrapper built with **Bun**.
@@ -20,6 +17,12 @@ Glinter is a high-performance, transparent Git wrapper built with **Bun**.
 [Quick start](https://glinter.jannael.com/#quick-start)
 
 ## Preview
+
+### Badge
+
+| Preview | Copy |
+| ------- | ---- |
+| [![Glinter](https://glinter.jannael.com/badge.svg)](https://glinter.jannael.com) | `[![Glinter](https://glinter.jannael.com/badge.svg)](https://glinter.jannael.com)` |
 
 <video src="https://github.com/user-attachments/assets/63b401a0-e1e1-453c-9e38-c36cd14e200f" controls="false" autoplay="true" loop="true" muted="true" style="max-width: 100%;">
 Your browser does not support the video tag.
