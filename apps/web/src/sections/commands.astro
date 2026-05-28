@@ -3,55 +3,35 @@ import { AVAILABLE_COMMANDS } from 'commands'
 ---
 
 <section
-	id="commands"
-	class="mx-auto mb-20 flex w-full max-w-7xl flex-col items-center justify-center px-6 lg:mb-40 lg:px-0"
+  id="commands"
+  class="mx-auto mb-20 flex w-full max-w-7xl flex-col items-center justify-center px-6 lg:mb-40 lg:px-0"
 >
-	<div class="flex w-full items-start">
-		<div class="flex flex-col">
-			<h3 class="text-secondary mb-6 text-3xl font-bold lg:text-4xl">
-				Commands
-			</h3>
-			<p class="text-secondary/60 mb-10 h-15 text-lg leading-relaxed">
-				Available Glinter commands. <a
-					href="/alias"
-					class="text-accent hover:text-accent/80 transition-colors"
-					>To see aliases, click here.</a
-				>
-			</p>
-		</div>
-	</div>
-	<div
-		class="custom-scrollbar border-secondary/10 w-full flex-1 overflow-y-auto rounded-xl border font-mono text-[15px]"
-	>
-		<ul class="divide-secondary/10 flex flex-col divide-y">
-			{
-				AVAILABLE_COMMANDS.map((cmd) => (
-					<li class="hover:bg-secondary/30 group flex flex-row items-center justify-between rounded-xl px-6 py-5 transition-colors">
-						<span class="text-accent group-hover:text-accent/80 font-medium tracking-wide transition-colors">
-							{cmd.command}
-						</span>
-						<span class="text-secondary/40 group-hover:text-secondary/80 text-right tracking-wide transition-colors">
-							{cmd.description}
-						</span>
-					</li>
-				))
-			}
-		</ul>
-	</div>
-</section>
+  <div class="flex w-full items-start">
+    <div class="flex flex-col">
+      <h3 class="text-secondary mb-2 text-3xl font-bold lg:text-4xl">
+        Commands
+      </h3>
+      <p class="text-secondary/60 mb-10 text-lg leading-relaxed">
+        Available Glinter commands.{' '}
+        <a href="/alias" class="text-accent hover:text-accent/80 transition-colors">
+          To see aliases, click here.
+        </a>
+      </p>
+    </div>
+  </div>
 
-<style>
-	.custom-scrollbar::-webkit-scrollbar {
-		width: 6px;
-	}
-	.custom-scrollbar::-webkit-scrollbar-track {
-		background: transparent;
-	}
-	.custom-scrollbar::-webkit-scrollbar-thumb {
-		background: #27272a;
-		border-radius: 10px;
-	}
-	.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-		background: #3f3f46;
-	}
-</style>
+  <ul class="grid w-full gap-4 md:grid-cols-2 lg:grid-cols-3">
+    {
+      AVAILABLE_COMMANDS.map((cmd) => (
+        <li class="group border-secondary/10 hover:bg-secondary/10 hover:border-secondary/20 flex flex-col gap-2 rounded-xl border p-4 transition-colors">
+          <span class="text-accent font-mono text-sm font-medium tracking-wide">
+            {cmd.command}
+          </span>
+          <span class="text-secondary/50 group-hover:text-secondary/70 text-xs leading-relaxed transition-colors">
+            {cmd.description}
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+</section>
