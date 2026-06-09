@@ -7,7 +7,10 @@ export class BunAliasWindows implements AliasRepository {
 	async setAlias(name: string, value: string): Promise<void> {
 		const psProfilePath = this.getWindowsProfilePath()
 
-		fs.mkdirSync(path.dirname(psProfilePath), { recursive: true })
+		const dir = path.dirname(psProfilePath)
+		if (!fs.existsSync(dir)) {
+			fs.mkdirSync(dir, { recursive: true })
+		}
 		const current = fs.existsSync(psProfilePath)
 			? fs.readFileSync(psProfilePath, 'utf8')
 			: ''

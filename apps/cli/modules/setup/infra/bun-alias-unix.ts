@@ -7,7 +7,10 @@ export class BunAliasUnix implements AliasRepository {
 	async setAlias(name: string, value: string): Promise<void> {
 		const profilePath = this.getUnixProfilePath()
 
-		fs.mkdirSync(path.dirname(profilePath), { recursive: true })
+		const dir = path.dirname(profilePath)
+		if (!fs.existsSync(dir)) {
+			fs.mkdirSync(dir, { recursive: true })
+		}
 		const current = fs.existsSync(profilePath)
 			? fs.readFileSync(profilePath, 'utf8')
 			: ''
