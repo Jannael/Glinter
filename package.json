@@ -7,7 +7,7 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Jannael/Glinter.git"
+		"url": "git+https://github.com/Jannael/Glinter.git"
 	},
 	"author": {
 		"name": "Jannael",
@@ -45,7 +45,7 @@
 		"prepare": "husky"
 	},
 	"bin": {
-		"g": "./dist/index.js"
+		"g": "dist/index.js"
 	},
 	"engines": {
 		"bun": ">=1.0.0"
