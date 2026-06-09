@@ -10,6 +10,8 @@
 
 Glinter is a high-performance, transparent Git wrapper built with **Bun**.
 
+[Tutorial](https://youtu.be/LQWp6flYeyI)
+
 [Commands](https://glinter.jannael.com/#commands)
 
 [Aliases](https://glinter.jannael.com/alias)
