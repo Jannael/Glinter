@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it } from 'bun:test'
 import { Change } from '@/modules/add/domain/change'
 import { GREEN, YELLOW } from '@/utils/colors'
 

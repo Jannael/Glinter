@@ -1,26 +1,27 @@
-import { beforeEach, describe, expect, it, type Mock, vi } from 'vitest'
+import { beforeEach, describe, expect, it, mock, type Mock } from 'bun:test'
+type MockFn = Mock<(...args: unknown[]) => Promise<unknown>>
 import { CommitUseCase } from '@/modules/commit/app/commit.use-case'
 import { CommitCommand } from '@/modules/commit/app/commit-command'
 import * as inputModule from '@/utils/input'
 import * as selectModule from '@/utils/select'
 
+mock.module('@/utils/select', () => ({
+	Select: mock(),
+}))
+
+mock.module('@/utils/input', () => ({
+	Input: mock(),
+}))
+
 const commitMockRepo = {
-	commit: vi.fn(),
+	commit: mock(),
 }
-
-vi.mock('@/utils/select', () => ({
-	Select: vi.fn(),
-}))
-
-vi.mock('@/utils/input', () => ({
-	Input: vi.fn(),
-}))
 
 describe('CommitCommand', () => {
 	const commitUseCase = new CommitUseCase(commitMockRepo)
 
 	beforeEach(() => {
-		vi.clearAllMocks()
+		commitMockRepo.commit.mockClear()
 	})
 
 	it('execute commit use case', async () => {
@@ -30,8 +31,8 @@ describe('CommitCommand', () => {
 	})
 
 	it('execute commit command', async () => {
-		const selectMock = selectModule.Select as unknown as Mock
-		const inputMock = inputModule.Input as unknown as Mock
+		const selectMock = selectModule.Select as unknown as MockFn
+		const inputMock = inputModule.Input as unknown as MockFn
 		selectMock.mockResolvedValue('feat')
 		inputMock.mockResolvedValue('add commit prompt')
 

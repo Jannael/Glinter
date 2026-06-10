@@ -1,27 +1,28 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { beforeEach, describe, expect, it, mock, type Mock } from 'bun:test'
+type MockFn = Mock<(...args: unknown[]) => Promise<unknown>>
 import { AddCommand } from '@/modules/add/app/add-command'
 import { GetChangesUseCase } from '@/modules/add/app/get-changes.use-case'
 import { StageChangesUseCase } from '@/modules/add/app/stage-changes.use-case'
 import * as multiselectModule from '@/utils/multiselect'
 
+mock.module('@/utils/multiselect', () => ({
+	MultiSelect: mock(),
+}))
+
 const mockFiles = [' M bun.lock', ' A a.lock']
 
 const mockGitRepo = {
 	getEntries: () => Promise.resolve(mockFiles),
-	stageFiles: vi.fn(),
+	stageFiles: mock(),
 }
-
-vi.mock('@/utils/multiselect', () => ({
-	MultiSelect: vi.fn(),
-}))
 
 describe('AddCommand', () => {
 	const getChangesUseCase = new GetChangesUseCase(mockGitRepo)
 	const stageChangesUseCase = new StageChangesUseCase(mockGitRepo)
-	const mockMultiSelect = vi.mocked(multiselectModule.MultiSelect)
+	const mockMultiSelect = multiselectModule.MultiSelect as unknown as MockFn
 
 	beforeEach(() => {
-		vi.clearAllMocks()
+		mockGitRepo.stageFiles.mockClear()
 	})
 
 	it('execute get changes', async () => {
