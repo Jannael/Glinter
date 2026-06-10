@@ -44,10 +44,7 @@ describe('SwitchCommand', () => {
 	})
 
 	it('execute switch command', async () => {
-		const switchCommand = new SwitchCommand(
-			getBranchesUseCase,
-			switchBranchUseCase,
-		)
+		const switchCommand = new SwitchCommand(getBranchesUseCase, switchBranchUseCase)
 
 		BranchMockRepo.getBranches.mockResolvedValue(mockBranches)
 

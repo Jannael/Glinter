@@ -1,26 +1,15 @@
-<article
-	class="flex w-full flex-col items-center justify-center py-6 font-mono lg:h-7/10 lg:flex-2/6 lg:py-12"
->
+<article class="flex w-full flex-col items-center justify-center py-6 font-mono lg:h-7/10 lg:flex-2/6 lg:py-12">
 	<div
 		class="flex h-95 w-full flex-col overflow-hidden rounded-lg border border-zinc-800 bg-zinc-950 shadow-2xl shadow-black/20 sm:h-95 lg:h-full"
 		id="terminal"
 		data-version="0.0.0"
 	>
-		<div
-			class="flex shrink-0 items-center gap-1.5 rounded-xl border-b border-zinc-800 px-3 py-2"
-		>
-			<span class="h-3 w-3 rounded-full border border-[#e0443e] bg-[#ff5f56]"
-			></span>
-			<span class="h-3 w-3 rounded-full border border-[#dea123] bg-[#ffbd2e]"
-			></span>
-			<span class="h-3 w-3 rounded-full border border-[#1aab29] bg-[#27c93f]"
-			></span>
+		<div class="flex shrink-0 items-center gap-1.5 rounded-xl border-b border-zinc-800 px-3 py-2">
+			<span class="h-3 w-3 rounded-full border border-[#e0443e] bg-[#ff5f56]"></span>
+			<span class="h-3 w-3 rounded-full border border-[#dea123] bg-[#ffbd2e]"></span>
+			<span class="h-3 w-3 rounded-full border border-[#1aab29] bg-[#27c93f]"></span>
 		</div>
-		<div
-			class="min-h-0 w-full flex-1 overflow-hidden p-3 text-[10px] leading-relaxed whitespace-pre sm:text-xs lg:p-4"
-			id="term-body"
-		>
-		</div>
+		<div class="min-h-0 w-full flex-1 overflow-hidden p-3 text-[10px] leading-relaxed whitespace-pre sm:text-xs lg:p-4" id="term-body"></div>
 	</div>
 </article>
 
@@ -59,8 +48,7 @@
 	function buildSteps() {
 		const steps: Step[] = []
 		// d => delay
-		const stepDelay = (delay: number, html: string, cls?: string) =>
-			steps.push({ html, delay, class: cls })
+		const stepDelay = (delay: number, html: string, cls?: string) => steps.push({ html, delay, class: cls })
 
 		steps.push({
 			type: 'char',
@@ -79,52 +67,27 @@
 		stepDelay(0, '')
 
 		for (const alias of ALIASES) {
-			const tag =
-				alias.kind === 'glinter' ? s(C.pk, '[glinter]') : s(C.cy, '[git]    ')
+			const tag = alias.kind === 'glinter' ? s(C.pk, '[glinter]') : s(C.cy, '[git]    ')
 			const { name, command } = alias
 
-			stepDelay(
-				0,
-				`  ${tag}    ${s(C.gn, name.padEnd(10))}` +
-					'→' +
-					s(C.w, `  ${command}`),
-			)
+			stepDelay(0, `  ${tag}    ${s(C.gn, name.padEnd(10))}` + '→' + s(C.w, `  ${command}`))
 		}
 
 		// apply aliases selector
 		stepDelay(0, '')
 		stepDelay(0, s(C.g, '|'))
-		stepDelay(
-			0,
-			s(C.ct, '*') +
-				space +
-				s(C.w, 'Apply these aliases to your global git config?'),
-		)
+		stepDelay(0, s(C.ct, '*') + space + s(C.w, 'Apply these aliases to your global git config?'))
 		stepDelay(0, s(C.ct, '|') + space + s(C.gn, '> ') + s(C.w, 'Yes /   No'))
 		stepDelay(1000, s(C.ct, '-'))
 
 		for (const alias of ALIASES) {
-			stepDelay(
-				200,
-				`  ${s(C.pk, alias.name.padEnd(8))} set ${s(C.gn, 'successfully'.padStart(10))}`,
-			)
+			stepDelay(200, `  ${s(C.pk, alias.name.padEnd(8))} set ${s(C.gn, 'successfully'.padStart(10))}`)
 		}
 
 		stepDelay(100, '')
-		stepDelay(
-			0,
-			s(C.w, '○') +
-				space +
-				s(C.gn, '✔ ') +
-				s(C.w, '25 aliases configured successfully'),
-		)
+		stepDelay(0, s(C.w, '○') + space + s(C.gn, '✔ ') + s(C.w, '25 aliases configured successfully'))
 		stepDelay(0, s(C.g, '|'))
-		stepDelay(
-			0,
-			s(C.g, '-') +
-				s(C.gn, ' GLINTER') +
-				s(C.w, ', if you like the project, give it a star on GitHub: '),
-		)
+		stepDelay(0, s(C.g, '-') + s(C.gn, ' GLINTER') + s(C.w, ', if you like the project, give it a star on GitHub: '))
 		stepDelay(0, s(C.w, 'https://github.com/jannael/glinter'))
 
 		stepDelay(0, '')
@@ -141,19 +104,13 @@
 		})
 
 		stepDelay(100, s(C.g, '|'))
-		stepDelay(
-			0,
-			s(C.ct, '*') + space + s(C.w, 'Select the changes you want to commit.'),
-		)
+		stepDelay(0, s(C.ct, '*') + space + s(C.w, 'Select the changes you want to commit.'))
 		stepDelay(0, s(C.ct, '|') + space + s(C.cy, '[space] to select'))
 		stepDelay(0, s(C.ct, '|') + space + s(C.gn, '[enter] to confirm'))
 		stepDelay(0, s(C.ct, '|') + space + s(C.pk, '[a] to select all'))
 		stepDelay(0, s(C.ct, '|') + space + s(C.r, '[esc] to cancel'))
 		stepDelay(100, s(C.ct, '|'))
-		stepDelay(
-			100,
-			s(C.ct, '|') + space + s(C.ct, '[•] ') + s(C.yw, 'modified: README.md'),
-		)
+		stepDelay(100, s(C.ct, '|') + space + s(C.ct, '[•] ') + s(C.yw, 'modified: README.md'))
 		stepDelay(100, s(C.ct, '-'))
 
 		return steps
@@ -169,11 +126,9 @@
 				const line = document.createElement('p')
 				line.id = step.target
 				body.appendChild(line)
-				const cursor =
-					'<span class="animate-pulse" style="' + C.w + '">▋</span>'
+				const cursor = '<span class="animate-pulse" style="' + C.w + '">▋</span>'
 
 				for (let i = 0; i < step.text.length; i++) {
-					const ch = step.text[i]
 					const sofar = step.text.slice(0, i + 1)
 					const colored = sofar
 
@@ -181,14 +136,7 @@
 					await sleep(step.charDelay)
 				}
 
-				line.innerHTML =
-					'<span style="' +
-					C.w +
-					'"></span><span style="' +
-					C.w +
-					'">' +
-					step.text +
-					'</span>'
+				line.innerHTML = '<span style="' + C.w + '"></span><span style="' + C.w + '">' + step.text + '</span>'
 				await sleep(step.delay)
 				continue
 			}
@@ -234,6 +182,7 @@
 
 			const line = document.createElement('p')
 			line.innerHTML = html || '&nbsp;'
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			if ((step as any).class) line.className = (step as any).class
 			body.appendChild(line)
 			body.scrollTop = body.scrollHeight

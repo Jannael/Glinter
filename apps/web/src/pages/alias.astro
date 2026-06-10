@@ -27,17 +27,12 @@ const breadcrumbData = {
 	title="Glinter | Git Aliases Reference - All Commands & Shortcuts"
 	description="Complete list of Glinter Git aliases and shortcuts configured automatically on setup. Speed up your Git workflow with these commands."
 >
-	<section
-		class="mx-auto flex w-full max-w-7xl flex-col items-center justify-center px-6 py-10 lg:w-8/10 lg:flex-row lg:py-20"
-		id="commands"
-	>
+	<section class="mx-auto flex w-full max-w-7xl flex-col items-center justify-center px-6 py-10 lg:w-8/10 lg:flex-row lg:py-20" id="commands">
 		<div class="flex w-full flex-col shadow-2xl">
 			<div class="flex w-full flex-col items-start">
 				<div class="flex w-full flex-col">
 					<div class="mb-6 flex w-full items-center justify-between">
-						<h3 class="text-secondary text-3xl font-bold lg:text-4xl">
-							Aliases
-						</h3>
+						<h3 class="text-secondary text-3xl font-bold lg:text-4xl">Aliases</h3>
 						<a
 							href="/"
 							class="border-secondary/20 text-secondary/80 hover:border-secondary/40 hover:text-secondary inline-flex w-fit items-center rounded-lg border px-4 py-2 text-sm font-medium transition-colors"
@@ -46,21 +41,16 @@ const breadcrumbData = {
 						</a>
 					</div>
 					<p class="text-secondary/60 mb-10 h-15 text-lg leading-relaxed">
-						These aliases are configured automatically at the system level when
-						you run the setup command.
+						These aliases are configured automatically at the system level when you run the setup command.
 					</p>
 				</div>
 
-				<div
-					class="custom-scrollbar border-secondary/10 w-full flex-1 rounded-xl border font-mono text-[15px]"
-				>
+				<div class="custom-scrollbar border-secondary/10 w-full flex-1 rounded-xl border font-mono text-[15px]">
 					<ul class="divide-secondary/10 flex flex-col divide-y">
 						{
 							ALIASES.map((alias) => (
 								<li class="hover:bg-secondary/30 group flex flex-row items-center justify-between rounded-xl px-6 py-5 transition-colors">
-									<span class="text-accent group-hover:text-accent/80 font-medium tracking-wide transition-colors">
-										{alias.name}
-									</span>
+									<span class="text-accent group-hover:text-accent/80 font-medium tracking-wide transition-colors">{alias.name}</span>
 									<span class="text-secondary/40 group-hover:text-secondary/80 text-right tracking-wide transition-colors">
 										{alias.kind === 'glinter' ? 'glinter ' : 'git '}
 										{alias.command}

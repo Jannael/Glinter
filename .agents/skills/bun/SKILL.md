@@ -2,8 +2,8 @@
 name: Bun
 description: Use when building, testing, or deploying JavaScript/TypeScript applications. Reach for Bun when you need to run scripts, manage packages, bundle code, or test applications with a single unified toolkit.
 metadata:
-    mintlify-proj: bun
-    version: "1.0"
+  mintlify-proj: bun
+  version: '1.0'
 ---
 
 # Bun Skill Reference
@@ -15,6 +15,7 @@ Bun is an all-in-one JavaScript/TypeScript toolkit that replaces Node.js, npm, a
 ## When to Use
 
 Use Bun when:
+
 - Running TypeScript/JSX files directly without compilation overhead (`bun run file.ts`)
 - Installing dependencies faster than npm/yarn/pnpm (`bun install`)
 - Running tests with Jest-compatible syntax (`bun test`)
@@ -29,27 +30,27 @@ Use Bun when:
 
 ### Core Commands
 
-| Task | Command | Notes |
-|------|---------|-------|
-| Run TypeScript file | `bun run file.ts` or `bun file.ts` | Transpiles on-the-fly; supports JSX |
-| Run package script | `bun run dev` | 28x faster than `npm run` |
-| Install dependencies | `bun install` | 25x faster than npm; creates `bun.lock` |
-| Add package | `bun add react` | Adds to `package.json` and installs |
-| Add dev dependency | `bun add -d typescript` | Installs as devDependency |
-| Run tests | `bun test` | Finds `*.test.ts`, `*.spec.ts` files |
-| Watch tests | `bun test --watch` | Re-runs on file changes |
-| Build bundle | `bun build ./index.ts --outdir ./dist` | Bundles for browser/server |
-| Watch build | `bun build ./index.ts --outdir ./dist --watch` | Rebuilds on changes |
-| Execute package | `bunx cowsay "hello"` | Like `npx` but faster |
+| Task                 | Command                                        | Notes                                   |
+| -------------------- | ---------------------------------------------- | --------------------------------------- |
+| Run TypeScript file  | `bun run file.ts` or `bun file.ts`             | Transpiles on-the-fly; supports JSX     |
+| Run package script   | `bun run dev`                                  | 28x faster than `npm run`               |
+| Install dependencies | `bun install`                                  | 25x faster than npm; creates `bun.lock` |
+| Add package          | `bun add react`                                | Adds to `package.json` and installs     |
+| Add dev dependency   | `bun add -d typescript`                        | Installs as devDependency               |
+| Run tests            | `bun test`                                     | Finds `*.test.ts`, `*.spec.ts` files    |
+| Watch tests          | `bun test --watch`                             | Re-runs on file changes                 |
+| Build bundle         | `bun build ./index.ts --outdir ./dist`         | Bundles for browser/server              |
+| Watch build          | `bun build ./index.ts --outdir ./dist --watch` | Rebuilds on changes                     |
+| Execute package      | `bunx cowsay "hello"`                          | Like `npx` but faster                   |
 
 ### Configuration Files
 
-| File | Purpose | Location |
-|------|---------|----------|
-| `bunfig.toml` | Bun-specific config (runtime, test, install, build) | Project root or `~/.bunfig.toml` |
-| `package.json` | Scripts, dependencies, workspaces | Project root |
-| `bun.lock` | Lockfile (text format by default) | Project root |
-| `tsconfig.json` | TypeScript config (Bun respects this) | Project root |
+| File            | Purpose                                             | Location                         |
+| --------------- | --------------------------------------------------- | -------------------------------- |
+| `bunfig.toml`   | Bun-specific config (runtime, test, install, build) | Project root or `~/.bunfig.toml` |
+| `package.json`  | Scripts, dependencies, workspaces                   | Project root                     |
+| `bun.lock`      | Lockfile (text format by default)                   | Project root                     |
+| `tsconfig.json` | TypeScript config (Bun respects this)               | Project root                     |
 
 ### Key bunfig.toml Sections
 
@@ -80,37 +81,38 @@ bun = true        # alias node to bun
 
 ### When to Use Hoisted vs. Isolated Installs
 
-| Scenario | Use | Reason |
-|----------|-----|--------|
-| New monorepo/workspace | `isolated` | Prevents phantom dependencies |
-| New single-package project | `hoisted` | Traditional npm behavior |
-| Existing pre-v1.3.2 project | `hoisted` | Backward compatibility |
+| Scenario                           | Use        | Reason                               |
+| ---------------------------------- | ---------- | ------------------------------------ |
+| New monorepo/workspace             | `isolated` | Prevents phantom dependencies        |
+| New single-package project         | `hoisted`  | Traditional npm behavior             |
+| Existing pre-v1.3.2 project        | `hoisted`  | Backward compatibility               |
 | Strict dependency isolation needed | `isolated` | Each package gets own `node_modules` |
 
 Use `bun install --linker isolated` or set in `bunfig.toml`.
 
 ### When to Use bun build vs. bun run
 
-| Task | Use | Why |
-|------|-----|-----|
-| Execute a script | `bun run` | Fast startup, no output files |
-| Prepare for browser | `bun build --target browser` | Optimizes for browser APIs |
-| Prepare for server | `bun build --target bun` or `--target node` | Optimizes for server APIs |
-| Create executable | `bun build --compile` | Single binary with Bun embedded |
-| Development server | `bun run` with `Bun.serve()` | Direct HTTP server in code |
+| Task                | Use                                         | Why                             |
+| ------------------- | ------------------------------------------- | ------------------------------- |
+| Execute a script    | `bun run`                                   | Fast startup, no output files   |
+| Prepare for browser | `bun build --target browser`                | Optimizes for browser APIs      |
+| Prepare for server  | `bun build --target bun` or `--target node` | Optimizes for server APIs       |
+| Create executable   | `bun build --compile`                       | Single binary with Bun embedded |
+| Development server  | `bun run` with `Bun.serve()`                | Direct HTTP server in code      |
 
 ### When to Use --watch vs. --concurrent
 
-| Flag | Use Case |
-|------|----------|
-| `bun --watch run dev` | Restart entire process on file change |
-| `bun test --concurrent` | Run async tests in parallel (faster) |
-| `bun test --watch` | Re-run tests on file change |
-| `bun build --watch` | Rebuild bundle on file change |
+| Flag                    | Use Case                              |
+| ----------------------- | ------------------------------------- |
+| `bun --watch run dev`   | Restart entire process on file change |
+| `bun test --concurrent` | Run async tests in parallel (faster)  |
+| `bun test --watch`      | Re-run tests on file change           |
+| `bun build --watch`     | Rebuild bundle on file change         |
 
 ## Workflow
 
 ### 1. Initialize a New Project
+
 ```bash
 bun init my-app
 # Choose template: Blank, React, or Library
@@ -118,6 +120,7 @@ cd my-app
 ```
 
 ### 2. Install Dependencies
+
 ```bash
 bun install
 # Or add specific packages
@@ -126,6 +129,7 @@ bun add -d @types/react
 ```
 
 ### 3. Create and Run Code
+
 ```bash
 # Create index.ts with your code
 bun run index.ts
@@ -135,6 +139,7 @@ bun run index.ts
 ```
 
 ### 4. Write Tests
+
 ```bash
 # Create math.test.ts
 # Import from "bun:test"
@@ -142,11 +147,13 @@ bun run index.ts
 ```
 
 ### 5. Bundle for Production
+
 ```bash
 bun build ./index.ts --outdir ./dist --minify
 ```
 
 ### 6. Deploy
+
 ```bash
 # Commit bun.lock to version control
 # In CI: bun ci (equivalent to bun install --frozen-lockfile)

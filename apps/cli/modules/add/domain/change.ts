@@ -47,16 +47,10 @@ export class Change {
 
 	getWarning(): string | null {
 		if (this.value.includes('.env')) {
-			return (
-				YELLOW({ text: ' .env file hidden' }) +
-				' (Add to .gitignore to avoid leaks)'
-			)
+			return YELLOW({ text: ' .env file hidden' }) + ' (Add to .gitignore to avoid leaks)'
 		}
 		if (this.value.includes('node_modules')) {
-			return (
-				YELLOW({ text: ' node_modules hidden' }) +
-				' (Add to .gitignore to save space)'
-			)
+			return YELLOW({ text: ' node_modules hidden' }) + ' (Add to .gitignore to save space)'
 		}
 		return null
 	}

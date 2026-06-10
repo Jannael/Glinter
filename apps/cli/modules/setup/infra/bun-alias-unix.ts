@@ -11,9 +11,7 @@ export class BunAliasUnix implements AliasRepository {
 		if (!fs.existsSync(dir)) {
 			fs.mkdirSync(dir, { recursive: true })
 		}
-		const current = fs.existsSync(profilePath)
-			? fs.readFileSync(profilePath, 'utf8')
-			: ''
+		const current = fs.existsSync(profilePath) ? fs.readFileSync(profilePath, 'utf8') : ''
 
 		const updated = this.upsertUnixProfileAlias(current, name, value)
 		fs.writeFileSync(profilePath, updated)
@@ -35,12 +33,7 @@ export class BunAliasUnix implements AliasRepository {
 		const home = os.homedir()
 		const shellName = path.basename(process.env.SHELL ?? '')
 
-		const preferredProfile =
-			shellName === 'zsh'
-				? '.zshrc'
-				: shellName === 'bash'
-					? '.bashrc'
-					: '.profile'
+		const preferredProfile = shellName === 'zsh' ? '.zshrc' : shellName === 'bash' ? '.bashrc' : '.profile'
 
 		const candidates = [preferredProfile, '.bashrc', '.zshrc', '.profile']
 		const uniqueCandidates = [...new Set(candidates)]

@@ -25,10 +25,7 @@ export class BunSwitchRepository implements SwitchRepository {
 		const exitCode = await proc.exited
 
 		if (exitCode !== 0) {
-			throw new ServerError(
-				'Git checkout failed',
-				`Failed to switch to branch ${branch}`,
-			)
+			throw new ServerError('Git checkout failed', `Failed to switch to branch ${branch}`)
 		}
 	}
 }

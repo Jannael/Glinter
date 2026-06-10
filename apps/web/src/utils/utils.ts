@@ -21,9 +21,7 @@ type CloudflareRequestInit = RequestInit & {
 	}
 }
 
-type ReadJsonResult<T> =
-	| { success: true; data: T }
-	| { success: false; data: null }
+type ReadJsonResult<T> = { success: true; data: T } | { success: false; data: null }
 
 type MemoryCacheEntry = {
 	expiresAt: number
@@ -55,9 +53,7 @@ function setMemoryCached<T>(key: string, data: T, cacheTtlSeconds: number) {
 }
 
 function getCloudflareCacheRequest(url: string) {
-	return new Request(
-		`https://glinter-cache.internal/?url=${encodeURIComponent(url)}`,
-	)
+	return new Request(`https://glinter-cache.internal/?url=${encodeURIComponent(url)}`)
 }
 
 export async function readJson<T>(url: string, cacheTtlSeconds: number) {
@@ -73,6 +69,7 @@ export async function readJson<T>(url: string, cacheTtlSeconds: number) {
 	}
 
 	const loading = (async () => {
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const sharedCache = (globalThis as any).caches?.default as any | undefined
 		const cacheRequest = getCloudflareCacheRequest(url)
 		if (sharedCache) {

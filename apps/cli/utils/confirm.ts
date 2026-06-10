@@ -1,14 +1,6 @@
 import { cancel, confirm, isCancel } from '@clack/prompts'
 
-export async function Confirm({
-	message,
-	cancelMessage,
-	exitOnCancel = true,
-}: {
-	message: string
-	cancelMessage?: string
-	exitOnCancel?: boolean
-}) {
+export async function Confirm({ message, cancelMessage, exitOnCancel = true }: { message: string; cancelMessage?: string; exitOnCancel?: boolean }) {
 	const confirmed = await confirm({
 		message,
 	})

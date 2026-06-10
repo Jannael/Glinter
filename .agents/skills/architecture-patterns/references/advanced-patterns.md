@@ -81,13 +81,13 @@ ecommerce/
 
 Both enforce inward-pointing dependencies. The difference is terminology and layering granularity:
 
-| Concern | Clean Architecture | Onion Architecture |
-|---|---|---|
-| Innermost ring | Entities | Domain Model |
-| Second ring | Use Cases | Domain Services |
-| Third ring | Interface Adapters | Application Services |
-| Outermost ring | Frameworks & Drivers | Infrastructure / UI / Tests |
-| Key insight | Controller is an adapter | Application Services = Use Cases |
+| Concern        | Clean Architecture       | Onion Architecture               |
+| -------------- | ------------------------ | -------------------------------- |
+| Innermost ring | Entities                 | Domain Model                     |
+| Second ring    | Use Cases                | Domain Services                  |
+| Third ring     | Interface Adapters       | Application Services             |
+| Outermost ring | Frameworks & Drivers     | Infrastructure / UI / Tests      |
+| Key insight    | Controller is an adapter | Application Services = Use Cases |
 
 Onion Architecture makes the Domain Services layer explicit — it hosts pure domain logic that spans multiple entities but has no I/O:
 
@@ -264,13 +264,13 @@ async def get_create_user_use_case() -> CreateUserUseCase:
 
 Use these rules when deciding aggregate boundaries:
 
-| Question | Guidance |
-|---|---|
-| Should these two objects always be consistent together? | Put them in the same aggregate. |
-| Can they be eventually consistent? | Put them in separate aggregates; use domain events to sync. |
-| Is one object the "owner" that controls access? | That object is the aggregate root. |
-| Does removing the root make the child meaningless? | Child belongs inside the aggregate. |
-| Are you loading thousands of objects to change one? | Aggregate is too large — split it. |
+| Question                                                | Guidance                                                    |
+| ------------------------------------------------------- | ----------------------------------------------------------- |
+| Should these two objects always be consistent together? | Put them in the same aggregate.                             |
+| Can they be eventually consistent?                      | Put them in separate aggregates; use domain events to sync. |
+| Is one object the "owner" that controls access?         | That object is the aggregate root.                          |
+| Does removing the root make the child meaningless?      | Child belongs inside the aggregate.                         |
+| Are you loading thousands of objects to change one?     | Aggregate is too large — split it.                          |
 
 **Practical example — Order vs. Customer:**
 

@@ -1,16 +1,9 @@
 <div>
 	<p class="mb-3 text-xs font-bold tracking-widest uppercase">Try it now</p>
-	<div
-		class="group flex h-16 w-fit cursor-pointer items-center gap-3 border border-zinc-800 bg-zinc-900/80 px-4 py-3"
-		id="install-cmd"
-	>
+	<div class="group flex h-16 w-fit cursor-pointer items-center gap-3 border border-zinc-800 bg-zinc-900/80 px-4 py-3" id="install-cmd">
 		<span class="text-zinc-600">$</span>
 		<span class="text-nowrap text-zinc-100">npm i -g @jannael/glinter</span>
-		<button
-			class="ml-6 text-zinc-600 transition-colors hover:text-zinc-300"
-			aria-label="Copy command"
-			id="copy-btn"
-		>
+		<button class="ml-6 text-zinc-600 transition-colors hover:text-zinc-300" aria-label="Copy command" id="copy-btn">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				width="14"
@@ -23,8 +16,7 @@
 				stroke-linejoin="round"
 			>
 				<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-				<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-				></path>
+				<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
 			</svg>
 		</button>
 	</div>
@@ -43,10 +35,8 @@
 		}
 	})
 
-	document
-		.getElementById('install-cmd')
-		?.addEventListener('click', async (e) => {
-			if ((e.target as HTMLElement).closest('#copy-btn')) return
-			await navigator.clipboard.writeText('npm i -g @jannael/glinter')
-		})
+	document.getElementById('install-cmd')?.addEventListener('click', async (e) => {
+		if ((e.target as HTMLElement).closest('#copy-btn')) return
+		await navigator.clipboard.writeText('npm i -g @jannael/glinter')
+	})
 </script>

@@ -2,23 +2,13 @@
 import { AVAILABLE_COMMANDS } from 'commands'
 ---
 
-<section
-	id="commands"
-	class="mx-auto mb-20 flex w-full max-w-7xl flex-col items-center justify-center px-6 lg:mb-40 lg:px-0"
->
+<section id="commands" class="mx-auto mb-20 flex w-full max-w-7xl flex-col items-center justify-center px-6 lg:mb-40 lg:px-0">
 	<div class="flex w-full items-start">
 		<div class="flex flex-col">
-			<h3 class="text-secondary mb-2 text-3xl font-bold lg:text-4xl">
-				Commands
-			</h3>
+			<h3 class="text-secondary mb-2 text-3xl font-bold lg:text-4xl">Commands</h3>
 			<p class="text-secondary/60 mb-10 text-lg leading-relaxed">
 				Available Glinter commands.{' '}
-				<a
-					href="/alias/"
-					class="text-accent hover:text-accent/80 transition-colors"
-				>
-					To see aliases, click here.
-				</a>
+				<a href="/alias/" class="text-accent hover:text-accent/80 transition-colors"> To see aliases, click here. </a>
 			</p>
 		</div>
 	</div>
@@ -27,12 +17,8 @@ import { AVAILABLE_COMMANDS } from 'commands'
 		{
 			AVAILABLE_COMMANDS.map((cmd) => (
 				<li class="group border-secondary/10 hover:bg-secondary/10 hover:border-secondary/20 flex flex-col gap-2 rounded-xl border p-4 transition-colors">
-					<span class="text-accent font-mono text-sm font-medium tracking-wide">
-						{cmd.command}
-					</span>
-					<span class="text-secondary/50 group-hover:text-secondary/70 text-xs leading-relaxed transition-colors">
-						{cmd.description}
-					</span>
+					<span class="text-accent font-mono text-sm font-medium tracking-wide">{cmd.command}</span>
+					<span class="text-secondary/50 group-hover:text-secondary/70 text-xs leading-relaxed transition-colors">{cmd.description}</span>
 				</li>
 			))
 		}

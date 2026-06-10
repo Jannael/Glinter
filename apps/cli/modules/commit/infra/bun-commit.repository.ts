@@ -10,10 +10,7 @@ export class BunCommitRepository implements CommitRepository {
 		const exitCode = await proc.exited
 
 		if (exitCode !== 0) {
-			throw new ServerError(
-				'Git commit failed',
-				'Could not create commit from interactive prompt',
-			)
+			throw new ServerError('Git commit failed', 'Could not create commit from interactive prompt')
 		}
 	}
 }

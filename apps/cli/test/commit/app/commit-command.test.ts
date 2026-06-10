@@ -40,8 +40,6 @@ describe('CommitCommand', () => {
 
 		expect(selectModule.Select).toHaveBeenCalled()
 		expect(inputModule.Input).toHaveBeenCalled()
-		expect(commitMockRepo.commit).toHaveBeenCalledWith(
-			'feat: add commit prompt',
-		)
+		expect(commitMockRepo.commit).toHaveBeenCalledWith('feat: add commit prompt')
 	})
 })

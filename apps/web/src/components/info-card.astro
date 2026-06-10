@@ -13,24 +13,18 @@ export interface Props {
 const { title, description, links, className } = Astro.props
 ---
 
-<div
-	class={`flex h-auto w-full max-w-2xl flex-col justify-center ${className} lg:h-60`}
->
-	<h2
-		class="text-secondary mb-4 text-xl font-bold tracking-[0.15em] uppercase lg:mb-6 lg:h-8"
-	>
+<div class={`flex h-auto w-full max-w-2xl flex-col justify-center ${className} lg:h-60`}>
+	<h2 class="text-secondary mb-4 text-xl font-bold tracking-[0.15em] uppercase lg:mb-6 lg:h-8">
 		{title}
 	</h2>
 
-	<p
-		class="text-secondary/60 mb-6 text-base leading-relaxed font-light lg:mb-8 lg:h-20 lg:text-lg"
-	>
+	<p class="text-secondary/60 mb-6 text-base leading-relaxed font-light lg:mb-8 lg:h-20 lg:text-lg">
 		{description}
 	</p>
 
 	<div class="flex h-auto flex-wrap items-center gap-3 lg:h-10">
 		{
-			links.map((link, i) => (
+			links.map((link) => (
 				<a
 					href={link.href}
 					target="_blank"
@@ -41,11 +35,7 @@ const { title, description, links, className } = Astro.props
 							: 'text-secondary/60 border-secondary/20 hover:border-secondary/60 hover:text-secondary h-8 w-8 shrink-0'
 					} `}
 				>
-					{link.type === 'svg' ? (
-						<Fragment set:html={link.content} />
-					) : (
-						link.content
-					)}
+					{link.type === 'svg' ? <Fragment set:html={link.content} /> : link.content}
 				</a>
 			))
 		}

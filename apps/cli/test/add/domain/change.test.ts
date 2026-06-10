@@ -41,10 +41,7 @@ describe('Change', () => {
 			displayPath: '.env',
 		})
 
-		expect(change.getWarning()).toBe(
-			YELLOW({ text: ' .env file hidden' }) +
-				' (Add to .gitignore to avoid leaks)',
-		)
+		expect(change.getWarning()).toBe(YELLOW({ text: ' .env file hidden' }) + ' (Add to .gitignore to avoid leaks)')
 	})
 
 	it('Get changes from porcelain', () => {

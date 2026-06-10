@@ -61,7 +61,7 @@ Useful with lint-staged:
 ```js
 // .lintstagedrc.js
 export default {
-  '*.{ts,tsx}': 'vitest related --run',
+	'*.{ts,tsx}': 'vitest related --run',
 }
 ```
 
@@ -71,7 +71,7 @@ export default {
 test.only('only this runs', () => {})
 
 describe.only('only this suite', () => {
-  test('runs', () => {})
+	test('runs', () => {})
 })
 ```
 
@@ -79,9 +79,9 @@ In CI, `.only` throws error unless configured:
 
 ```ts
 defineConfig({
-  test: {
-    allowOnly: true, // Allow .only in CI
-  },
+	test: {
+		allowOnly: true, // Allow .only in CI
+	},
 })
 ```
 
@@ -96,7 +96,7 @@ test.runIf(!process.env.CI)('local only', () => {})
 
 // Dynamic skip
 test('dynamic', ({ skip }) => {
-  skip(someCondition, 'reason')
+	skip(someCondition, 'reason')
 })
 ```
 
@@ -121,10 +121,10 @@ Configure allowed tags:
 
 ```ts
 defineConfig({
-  test: {
-    tags: ['db', 'slow', 'integration'],
-    strictTags: true, // Fail on unknown tags
-  },
+	test: {
+		tags: ['db', 'slow', 'integration'],
+		strictTags: true, // Fail on unknown tags
+	},
 })
 ```
 
@@ -132,26 +132,23 @@ defineConfig({
 
 ```ts
 defineConfig({
-  test: {
-    // Test file patterns
-    include: ['**/*.{test,spec}.{ts,tsx}'],
-    
-    // Exclude patterns
-    exclude: [
-      '**/node_modules/**',
-      '**/e2e/**',
-      '**/*.skip.test.ts',
-    ],
-    
-    // Include source for in-source testing
-    includeSource: ['src/**/*.ts'],
-  },
+	test: {
+		// Test file patterns
+		include: ['**/*.{test,spec}.{ts,tsx}'],
+
+		// Exclude patterns
+		exclude: ['**/node_modules/**', '**/e2e/**', '**/*.skip.test.ts'],
+
+		// Include source for in-source testing
+		includeSource: ['src/**/*.ts'],
+	},
 })
 ```
 
 ## Watch Mode Filtering
 
 In watch mode, press:
+
 - `p` - Filter by filename pattern
 - `t` - Filter by test name pattern
 - `a` - Run all tests
@@ -204,7 +201,7 @@ vitest list --json          # JSON output
 - Use `.only` for debugging, but configure CI to reject it
 - Watch mode has interactive filtering
 
-<!-- 
+<!--
 Source references:
 - https://vitest.dev/guide/filtering.html
 - https://vitest.dev/guide/cli.html

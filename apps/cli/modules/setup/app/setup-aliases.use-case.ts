@@ -6,11 +6,7 @@ export class SetupAliasesUseCase {
 
 	async execute() {
 		for (const alias of ALIASES) {
-			const { name, value } = this.resolveAlias(
-				alias.name,
-				alias.command,
-				alias.kind,
-			)
+			const { name, value } = this.resolveAlias(alias.name, alias.command, alias.kind)
 			await this.aliasRepository.setAlias(name, value)
 		}
 

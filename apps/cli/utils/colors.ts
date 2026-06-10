@@ -6,5 +6,4 @@ export const MAGENTA = ({ text }: { text: string }) => `\x1b[35m${text}${RESET}`
 export const BLUE = ({ text }: { text: string }) => `\x1b[34m${text}${RESET}`
 export const BOLD = ({ text }: { text: string }) => `\x1b[1m${text}${RESET}`
 export const BLACK = ({ text }: { text: string }) => `\x1b[30m${text}${RESET}`
-export const BG_YELLOW = ({ text }: { text: string }) =>
-	`\x1b[43m${text}${RESET}`
+export const BG_YELLOW = ({ text }: { text: string }) => `\x1b[43m${text}${RESET}`

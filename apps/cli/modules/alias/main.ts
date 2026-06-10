@@ -13,10 +13,7 @@ export function printAliases({
 	console.log(YELLOW({ text: `\n${title}\n` }))
 
 	for (const alias of ALIASES) {
-		const tag =
-			alias.kind === 'glinter'
-				? MAGENTA({ text: '[glinter]' })
-				: BLUE({ text: '[git]    ' })
+		const tag = alias.kind === 'glinter' ? MAGENTA({ text: '[glinter]' }) : BLUE({ text: '[git]    ' })
 		const { name, value } = resolveAlias(alias.name, alias.command)
 
 		console.log(`  ${tag}  ${GREEN({ text: name.padEnd(8) })} → ${value}`)

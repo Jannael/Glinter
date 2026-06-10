@@ -2,32 +2,17 @@
 import ChartSvg from '@/assets/chart.svg?raw'
 import DownloadSvg from '@/assets/download.svg?raw'
 import StarSvg from '@/assets/star.svg?raw'
-import {
-	REPO_API,
-	STARS_CACHE_TTL_SECONDS,
-	STATS_CACHE_TTL_SECONDS,
-	TOTAL_DOWNLOADS_API,
-	WEEKLY_DOWNLOADS_API,
-} from '@/constants'
+import { REPO_API, STARS_CACHE_TTL_SECONDS, STATS_CACHE_TTL_SECONDS, TOTAL_DOWNLOADS_API, WEEKLY_DOWNLOADS_API } from '@/constants'
 import { formatStat, readJson } from '@/utils/utils'
 
 const responses = await Promise.all([
 	readJson<{ stargazers_count?: number }>(REPO_API, STARS_CACHE_TTL_SECONDS),
-	readJson<{ downloads?: number }>(
-		WEEKLY_DOWNLOADS_API,
-		STATS_CACHE_TTL_SECONDS,
-	),
-	readJson<{ downloads?: number }>(
-		TOTAL_DOWNLOADS_API,
-		STATS_CACHE_TTL_SECONDS,
-	),
+	readJson<{ downloads?: number }>(WEEKLY_DOWNLOADS_API, STATS_CACHE_TTL_SECONDS),
+	readJson<{ downloads?: number }>(TOTAL_DOWNLOADS_API, STATS_CACHE_TTL_SECONDS),
 ])
 
 const hasError = responses.some((response) => !response.success)
-Astro.response.headers.set(
-	'Cache-Control',
-	hasError ? 'no-store' : 'public, s-maxage=600, stale-while-revalidate=60',
-)
+Astro.response.headers.set('Cache-Control', hasError ? 'no-store' : 'public, s-maxage=600, stale-while-revalidate=60')
 
 const { data: repo } = responses[0]
 const { data: weekly } = responses[1]

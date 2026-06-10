@@ -15,10 +15,7 @@ export class BunGitRepository implements GitRepository {
 			// Split by NUL character
 			return output.split('\0').filter(Boolean)
 		} catch {
-			throw new ServerError(
-				'Git status failed',
-				'Could not retrieve repository status',
-			)
+			throw new ServerError('Git status failed', 'Could not retrieve repository status')
 		}
 	}
 
@@ -33,10 +30,7 @@ export class BunGitRepository implements GitRepository {
 		const exitCode = await proc.exited
 
 		if (exitCode !== 0) {
-			throw new ServerError(
-				'Git add failed',
-				`Failed to stage ${files.length} file(s)`,
-			)
+			throw new ServerError('Git add failed', `Failed to stage ${files.length} file(s)`)
 		}
 	}
 }

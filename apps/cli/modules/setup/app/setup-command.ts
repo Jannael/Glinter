@@ -33,18 +33,12 @@ export class SetupCommand {
 			const { total } = await this.setupAliasesUseCase.execute()
 
 			console.log('')
-			spinner.stop(
-				`${CHECK({ text: `${total} aliases configured successfully.` })}`,
-			)
+			spinner.stop(`${CHECK({ text: `${total} aliases configured successfully.` })}`)
 
-			Outro(
-				`${GREEN({ text: 'GLINTER' })}, if you like the project, give a star on github: https://github.com/jannael/glinter`,
-			)
+			Outro(`${GREEN({ text: 'GLINTER' })}, if you like the project, give a star on github: https://github.com/jannael/glinter`)
 
 			console.log('')
-			console.log(
-				MAGENTA({ text: 'To use the aliases, please restart your terminal.' }),
-			)
+			console.log(MAGENTA({ text: 'To use the aliases, please restart your terminal.' }))
 		} catch (error) {
 			errorHandler(error)
 		}

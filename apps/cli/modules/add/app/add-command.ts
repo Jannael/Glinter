@@ -16,9 +16,7 @@ export class AddCommand {
 			const { changes, warnings } = await this.getChangesUseCase.execute()
 
 			if (changes.length === 0) {
-				console.log(
-					`${CHECK({ text: 'All changes are either staged or sensitive (like .env).' })}`,
-				)
+				console.log(`${CHECK({ text: 'All changes are either staged or sensitive (like .env).' })}`)
 				return
 			}
 

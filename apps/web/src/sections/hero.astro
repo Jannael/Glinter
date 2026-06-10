@@ -10,15 +10,9 @@ import TerminalAnimation from '@/components/terminal-animation.astro'
 <section
 	class="mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center gap-10 px-6 py-16 lg:h-screen lg:flex-row lg:gap-20 lg:px-0 lg:py-0"
 >
-	<article
-		class="prose text-secondary flex flex-4/6 flex-col items-center justify-center gap-3 text-center lg:h-full lg:items-start lg:text-left"
-	>
-		<div
-			class="mb-0 flex flex-col items-center justify-center gap-6 lg:flex-row lg:gap-10"
-		>
-			<h1 class="text-secondary mb-0 text-5xl sm:text-7xl lg:text-8xl">
-				GLINTER
-			</h1>
+	<article class="prose text-secondary flex flex-4/6 flex-col items-center justify-center gap-3 text-center lg:h-full lg:items-start lg:text-left">
+		<div class="mb-0 flex flex-col items-center justify-center gap-6 lg:flex-row lg:gap-10">
+			<h1 class="text-secondary mb-0 text-5xl sm:text-7xl lg:text-8xl">GLINTER</h1>
 			<img
 				src="/logo-192-white.webp"
 				alt="Glinter logo"
@@ -27,39 +21,24 @@ import TerminalAnimation from '@/components/terminal-animation.astro'
 				decoding="async"
 			/>
 		</div>
-		<p class="text-secondary/70 mt-5 mb-0 text-xl sm:text-2xl lg:text-3xl">
-			The best way to use Git.
-		</p>
+		<p class="text-secondary/70 mt-5 mb-0 text-xl sm:text-2xl lg:text-3xl">The best way to use Git.</p>
 		<p class="text-secondary/50 mb-5 text-base lg:text-lg">
-			Glinter reduces errors while using Git by providing interactive commands
-			and safer defaults.
+			Glinter reduces errors while using Git by providing interactive commands and safer defaults.
 		</p>
 		<div class="flex flex-col items-center gap-6 lg:flex-row lg:items-end">
 			<CopyButton />
 			<HeroStats server:defer>
-				<ul
-					class="mt-0 flex h-16 w-fit items-center gap-3 px-4 lg:mb-0"
-					slot="fallback"
-				>
+				<ul class="mt-0 flex h-16 w-fit items-center gap-3 px-4 lg:mb-0" slot="fallback">
 					<li class="flex min-w-0 items-end gap-2">
-						<span
-							class="text-secondary/70 h-6 w-6 shrink-0"
-							set:html={StarSvg}
-						/>
+						<span class="text-secondary/70 h-6 w-6 shrink-0" set:html={StarSvg} />
 						<span class="text-secondary/80 text-sm">100</span>
 					</li>
 					<li class="flex min-w-0 items-end gap-2">
-						<span
-							class="text-secondary/70 h-6 w-6 shrink-0"
-							set:html={ChartSvg}
-						/>
+						<span class="text-secondary/70 h-6 w-6 shrink-0" set:html={ChartSvg} />
 						<span class="text-secondary/80 text-sm">100</span>
 					</li>
 					<li class="flex min-w-0 items-end gap-2">
-						<span
-							class="text-secondary/70 h-6 w-6 shrink-0"
-							set:html={DownloadSvg}
-						/>
+						<span class="text-secondary/70 h-6 w-6 shrink-0" set:html={DownloadSvg} />
 						<span class="text-secondary/80 text-sm">100</span>
 					</li>
 				</ul>

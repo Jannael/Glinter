@@ -10,9 +10,7 @@ describe('aliasCommand', () => {
 
 		expect(logSpy).toHaveBeenCalled()
 		for (const alias of ALIASES) {
-			expect(logSpy).toHaveBeenCalledWith(
-				expect.stringContaining(`${alias.name}`),
-			)
+			expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(`${alias.name}`))
 		}
 	})
 })
