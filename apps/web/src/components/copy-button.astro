@@ -1,42 +1,49 @@
-<div>
-	<p class="mb-3 text-xs font-bold tracking-widest uppercase">Try it now</p>
-	<div class="group flex h-16 w-fit cursor-pointer items-center gap-3 border border-zinc-800 bg-zinc-900/80 px-4 py-3" id="install-cmd">
-		<span class="text-zinc-600">$</span>
-		<span class="text-nowrap text-zinc-100">npm i -g @jannael/glinter</span>
-		<button class="ml-6 text-zinc-600 transition-colors hover:text-zinc-300" aria-label="Copy command" id="copy-btn">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="14"
-				height="14"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			>
-				<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-				<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-			</svg>
-		</button>
-	</div>
+---
+interface Props {
+	command: string
+}
+const { command } = Astro.props
+---
+
+<div class="copy-wrap flex min-w-0 cursor-pointer overflow-hidden rounded-lg border border-white/[0.07] bg-zinc-950">
+	<span class="text-accent border-secondary/7 shrink-0 border-r px-3 py-2 font-mono text-sm select-none">$</span>
+	<span class="text-secondary/80 flex-1 truncate px-3 py-2 font-mono text-sm">{command}</span>
+	<button
+		class="copy-trigger border-secondary/7 text-secondary/25 hover:text-accent hover:bg-accent/5 shrink-0 cursor-pointer border-l px-3 py-2 transition-colors"
+		aria-label="Copy command"
+	>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="14"
+			height="14"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+		>
+			<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+			<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+		</svg>
+	</button>
 </div>
 
-<script>
-	document.getElementById('copy-btn')?.addEventListener('click', async () => {
-		await navigator.clipboard.writeText('npm i -g @jannael/glinter')
-		const btn = document.getElementById('copy-btn')
+<script define:vars={{ command }}>
+	const copyIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`
+	const checkIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`
 
-		if (btn) {
-			btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`
-			setTimeout(() => {
-				btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`
-			}, 2000)
+	document.querySelectorAll('.copy-wrap').forEach((wrap) => {
+		const btn = wrap.querySelector('.copy-trigger')
+		async function doCopy() {
+			await navigator.clipboard.writeText(command)
+			btn.innerHTML = checkIcon
+			setTimeout(() => (btn.innerHTML = copyIcon), 2000)
 		}
-	})
-
-	document.getElementById('install-cmd')?.addEventListener('click', async (e) => {
-		if ((e.target as HTMLElement).closest('#copy-btn')) return
-		await navigator.clipboard.writeText('npm i -g @jannael/glinter')
+		btn?.addEventListener('click', doCopy)
+		wrap.addEventListener('click', (e) => {
+			if (e.target.closest('.copy-trigger')) return
+			doCopy()
+		})
 	})
 </script>
