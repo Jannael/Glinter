@@ -26,7 +26,7 @@ import TerminalAnimation from '@/components/terminal-animation.astro'
 			Glinter reduces errors while using Git by providing interactive commands and safer defaults.
 		</p>
 		<div class="flex flex-col items-center gap-6 lg:flex-row lg:items-end">
-			<CopyButton />
+			<CopyButton command="npm i -g @jannael/glinter" />
 			<HeroStats server:defer>
 				<ul class="mt-0 flex h-16 w-fit items-center gap-3 px-4 lg:mb-0" slot="fallback">
 					<li class="flex min-w-0 items-end gap-2">
