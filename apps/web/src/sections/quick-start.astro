@@ -1,27 +1,46 @@
+---
+import CopyButton from '@/components/copy-button.astro'
+---
+
 <section id="quick-start" class="mb-10 flex items-center justify-center px-6 py-5 lg:mt-10 lg:mb-30 lg:px-0 lg:py-0">
 	<div class="prose prose-p:my-0 mx-auto flex w-full max-w-7xl flex-col gap-8">
-		<div class="flex flex-col gap-3">
+		<div class="flex flex-col gap-2">
+			<p class="text-accent text-xs font-medium tracking-widest uppercase">Get started</p>
 			<h2 class="text-secondary text-3xl font-bold lg:text-4xl">Quick Start</h2>
-			<p class="text-secondary/60 text-lg">Install Glinter, run setup, and start using your Git aliases in seconds.</p>
+			<p class="text-secondary/45 text-lg">Install Glinter, run setup, and start using your Git aliases in seconds.</p>
 		</div>
-
-		<div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-			<article class="border-secondary/10 rounded-xl border bg-zinc-900/40 p-6">
-				<p class="text-secondary/50 mb-3 text-xs tracking-widest uppercase">Step 1</p>
-				<h3 class="text-secondary mb-3 text-xl font-semibold">Install</h3>
-				<code class="text-secondary/90 block rounded bg-zinc-950 px-3 py-2 text-sm">npm i -g @jannael/glinter</code>
+		<div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+			<article class="border-secondary/7 hover:border-secondary/12 flex min-w-0 flex-col gap-4 rounded-xl border bg-white/3 p-6 transition-colors">
+				<div class="flex items-center justify-between">
+					<h3 class="text-secondary text-lg font-semibold">Install</h3>
+					<span
+						class="text-accent border-accent/20 bg-accent/10 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border text-xs font-bold"
+						>1</span
+					>
+				</div>
+				<CopyButton command="npm i -g @jannael/glinter" />
 			</article>
 
-			<article class="border-secondary/10 rounded-xl border bg-zinc-900/40 p-6">
-				<p class="text-secondary/50 mb-3 text-xs tracking-widest uppercase">Step 2</p>
-				<h3 class="text-secondary mb-3 text-xl font-semibold">Setup</h3>
-				<code class="text-secondary/90 block rounded bg-zinc-950 px-3 py-2 text-sm">g setup</code>
+			<article class="border-secondary/7 hover:border-secondary/12 flex min-w-0 flex-col gap-4 rounded-xl border bg-white/3 p-6 transition-colors">
+				<div class="flex items-center justify-between">
+					<h3 class="text-secondary text-lg font-semibold">Setup</h3>
+					<span
+						class="text-accent border-accent/20 bg-accent/10 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border text-xs font-bold"
+						>2</span
+					>
+				</div>
+				<CopyButton command="g setup" />
 			</article>
 
-			<article class="border-secondary/10 rounded-xl border bg-zinc-900/40 p-6">
-				<p class="text-secondary/50 mb-3 text-xs tracking-widest uppercase">Step 3</p>
-				<h3 class="text-secondary mb-3 text-xl font-semibold">Use</h3>
-				<code class="text-secondary/90 block rounded bg-zinc-950 px-3 py-2 text-sm">ga</code>
+			<article class="border-secondary/7 hover:border-secondary/12 flex min-w-0 flex-col gap-4 rounded-xl border bg-white/3 p-6 transition-colors">
+				<div class="flex items-center justify-between">
+					<h3 class="text-secondary text-lg font-semibold">Use</h3>
+					<span
+						class="text-accent border-accent/20 bg-accent/10 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border text-xs font-bold"
+						>3</span
+					>
+				</div>
+				<CopyButton command="ga" />
 			</article>
 		</div>
 	</div>
