@@ -1,6 +1,5 @@
 import { errorHandler } from '@/error/error-handler'
 import type { ResetHardRepository } from '@/modules/reset-hard/domain/reset-hard.repository'
-import type { GetCommitsUseCase } from '@/modules/reset-hard/app/get-commits.use-case'
 import { CHECK, WARNING } from '@/utils/icons-terminal'
 import { Select } from '@/utils/select'
 
@@ -8,10 +7,7 @@ const PREV_PAGE = '< Previous page'
 const NEXT_PAGE = 'Next page >'
 
 export class ResetHardCommand {
-	constructor(
-		private readonly getCommitsUseCase: GetCommitsUseCase,
-		private readonly resetHardRepository: ResetHardRepository,
-	) {}
+	constructor(private readonly resetHardRepository: ResetHardRepository) {}
 
 	async execute() {
 		try {
@@ -19,7 +15,7 @@ export class ResetHardCommand {
 			const pageSize = 10
 
 			while (true) {
-				const { commits, hasMore } = await this.getCommitsUseCase.execute({ page, pageSize })
+				const { commits, hasMore } = await this.resetHardRepository.getCommits(page, pageSize)
 
 				if (commits.length === 0) {
 					console.log(`${WARNING({ text: 'No commits found.' })}`)

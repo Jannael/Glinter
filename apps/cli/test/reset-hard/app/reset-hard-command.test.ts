@@ -1,7 +1,6 @@
 import { beforeEach, describe, expect, it, mock } from 'bun:test'
 import type { Mock } from 'bun:test'
 import { Commit } from '@/modules/reset-hard/domain/commit'
-import { GetCommitsUseCase } from '@/modules/reset-hard/app/get-commits.use-case'
 import { ResetHardCommand } from '@/modules/reset-hard/app/reset-hard-command'
 import * as selectModule from '@/utils/select'
 
@@ -15,7 +14,6 @@ const mockRepo = {
 }
 
 describe('ResetHardCommand', () => {
-	const getCommitsUseCase = new GetCommitsUseCase(mockRepo)
 	const mockSelect = selectModule.Select as unknown as Mock<
 		(opts: { message: string; options: { value: string; label: string }[] }) => Promise<string>
 	>
@@ -31,7 +29,7 @@ describe('ResetHardCommand', () => {
 		mockRepo.getCommits.mockResolvedValue({ commits, hasMore: false })
 		mockSelect.mockResolvedValue('a'.repeat(40))
 
-		const cmd = new ResetHardCommand(getCommitsUseCase, mockRepo)
+		const cmd = new ResetHardCommand(mockRepo)
 		await cmd.execute()
 
 		expect(mockRepo.getCommits).toHaveBeenCalledTimes(1)
@@ -44,7 +42,7 @@ describe('ResetHardCommand', () => {
 		mockRepo.getCommits.mockResolvedValueOnce({ commits: page1, hasMore: true }).mockResolvedValueOnce({ commits: page2, hasMore: false })
 		mockSelect.mockResolvedValueOnce('Next page >').mockResolvedValueOnce('b'.repeat(40))
 
-		const cmd = new ResetHardCommand(getCommitsUseCase, mockRepo)
+		const cmd = new ResetHardCommand(mockRepo)
 		await cmd.execute()
 
 		expect(mockRepo.getCommits).toHaveBeenCalledTimes(2)
