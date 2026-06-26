@@ -104,5 +104,4 @@ g push          # Runs standard git push
 ```
 
 ## TODO
-- [ ] remove get-commits.use.case.ts (it's rebundant better to call the method from the repo) 
 - [ ] ggclean (shorthand for git reset --hard && git clean -fd )
