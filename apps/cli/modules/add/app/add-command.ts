@@ -1,7 +1,7 @@
 import { errorHandler } from '@/error/error-handler'
 import type { GetChangesUseCase } from '@/modules/add/app/get-changes.use-case'
 import type { StageChangesUseCase } from '@/modules/add/app/stage-changes.use-case'
-import { BLUE, GREEN, MAGENTA, RED } from '@/utils/colors'
+import { MAGENTA, RED } from '@/utils/colors'
 import { CHECK, WARNING } from '@/utils/icons-terminal'
 import { MultiSelect } from '@/utils/multiselect'
 
@@ -25,15 +25,7 @@ export class AddCommand {
 
 			const selectedChanges = await MultiSelect({
 				message:
-					'Select the changes you want to commit. \n' +
-					BLUE({ text: '[space] to select' }) +
-					'\n' +
-					GREEN({ text: '[enter] to confirm' }) +
-					'\n' +
-					MAGENTA({ text: '[a] to select all' }) +
-					'\n' +
-					RED({ text: '[esc] to cancel' }) +
-					'\n',
+					'Select the changes you want to commit. \n' + MAGENTA({ text: '[a] to select all' }) + '\n' + RED({ text: '[esc] to cancel' }) + '\n',
 				options,
 			})
 
