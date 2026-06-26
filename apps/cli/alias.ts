@@ -52,4 +52,5 @@ export const ALIASES: Alias[] = [
 	{ name: 'gcl', command: 'clean -fd', kind: 'git' },
 	{ name: 'grh', command: 'reset --hard', kind: 'git' },
 	{ name: 'ggrh', command: 'reset-hard', kind: 'glinter' },
+	{ name: 'ggclean', command: 'reset --hard && git clean -fd', kind: 'git' },
 ]

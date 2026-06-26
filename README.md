@@ -102,6 +102,3 @@ g commit -m ""  # Runs standard git commit -m ""
 g status        # Runs standard git status
 g push          # Runs standard git push
 ```
-
-## TODO
-- [ ] ggclean (shorthand for git reset --hard && git clean -fd )
