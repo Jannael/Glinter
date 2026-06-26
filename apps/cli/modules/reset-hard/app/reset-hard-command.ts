@@ -1,5 +1,6 @@
 import { errorHandler } from '@/error/error-handler'
 import type { ResetHardRepository } from '@/modules/reset-hard/domain/reset-hard.repository'
+import { YELLOW } from '@/utils/colors'
 import { CHECK, WARNING } from '@/utils/icons-terminal'
 import { Select } from '@/utils/select'
 
@@ -31,7 +32,7 @@ export class ResetHardCommand {
 				for (const commit of commits) {
 					options.push({
 						value: commit.hash,
-						label: `${commit.shortHash} ${commit.subject}`,
+						label: `${YELLOW({ text: commit.shortHash })} ${commit.subject}`,
 					})
 				}
 
