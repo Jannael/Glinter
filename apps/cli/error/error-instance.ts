@@ -16,6 +16,8 @@ type IServerError =
 	| 'Git checkout failed'
 	| 'Git branch failed'
 	| 'Unexpected execution error'
+	| 'Git log failed'
+	| 'Git reset failed'
 export const ServerError = CreateError<IServerError>('ServerError')
 
 type IBadRequest = 'Invalid branch name' | 'No changes selected' | 'Invalid configuration' | 'Invalid git command'
