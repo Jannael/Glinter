@@ -2,6 +2,7 @@ import type { CommandNames } from '@/commands'
 import { addCommand } from '@/modules/add/main'
 import { aliasCommand } from '@/modules/alias/main'
 import { commitCommand } from '@/modules/commit/main'
+import { resetHardCommand } from '@/modules/reset-hard/main'
 import { setupCommand } from '@/modules/setup/main'
 import { switchCommand } from '@/modules/switch/main'
 
@@ -13,4 +14,5 @@ export const COMMANDS_FN: Record<CommandNames, CommandHandler> = {
 	switch: switchCommand,
 	alias: aliasCommand,
 	setup: setupCommand,
+	'reset-hard': resetHardCommand,
 } as const

@@ -24,6 +24,11 @@ export const AVAILABLE_COMMANDS = [
 		command: 'g setup',
 		description: 'Setup alias for git and glinter',
 	},
+	{
+		name: 'reset-hard',
+		command: 'ggrh',
+		description: 'Interactive reset hard',
+	},
 ] as const
 
 export type CommandNames = (typeof AVAILABLE_COMMANDS)[number]['name']
