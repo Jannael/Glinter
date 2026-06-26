@@ -26,7 +26,7 @@ export const AVAILABLE_COMMANDS = [
 	},
 	{
 		name: 'reset-hard',
-		command: 'ggrh',
+		command: 'g reset-hard',
 		description: 'Interactive reset hard',
 	},
 ] as const
