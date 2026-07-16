@@ -80,8 +80,6 @@ Using the `@clack/prompts` library, Glinter transforms the raw status data into 
 
 ## Installation
 
-To use Glinter as your primary Git interface (e.g., using the command `g`):
-
 ```bash
 npm install -g @jannael/glinter
 ```
